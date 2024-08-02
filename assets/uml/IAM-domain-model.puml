@@ -1,0 +1,46 @@
+@startuml
+
+class User {
+}
+
+class Group {
+}
+
+class Role {
+}
+
+class Policy {
+}
+
+class Service {
+ CloudFormation
+}
+
+class Application {
+  Lambda Function
+}
+
+class Resource {
+ EC2
+}
+
+class Account {}
+
+
+Account "1" -- "0..n" User : Belongs >
+Account "1" -- "0..n" Group : Belongs >
+Account "1" -- "0..n" Policy : Applied to <
+
+
+
+User "m" -- "0..n" Group : Belongs >
+User "1" -- "0..n" Policy : Applied to <
+Group "1" -- "0..n" Policy : Applied to <
+Role "1" -l- "n" Policy : Applied to <
+
+Role "n" -- "1" Application : Assigned >
+Role "n" -- "1" Service : Assigned >
+Role "n" -- "1" Resource : Assigned >
+
+
+@enduml
