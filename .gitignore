@@ -99,7 +99,6 @@ report.html
 
 # Files
 local.py
-assets
 .env
 allure-report
 allure_results
