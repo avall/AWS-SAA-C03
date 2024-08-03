@@ -1,0 +1,47 @@
+@startuml
+
+!include ../style.puml
+skinparam linetype ortho
+skinparam nodesep 100
+top to bottom direction
+
+class "AWS-User" as User {
+}
+
+class "AWS-Group" as Group {
+}
+
+class "AWS-Role" as Role {
+}
+
+class "AWS-Policy" as Policy {
+}
+
+class "AWS-Service" as Service {
+ CloudFormation
+}
+
+class "AWS-Application" as Application {
+  Lambda Function
+}
+
+class "AWS-Resource" as Resource {
+ EC2
+}
+
+class "AWS-Account" as Account {}
+
+Account "1" -l- "0..n" Group : Belongs <
+Account "1" -d-- "0..n" User : Belongs <
+Account "1" --u-- "0..n" Policy : Applied to <
+
+User "0..m" -u- "0..n" Group : Belongs >
+User "1" -u-- "0..n" Policy : Applied to <
+Group "1" -u- "0..n" Policy : Applied to <
+
+Role "0..m" -d-- "n" Policy : Applied to <
+Role "m" -u-- "0..n" Application : Assigned >
+Role "m" -u-- "0..n" Service : Assigned >
+Role "m" -u-- "0..n" Resource : Assigned >
+
+@enduml
