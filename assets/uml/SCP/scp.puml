@@ -1,0 +1,46 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+
+$AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
+!define OrgGroup(g_alias, g_label="Organizational units (OUs)") $AWSDefineGroup(g_alias, g_label, Organizations, OrgGroup)
+
+left to right direction
+
+Organizations(org, "org", org)
+IdentityAccessManagementPermissions(policy, "policy", "")
+IdentityAccessManagementAWSSTS(sts, "sts", "")
+Users(users1, "users1", "")
+AWSEntity(users, users, users, #E7157B, Users, Users)
+OrgGroup(pipeline1)
+
+AWSCloudGroup(cloud)  {
+
+  RegionGroup(region, "Region") {
+
+    CloudWatchLogs(log_group, "CloudWatch", "")
+    KeyManagementService(kms_key, "KMS Key", "")
+
+    VPCGroup(vpc, "VPC")  {
+        Fargate(fargate_cluster, "Fargate Capacity Provider", "")
+        GenericGroup(ecs, "\t ECS \t")  {
+            ElasticContainerService(cluster, "ECS Cluster", "")
+        }
+    }
+  }
+
+    cluster --> fargate_cluster
+    cluster --> log_group : Execute Command Logs
+    cluster --> kms_key : Execute Command Encryption Key
+}
+
+@enduml

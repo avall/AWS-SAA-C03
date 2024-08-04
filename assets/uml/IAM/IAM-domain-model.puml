@@ -3,6 +3,7 @@
 !include ../style.puml
 skinparam linetype ortho
 skinparam nodesep 100
+'skinparam ranksep 100
 top to bottom direction
 
 class "AWS-User" as User {
