@@ -1,0 +1,53 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+
+$AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
+!define OrgGroup(g_alias, g_label="Organizational units (OUs)") $AWSDefineGroup(g_alias, g_label, Organizations, OrgGroup)
+
+top to bottom direction
+skinparam linetype ortho
+skinparam nodesep 100
+
+OrgGroup(orgGroup) {
+    Users(ou1, "ou1", "")
+    Users(ou2, "ou2", "")
+    Users(ou3, "ou3", "")
+    Users(ou4, "ou4", "")
+    Users(ou5, "ou5", "")
+
+    ou1 -d-> ou2 $AWSColor(ManagementGovernance)
+    ou1 -d-> ou3 $AWSColor(ManagementGovernance)
+    ou3 -d-> ou4 $AWSColor(ManagementGovernance)
+    ou3 -d-> ou5 $AWSColor(ManagementGovernance)
+}
+
+AWSCloudGroup(cloud, "Service Control Policies (SCPs)")  {
+    IdentityAccessManagementPermissions(policy1, "attached:\nFullAWSAccess\n\n**Inherited**:\nnone", "")
+    IdentityAccessManagementPermissions(policy2, "attached:\nDeny S3\n\n**Inherited:**\nFullAWSAccess", "")
+    IdentityAccessManagementPermissions(policy3, "attached:\nDeny EC2\n\n**Inherited:**\nFullAWSAccess", "")
+    IdentityAccessManagementPermissions(policy4, "attached:\nDeny RDS\n\n**Inherited:**\nFullAWSAccess\nDeny EC2", "")
+    IdentityAccessManagementPermissions(policy5, "attached:\nDeny VPC\n\n**Inherited:**\nFullAWSAccess\nDeny EC2", "")
+
+    policy1 -d- policy2 #white
+    policy2 -d- policy3 #white
+    policy3 -d- policy4 #white
+    policy4 -d- policy5 #white
+}
+
+ou1 -r-> policy1
+ou2 -r-> policy2
+ou3 -r-> policy3
+ou4 -r-> policy4
+ou5 -r-> policy5
+
+@enduml

@@ -1,3 +1,4 @@
 # AWS-SAA-C03
 
-[IAM](assets/md/iam.md)
+[AWS-IAM](./assets/md/001-iam)\
+[AWS-ControlTower](./assets/md/002-control-tower)
