@@ -38,6 +38,7 @@ AWSCloudGroup(cloud, "Service Control Policies (SCPs)")  {
     IdentityAccessManagementPermissions(policy4, "attached:\nDeny RDS\n\n**Inherited:**\nFullAWSAccess\nDeny EC2", "")
     IdentityAccessManagementPermissions(policy5, "attached:\nDeny VPC\n\n**Inherited:**\nFullAWSAccess\nDeny EC2", "")
 
+    'This is a trick to obtain vertical orientation
     policy1 -d- policy2 #white
     policy2 -d- policy3 #white
     policy3 -d- policy4 #white

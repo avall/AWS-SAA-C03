@@ -12,7 +12,7 @@ governance using AWS Organizations.
 
 - IAM policies are focused on defining permissions for individual IAM entities
   (users, groups, roles)
--  SCPs operate at the organizational level and provide top-
+- SCPs operate at the organizational level and provide top-
    down control over the services and actions that are allowed or denied across
    multiple AWS accounts.
 
