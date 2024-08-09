@@ -26,7 +26,7 @@ $AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
 
 top to bottom direction
 skinparam linetype ortho
-skinparam nodesep 30
+skinparam nodesep 40
 
 AWSCloudGroup(dev, "Dev Account")  {
     User(user,"IAM User","user")
