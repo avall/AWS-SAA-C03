@@ -21,9 +21,6 @@
 !include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementTemporarySecurityCredential.puml
 !include AWSPuml/Storage/ElasticBlockStoreMultipleVolumes.puml
 
-$AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
-!define OrgGroup(g_alias, g_label="Organizational units (OUs)") $AWSDefineGroup(g_alias, g_label, Organizations, OrgGroup)
-
 top to bottom direction
 skinparam linetype ortho
 skinparam nodesep 40
@@ -45,9 +42,9 @@ AWSCloudGroup(prod, "Prod Account")  {
 'trick to force vertical aligning
 sts -[hidden]d-- resources
 
-user -r---> role : 1-API call to STS AssumeRole
-role -r--> user : 2-Return temporary\nsecurity credentials
-user -d-> resources: 3-Call AWS APIs using\ntemporary secutiry\ncredentials
+user -r-> role : 1-API call to STS AssumeRole   <$IdentityAccessManagementLongTermSecurityCredential{scale=0.38}>
+role -r-> user : 2-Return temporary\nsecurity credentials  <$IdentityAccessManagementTemporarySecurityCredential{scale=0.39}>
+user -d-> resources: 3-Call AWS APIs using\ntemporary secutiry\ncredentials  <$IdentityAccessManagementTemporarySecurityCredential{scale=0.39}>
 
 
 @enduml
