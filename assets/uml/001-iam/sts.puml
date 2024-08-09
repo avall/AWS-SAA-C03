@@ -33,7 +33,6 @@ AWSCloudGroup(dev, "Dev Account")  {
 }
 
 AWSCloudGroup(prod, "Prod Account")  {
-
       rectangle "IAM/STS" as sts {
         IdentityAccessManagementRole(role, "Privileged\nAccess Role", "")
       }
@@ -44,7 +43,7 @@ AWSCloudGroup(prod, "Prod Account")  {
 }
 
 'trick to force vertical aligning
-sts -d-- resources #transparent
+sts -[hidden]d-- resources
 
 user -r---> role : 1-API call to STS AssumeRole
 role -r--> user : 2-Return temporary\nsecurity credentials
