@@ -13,6 +13,7 @@
 !include AWSPuml/Compute/all.puml
 
 top to bottom direction
+skinparam linetype ortho
 
 Internet(internet, "", "")
 
@@ -23,11 +24,12 @@ AWSCloudGroup(cloud)  {
       AvailabilityZoneGroup(zone, "\t Availability Zone \t")  {
         ElasticBlockStoreVolume(ebs, "EBS (Elastic Block Storasge)", "")
         PublicSubnetGroup(subnet) {
-          SecurityGroupGroup(security_group) {
+          SecurityGroupGroup(security_group, "Security Group") {
               EC2Instance(ec2, EC2, EC2)
               IdentityAccessManagementAddon(ec2key,"","")
               ec2key -[hidden]r- ec2
           }
+              note bottom of security_group : Security Group \ncontrol inbound & outbound traffic
         }
       }
     }
