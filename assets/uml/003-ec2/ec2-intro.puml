@@ -17,7 +17,7 @@ skinparam linetype ortho
 
 Internet(internet, "", "")
 
-Client(client, "", "")
+Client(client, "Client computer\nat home", "")
 AWSCloudGroup(cloud)  {
   RegionGroup(region, "Region") {
     VPCGroup(vpc)  {
