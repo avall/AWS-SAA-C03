@@ -12,7 +12,7 @@ note top of region : eu-south-2,     Europe(Spain)\neu-central-1, Europe(Frankfu
 
 class "AWS-Availability\nZone" as zone {
 }
-note left of zone : Europe(Spain)\nEurope(Frankfurt)\nEurope(Paris)\nEurope (Stockholm)\nEurope(Milan)\nEurope(Zurich)
+note left of zone : eu-south-2, Europe(Spain)\nAZones:\n     eu-south-2a\n     eu-south-2b\n     eu-south-2c
 
 class "AWS-Data\nCenter" as datacenter {
 }
