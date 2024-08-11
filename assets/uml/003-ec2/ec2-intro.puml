@@ -1,0 +1,40 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/Compute/all.puml
+
+top to bottom direction
+
+Internet(internet, "", "")
+
+Client(client, "", "")
+AWSCloudGroup(cloud)  {
+  RegionGroup(region, "Region") {
+    VPCGroup(vpc)  {
+      AvailabilityZoneGroup(zone, "\t Availability Zone \t")  {
+        ElasticBlockStoreVolume(ebs, "EBS (Elastic Block Storasge)", "")
+        PublicSubnetGroup(subnet) {
+          SecurityGroupGroup(security_group) {
+              EC2Instance(ec2, EC2, EC2)
+              IdentityAccessManagementAddon(ec2key,"","")
+              ec2key -[hidden]r- ec2
+          }
+        }
+      }
+    }
+  }
+}
+
+client <-l-> internet : <$IdentityAccessManagementAddon{scale=0.5,color=red}>
+internet <-d-> ec2 : <$IdentityAccessManagementAddon{scale=0.5,color=red}>
+ec2 <-r-> ebs
+@enduml
