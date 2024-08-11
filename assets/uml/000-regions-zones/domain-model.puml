@@ -1,0 +1,24 @@
+@startuml
+
+!include ../style.puml
+skinparam linetype ortho
+skinparam nodesep 100
+'skinparam ranksep 100
+top to bottom direction
+
+class "AWS-Region" as region {
+}
+note top of region : eu-south-2,     Europe(Spain)\neu-central-1, Europe(Frankfurt)\neu-west-3,         Europe(Paris)\neu-north-1,        Europe (Stockholm)\neu-south-1,      Europe(Milan)\neu-central-2,  Europe(Zurich)
+
+class "AWS-Availability\nZone" as zone {
+}
+note left of zone : Europe(Spain)\nEurope(Frankfurt)\nEurope(Paris)\nEurope (Stockholm)\nEurope(Milan)\nEurope(Zurich)
+
+class "AWS-Data\nCenter" as datacenter {
+}
+
+
+region "1" -d--> "3..6" zone
+zone "1" -r--> "*" datacenter
+
+@enduml
