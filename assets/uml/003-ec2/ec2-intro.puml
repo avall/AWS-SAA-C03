@@ -29,7 +29,7 @@ AWSCloudGroup(cloud)  {
               IdentityAccessManagementAddon(ec2key,"","")
               ec2key -[hidden]r- ec2
           }
-              note bottom of security_group : Security Group \ncontrol inbound & outbound traffic
+          note bottom of security_group : Security Group \ncontrol inbound & outbound traffic
         }
       }
     }
