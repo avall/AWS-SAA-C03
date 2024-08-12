@@ -23,12 +23,12 @@ Internet(internet, "", "")
 Client(client, "Client computer\nat home", "")
 AWSCloudGroup(cloud)  {
   RegionGroup(region, "Region") {
-    VPCGroup(vpc)  {
+    VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
       AvailabilityZoneGroup(zone, "\t Availability Zone \t")  {
-        ElasticBlockStoreVolume(ebs, "EBS (Elastic Block Storasge)", "")
+        ElasticBlockStoreVolume(ebs, "EBS\n(Elastic Block Storage)", "")
         PublicSubnetGroup(subnet) {
           SecurityGroupGroup(security_group, "Security Group") {
-              EC2Instance(ec2, EC2, EC2)
+              EC2Instance(ec2, "EC2\nIaaS\n(infra as a service)", "")
               IdentityAccessManagementAddon(ec2key,"","")
               ec2key -[hidden]r- ec2
           }
