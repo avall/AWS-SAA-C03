@@ -14,6 +14,9 @@
 
 top to bottom direction
 skinparam linetype ortho
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
 
 Internet(internet, "", "")
 
@@ -29,7 +32,7 @@ AWSCloudGroup(cloud)  {
               IdentityAccessManagementAddon(ec2key,"","")
               ec2key -[hidden]r- ec2
           }
-          note bottom of security_group : Security Group \ncontrol inbound & outbound traffic
+          note bottom of security_group : <b>Security Group</b>\ncontrol inbound & outbound traffic
         }
       }
     }
