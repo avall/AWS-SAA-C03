@@ -1,0 +1,32 @@
+@startuml
+
+object Organization {
+  <#lightblue,#black>|=  organizationNo  |=  name  |=  address  |
+  <#white>|  OS07  |  Sphereways  | 22 Rabbit Rd, London |
+  <#white>|  OO7  |  Orco  | 16 Adam St, Nuremberg |
+  <#white>|  OC11  |  Cruxolutions  | 163 Olga St, Budapest |
+}
+
+
+object OrgCust {
+  <#lightblue,#black>|= organizationNo  |=  customerNo  |
+  <#white>|  OS07  |  CM67  |
+  <#white>|  OS7  |  CM67  |
+  <#white>|  OC11  |  CH11  |
+}
+
+object Customer {
+  <#lightblue,#black>|=  customerNo  |=  fName  |=  lName  |=  creditLimit  |
+  <#white>|  CJ13  |  John  |  Jeschke  |  5000  |
+  <#white>|  CK37  |  Nina  |  Knabel  |  2000  |
+  <#white>|  CM67  |  Felix  |  Magee  |  1300  |
+  <#white>|  CH11  |  Lilla  |  Hopka  |  3000  |
+}
+
+Organization -[hidden]-> OrgCust
+OrgCust -[hidden]-> Customer
+
+Organization ||--o{ OrgCust
+Customer ||--o{ OrgCust
+
+@enduml

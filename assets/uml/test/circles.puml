@@ -1,0 +1,28 @@
+@startuml
+
+usecase usecase1 [
+This is a <b>usecase
+----
+You can use separator
+====
+of different kind
+....
+and style
+<i><color:blue>(add from V1.2020.7)</color></i>
+]
+
+
+usecase usecase2 [
+This is a <b>usecase
+----
+You can use separator
+====
+of different kind
+....
+and style
+<i><color:blue>(add from V1.2020.7)</color></i>
+]
+
+usecase1 .... usecase2
+
+@enduml
