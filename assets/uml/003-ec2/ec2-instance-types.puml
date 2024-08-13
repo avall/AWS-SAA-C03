@@ -40,9 +40,6 @@
 ***_ X1e
 ***_ z1d
 
-
-
-
 ** <b>Accelerated Computing</b>\n(hardware accelerators,\nor co-processors,\nto perform functions,\nsuch as floating point number calculations,\ngraphics processing, or\ndata pattern matching)
 ***_ P5
 ***_ P4
@@ -56,9 +53,11 @@
 ***_ F1
 ***_ VT1
 
-** <b>HPC Optimized</b>
-
-
+** <b>HPC Optimized</b>\n(High performance computing)\n(large, complex simulations\nand deep learning workloads)
+***_ Hpc7g
+***_ Hpc7a
+***_ Hpc6id
+***_ Hpc6a
 @endmindmap
 
 
