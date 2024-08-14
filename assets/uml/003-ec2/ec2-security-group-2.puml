@@ -1,0 +1,82 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/NetworkingContentDelivery/VPCInternetGateway.puml
+
+top to bottom direction
+'skinparam linetype ortho
+skinparam noteTextAlignment left
+skinparam NoteBorderThickness 0
+skinparam NoteBorderColor #white
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing false
+
+RegionGroup(region, "Region") {
+  VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
+      PublicSubnetGroup(subnet1) {
+        EC2Instance(ec21, "EC2", "")
+        EC2Instance(ec22, "EC2", "")
+        EC2Instance(ec23, "EC2", "")
+      }
+      PublicSubnetGroup(subnet2) {
+        EC2Instance(ec2a, "EC2", "")
+        EC2Instance(ec2b, "EC2", "")
+        EC2Instance(ec2c, "EC2", "")
+      }
+      SecurityGroupGroup(security_group1, "Security Group 1") {
+          note as s11 #white
+            <#lightblue,#black>|=  Source  |=  Protocol  |=  Port  |
+            <#white>|  198.51.100.0 / 24  |  TCP  | 22 |
+            <#white>|  Subnet A CIDR  |  All  | All |
+          end note
+          note right of s11 : inbound
+          note as s12 #white
+            <#lightblue,#black>|=  Destination  |=  Protocol  |=  Port  |
+            <#white>|  0.0.0.0 / 0              |  All  | All |
+          end note
+          note right of s12 : outbound
+      }
+      note bottom of security_group1 : <b>Security Group</b>\ncontrol inbound & outbound traffic
+
+      SecurityGroupGroup(security_group2, "Security Group 2") {
+          note as s21 #white
+            <#lightblue,#black>|=  Source  |=  Protocol  |=  Port  |
+            <#white>|  Subnet B CIDR  |  All  | All |
+            <#white>|  Subnet A CIDR  |  TCP  | 22 |
+          end note
+          note right of s21 : inbound
+          note as s22 #white
+            <#lightblue,#black>|=  Destination  |=  Protocol  |=  Port  |
+            <#white>|  0.0.0.0 / 0         |  All  | All |
+          end note
+          note right of s22 : outbound
+      }
+      note bottom of security_group2 : <b>Security Group</b>\ncontrol inbound & outbound traffic
+
+  }
+}
+
+subnet1 -[hidden]d-- security_group1
+subnet2 -[hidden]d-- security_group2
+s11 -[hidden]d- s12
+s21 -[hidden]d- s22
+
+ec21 -- security_group1
+ec22 -- security_group1
+ec23 -- security_group1
+
+ec2a -- security_group2
+ec2b -- security_group2
+ec2c -- security_group2
+
+@enduml
