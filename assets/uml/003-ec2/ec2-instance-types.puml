@@ -40,6 +40,15 @@
 ***_ X1e
 ***_ z1d
 
+** <b>Storage Optimized</b>\n(torage-intensive requirements,\nhigh-frequency online transaction processing (OLTP),\nrelational & NoSQL databases,\ncaching for in-memory databases,\ndata warehousing,\ndistributed file systems).
+***_ i4g
+***_ im4gn
+***_ i3
+***_ i3en
+***_ D3
+***_ D3en
+***_ H1
+
 ** <b>Accelerated Computing</b>\n(hardware accelerators,\nor co-processors,\nto perform functions,\nsuch as floating point number calculations,\ngraphics processing, or\ndata pattern matching)
 ***_ P5
 ***_ P4
