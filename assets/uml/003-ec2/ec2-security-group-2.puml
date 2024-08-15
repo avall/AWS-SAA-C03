@@ -1,17 +1,15 @@
-@startuml terraform-aws-ecs-app
+@startuml
 
 !define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
 !include AWSPuml/AWSCommon.puml
 !include AWSPuml/AWSSimplified.puml
 !include AWSPuml/NetworkingContentDelivery/all.puml
-!include AWSPuml/Groups/all.puml
-!include AWSPuml/Storage/all.puml
-!include AWSPuml/Containers/all.puml
-!include AWSPuml/General/all.puml
-!include AWSPuml/ManagementGovernance/all.puml
-!include AWSPuml/SecurityIdentityCompliance/all.puml
-!include AWSPuml/Compute/all.puml
-!include AWSPuml/NetworkingContentDelivery/VPCInternetGateway.puml
+!include AWSPuml/Groups/PublicSubnet.puml
+!include AWSPuml/Groups/PrivateSubnet.puml
+!include AWSPuml/Groups/Region.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/VPC.puml
+!include AWSPuml/Compute/EC2Instance.puml
 
 top to bottom direction
 'skinparam linetype ortho
@@ -23,12 +21,12 @@ skinparam NoteShadowing false
 
 RegionGroup(region, "Region") {
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
-      PublicSubnetGroup(subnet1) {
+      PrivateSubnetGroup(subnet1, "Subnet A (private)") {
         EC2Instance(ec21, "EC2", "")
         EC2Instance(ec22, "EC2", "")
         EC2Instance(ec23, "EC2", "")
       }
-      PublicSubnetGroup(subnet2) {
+      PrivateSubnetGroup(subnet2, "Subnet B (private)") {
         EC2Instance(ec2a, "EC2", "")
         EC2Instance(ec2b, "EC2", "")
         EC2Instance(ec2c, "EC2", "")
@@ -36,13 +34,13 @@ RegionGroup(region, "Region") {
       SecurityGroupGroup(security_group1, "Security Group 1") {
           note as s11 #white
             <#lightblue,#black>|=  Source  |=  Protocol  |=  Port  |
-            <#white>|  198.51.100.0 / 24  |  TCP  | 22 |
-            <#white>|  Subnet A CIDR  |  All  | All |
+            <#white>|<color:darkgreen>  198.51.100.0 / 24  </color>|  TCP  | 22 |
+            <#white>|<color:darkred>  Subnet A CIDR  </color>|  All  | All |
           end note
           note right of s11 : inbound
           note as s12 #white
             <#lightblue,#black>|=  Destination  |=  Protocol  |=  Port  |
-            <#white>|  0.0.0.0 / 0              |  All  | All |
+            <#white>|<color:blue>  0.0.0.0 / 0              </color>|  All  | All |
           end note
           note right of s12 : outbound
       }
@@ -51,13 +49,13 @@ RegionGroup(region, "Region") {
       SecurityGroupGroup(security_group2, "Security Group 2") {
           note as s21 #white
             <#lightblue,#black>|=  Source  |=  Protocol  |=  Port  |
-            <#white>|  Subnet B CIDR  |  All  | All |
-            <#white>|  Subnet A CIDR  |  TCP  | 22 |
+            <#white>|<color:#FF9500>  Subnet B CIDR  </color>|  All  | All |
+            <#white>|<color:red>  Subnet A CIDR  </color>|  TCP  | 22 |
           end note
           note right of s21 : inbound
           note as s22 #white
             <#lightblue,#black>|=  Destination  |=  Protocol  |=  Port  |
-            <#white>|  0.0.0.0 / 0         |  All  | All |
+            <#white>|<color:#7F00FF>  0.0.0.0 / 0        </color>|  All  | All |
           end note
           note right of s22 : outbound
       }

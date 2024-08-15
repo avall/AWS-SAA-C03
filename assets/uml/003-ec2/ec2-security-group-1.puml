@@ -1,4 +1,4 @@
-@startuml terraform-aws-ecs-app
+@startuml
 
 !define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
 !include AWSPuml/AWSCommon.puml
