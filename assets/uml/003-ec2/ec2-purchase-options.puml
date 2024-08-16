@@ -1,0 +1,67 @@
+@startuml
+
+usecase purchase_options #orange;line:white;line.dotted;text:black [
+  \n\n
+  <font:impact><size:34>EC2 Purchase</size></font>
+  <i><size:28><b>Options</b></size></i>
+  \n\n
+]
+
+usecase dedicated_host #skyblue;line:blue;line.dotted;text:black [
+ <font:impact><size:24>Dedicated</size></font>
+ <font:impact><size:24>host</size></font>
+----
+.- Book an entire physical server
+.- Gives control over instance placement
+.- Full visibility of sockets, cores
+.- No RDS, No Placement Group, No AutoScaling
+====
+<i><color:blue>• On-demand</color></i>
+<i><color:blue>• pay per second</color></i>
+<i><color:blue>• Reserved - 1 or 3 years</color></i>
+====
+<b><color:darkred>Most expensive</color></b>
+----
+.- software with complicated licensing
+model (per socket, per core)
+.- strong regulatory or
+compliance needs
+]
+
+usecase dedicated_instance #yellow;line:brown;line.dotted;text:black [
+ <font:impact><size:24>Dedicated</size></font>
+ <font:impact><size:24>instance</size></font>
+----
+.- Hardware dedicated to you
+.- May share hardware with other instances in
+same account.
+.- No control over instance placement
+.- NO visibility of sockets, cores
+.- Only standard EBS volumes.
+====
+<i><color:blue>• On-demand</color></i>
+<i><color:blue>• pay per compute / hour</color></i>
+<i><color:blue>• pay per region / fee</color></i>
+====
+<b><color:darkred>Most expensive</color></b>
+----
+.- strong regulatory or
+compliance needs
+]
+
+
+usecase usecase2 [
+This is a <b>usecase
+----
+You can use separator
+====
+of different kind
+....
+and style
+<i><color:blue>(add from V1.2020.7)</color></i>
+]
+
+purchase_options ..r.. usecase2
+purchase_options .u. dedicated_instance
+purchase_options .u. dedicated_host
+@enduml
