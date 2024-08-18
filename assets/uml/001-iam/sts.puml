@@ -1,0 +1,50 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/General/User.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementRole.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementPermissions.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementLongTermSecurityCredential.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementTemporarySecurityCredential.puml
+!include AWSPuml/Database/DynamoDBTable.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementLongTermSecurityCredential.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementTemporarySecurityCredential.puml
+!include AWSPuml/Storage/ElasticBlockStoreMultipleVolumes.puml
+
+top to bottom direction
+skinparam linetype ortho
+skinparam nodesep 40
+
+AWSCloudGroup(dev, "Dev Account")  {
+    User(user,"IAM User","user")
+}
+
+AWSCloudGroup(prod, "Prod Account")  {
+      rectangle "IAM/STS" as sts {
+        IdentityAccessManagementRole(role, "Privileged\nAccess Role", "")
+      }
+      rectangle "Resources" as resources {
+        ElasticBlockStoreMultipleVolumes(stores, "","")
+        DynamoDBTable(table, "","")
+      }
+}
+
+'trick to force vertical aligning
+sts -[hidden]d-- resources
+
+user -r-> role : 1-API call to STS AssumeRole   <$IdentityAccessManagementLongTermSecurityCredential{scale=0.38,color=darkgreen}>
+role -r-> user : 2-Return temporary\nsecurity credentials  <$IdentityAccessManagementTemporarySecurityCredential{scale=0.39,color=darkgreen}>
+user -d-> resources: 3-Call AWS APIs using\ntemporary secutiry\ncredentials  <$IdentityAccessManagementTemporarySecurityCredential{scale=0.39,color=darkgreen}>
+
+
+@enduml

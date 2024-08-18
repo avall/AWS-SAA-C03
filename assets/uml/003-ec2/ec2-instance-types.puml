@@ -1,0 +1,76 @@
+@startmindmap
+* EC2\ninstance types
+** <b>General Purpose</b>\n(good balance of compute,\nmemory and networking resources)\n(web-servers & code repositories)
+***_ M7g
+***_ M7i
+***_ M7i-flex
+***_ M7a
+***_ Mac
+***_ M6g
+***_ M6i
+***_ M5
+***_ M5n
+***_ M5a
+***_ T4g
+***_ T3
+***_ T3a
+***_ T2
+
+** <b>Compute Optimized</b>\n(compute applications\nneed high performance processors)\n(batch processing workloads,\nmedia transcoding,\nhigh performance web servers,\nhigh performance computing (HPC),\nscientific modeling,\ndedicated gaming servers and\nad server engines, machine learning)
+***_ C7g
+***_ C7gn
+***_ C7i
+***_ C7i-flex
+***_ C6g
+***_ C5
+***_ C5n
+***_ C5a
+***_ C4
+
+** <b>Memory Optimized</b>\n(deliver fast performance for workloads\nthat process large data sets in memory)\n(high-performance relational\nnon-relational databases,\ndistributed web-scale cache stores,\nin-memory databases optimized for BI)
+***_ R8g
+***_ R7g
+***_ R7i
+***_ R6g
+***_ R6i
+***_ R5
+***_ R5n
+***_ R4
+***_ U7i
+***_ X1e
+***_ z1d
+
+** <b>Storage Optimized</b>\n(torage-intensive requirements,\nhigh-frequency online transaction processing (OLTP),\nrelational & NoSQL databases,\ncaching for in-memory databases,\ndata warehousing,\ndistributed file systems).
+***_ i4g
+***_ im4gn
+***_ i3
+***_ i3en
+***_ D3
+***_ D3en
+***_ H1
+
+** <b>Accelerated Computing</b>\n(hardware accelerators,\nor co-processors,\nto perform functions,\nsuch as floating point number calculations,\ngraphics processing, or\ndata pattern matching)
+***_ P5
+***_ P4
+***_ P3
+***_ P2
+***_ G6
+***_ G5g
+***_ Trn1
+***_ Inf2
+***_ DL1
+***_ F1
+***_ VT1
+
+** <b>HPC Optimized</b>\n(High performance computing)\n(large, complex simulations\nand deep learning workloads)
+***_ Hpc7g
+***_ Hpc7a
+***_ Hpc6id
+***_ Hpc6a
+@endmindmap
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/NetworkingContentDelivery/VPCInternetGateway.puml
+
+top to bottom direction
+skinparam linetype ortho
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+Internet(internet, "", "")
+
+Client(client, "", "")
+RegionGroup(region, "Region") {
+  VPCInternetGateway(vpc_gateway,"internet\ngateway","")
+  VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
+      SecurityGroupGroup(security_group, "Security Group") {
+          PublicSubnetGroup(subnet) {
+            EC2Instance(ec2, "EC2", "")
+          }
+      }
+      note bottom of security_group : <b>Security Group</b>\ncontrol inbound & outbound traffic
+  }
+}
+
+client <-l-> internet
+internet <-d-> vpc_gateway
+vpc_gateway <-l-> ec2
+@enduml

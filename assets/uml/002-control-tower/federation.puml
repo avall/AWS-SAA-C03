@@ -1,0 +1,68 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/ManagementGovernance/ManagementConsole.puml
+!include AWSPuml/SecurityIdentityCompliance/Detective.puml
+
+
+!include <tupadr3/common>
+!include <office/Users/user>
+!include <office/Users/users>
+!include <office/Servers/web_server>
+!include <office/Servers/web_server>
+!include <office/Servers/database_server>
+!include <office/Servers/application_server>
+!include <office/Servers/mainframe>
+!include <office/Services/verification_service>
+!include <office/Servers/hybrid_server>
+!include <office/Concepts/firewall_orange>
+!include <office/Clouds/cloud_disaster_red>
+!include <office/Devices/cell_phone_iphone_proportional>
+!include <office/all>
+
+skinparam RectangleBorderColor #white
+skinparam RectangleBackgroundColor #white
+
+title Office Icons Example
+
+'rectangle "Sprites" {
+'    OFF_CELL_PHONE_IPHONE_PROPORTIONAL(iph)
+'    OFF_VERIFICATION_SERVICE(ovs)
+'    OFF_USER(u, u)
+'    OFF_USERS(us, us)
+'    OFF_WEB_SERVER(ows, ows)
+'    OFF_TOKEN_SERVICE(ts, ts)
+'    OFF_HYBRID_SERVER(ohs, ohs)
+'    OFF_MAINFRAME(m,m)
+'    OFF_FEDERATION_SERVICE(ofs,ofs)
+'    OFF_FEDERATION_TRUST(oft, oft)
+'    OFF_DATABASE_SERVER(db,DB)
+'    OFF_APPLICATION_SERVER(app,App-Server)
+'    OFF_FIREWALL_ORANGE(fw,Firewall)
+'    OFF_CLOUD_DISASTER_RED(cloud,Cloud)
+'    db <-> app
+'    app <--> fw
+'    fw <.left.> cloud
+'}
+
+skinparam nodesep 0
+
+OFF_CELL_PHONE_IPHONE_PROPORTIONAL(user)
+OFF_WEB_SERVER(adfs, "Active Directory\nFederation Service")
+OFF_APPLICATION_SERVER(ad, "Active Directory")
+
+AWSCloudGroup(cloud, "Service Provider")  {
+    ManagementConsole(console, "AWS Console", "")
+    Detective(signin, "AWS Sign-in", "")
+}
+
+user -u--> adfs: 1-User browse\nto URL
+adfs <-l--> ad: 2-Authenticate\nUser
+user <-u-- adfs: 3-Receives\nAuthN\nresponse
+user -d-> signin: 4-Sign-in\nusing AuthN
+user -u--> console: 5-User can navigate\ninto AWS Console
+
+@enduml

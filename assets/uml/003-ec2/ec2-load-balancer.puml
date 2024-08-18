@@ -1,0 +1,31 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+
+skinparam linetype ortho
+skinparam nodesep 100
+
+ElasticLoadBalancing(elb, "Elastic Load Balancer", "")
+
+AutoScalingGroupGroup(group, "\nAuto Scaling\ngroup") {
+  EC2Instance(ec2a, "EC2\ninstance", "")
+  EC2Instance(ec2b, "EC2\ninstance", "")
+  EC2Instance(ec2c, "EC2\ninstance", "")
+}
+
+elb -d-> ec2a
+elb -d-> ec2b
+elb -d-> ec2c
+
+@enduml

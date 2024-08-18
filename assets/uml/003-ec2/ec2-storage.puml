@@ -1,0 +1,90 @@
+@startuml terraform-aws-ecs-app
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+
+$AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
+!define OrgGroup(g_alias, g_label="Organizational units (OUs)") $AWSDefineGroup(g_alias, g_label, Organizations, OrgGroup)
+
+$AWSGroupColoring(EFSGroup, $AWSColor(Storage))
+!define EFSGroup(g_alias, g_label="Amazon  EFS") $AWSDefineGroup(g_alias, g_label, EFS, EFSGroup)
+
+$AWSGroupColoring(EBSGroup, $AWSColor(Storage))
+!define EBSGroup(g_alias, g_label="Amazon  EBS") $AWSDefineGroup(g_alias, g_label, ElasticBlockStore, EBSGroup)
+
+$AWSGroupColoring(S3Group, $AWSColor(Storage))
+!define S3Group(g_alias, g_label="Amazon    S3") $AWSDefineGroup(g_alias, g_label, SimpleStorageService, S3Group)
+
+$AWSGroupColoring(EC2Group, $AWSColor(Compute))
+!define EC2Group(g_alias, g_label="Amazon    EC2") $AWSDefineGroup(g_alias, g_label, EC2, EC2Group)
+
+top to bottom direction
+skinparam linetype ortho
+'skinparam nodesep 0
+
+EFSGroup(efsgroup) {
+ together {
+     ElasticFileSystemFileSystem(efs1, "File system 1", "")
+     ElasticFileSystemFileSystem(efs2, "File system 2", "")
+ }
+ efs1 -[hidden]d- efs2
+}
+
+EC2Group(ec2group) {
+  GenericOrangeGroup(ec2host, "Amazon EC2   host") {
+ together {
+        EC2Instance(ec2a, "EC2\ninstance A", "")
+        EC2Instance(ec2b, "EC2\ninstance B", "")
+}
+        ec2a -[hidden]d- ec2b
+
+        GenericOrangeGroup(ec2instancestorage, "Amazon  EC2 instance storage") {
+            ElasticBlockStoreVolume(is0, "instance store 0", "")
+            ElasticBlockStoreVolume(is1, "instance store 1", "")
+            ElasticBlockStoreVolume(is2, "instance store 2", "")
+
+            is0 -[hidden]r- is1
+            is1 -[hidden]r- is2
+        }
+
+        ec2b -[hidden]d- ec2instancestorage
+  }
+}
+
+EBSGroup(ebsgroup, "Amazon EBS") {
+          ElasticBlockStoreVolume(v1, "volumen 1", "")
+          ElasticBlockStoreVolume(v2, "volumen 2", "")
+          ElasticBlockStoreVolume(v3, "volumen 3", "")
+
+          v1 -[hidden]d- v2
+          v2 -[hidden]d- v3
+}
+
+S3Group(s3group) {
+  GenericGreenGroup(s3bucketgroup, "S3   bucket") {
+    SimpleStorageServiceBucket(snapshot, "snapshot", "")
+  }
+}
+
+efsgroup -[hidden]l- ec2group
+
+efs1 <--> ec2a
+efs1 <--> ec2b
+ec2a <-> v1
+ec2a <-> is0
+
+ec2b <-> v2
+ec2b <-> v3
+
+v2 ---> snapshot
+
+@enduml
