@@ -110,10 +110,10 @@ usecase ec2_spot_instance #darkgreen;line:white;line.dotted;text:white [
  <font:impact><size:24>Spot</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-            • Normal features of EC2.
-                 • No long-term commitment
-• “lose” at any time
-                             IF (max price) < (current spot price)
+• Normal features of EC2.
+      • No long-term commitment
+                          • Define (max price) & “lose” at any time
+                         IF (max price) < (current spot price)
 
 ====
 <i><color:lightgreen>        • discount up to 90% compare to On-demand
