@@ -5,21 +5,21 @@ usecase purchase_options #orange;line:white;line.dotted;text:black [
   <i><size:28><b>     Options</b></size></i>
 
   ----
-  <b><i><size:14>        EC2 Saving plans - Flexible across:
-                                • Instance Size (e.g., m5.xlarge, m5.2xlarge)
-  • OS (e.g., Linux, Windows)
-                  • Tenancy (Host, Dedicated, Default)
-                   • Locked to a specific instance family
-& AWS region
+  <b><i><size:16>        EC2 Saving plans - Flexible across:
+<i><size:16>                                • Instance Size (e.g., m5.xlarge, m5.2xlarge)
+<i><size:16>    • OS (e.g., Linux, Windows)
+<i><size:16>                  • Tenancy (Host, Dedicated, Default)
+<i><size:16>                    • Locked to a specific instance family
+<i><size:16>& AWS region
 
   ----
-  <b><size:18>       EC2 Saving plans:
-        .- discount for long-term usage
-      (up to 72% - same as RIs)
-               .- Commit to a certain type of usage
-          ($10/hour for 1 or 3 years)
-             .- Usage beyond EC2 Savings Plans
-                  is billed at the On-Demand price
+<b><size:18>   EC2 Saving plans:
+<i><size:16>  .- discount for long-term usage
+<i><size:16>(up to 72% - same as RIs)
+<i><size:16>         .- Commit to a certain type of usage
+<i><size:16>    ($10/hour for 1 or 3 years)
+<i><size:16>       .- Usage beyond EC2 Savings Plans
+<i><size:16>            is billed at the On-Demand price
 \n
 ]
 
@@ -27,20 +27,21 @@ usecase dedicated_host #skyblue;line:blue;line.dotted;text:black [
  <font:impact><size:24>Dedicated</size></font>
  <font:impact><size:24>host</size></font>
 ----
-.- Book an entire physical server
-.- Gives control over instance placement
-.- Full visibility of sockets, cores
-.- No RDS, No Placement Group, No AutoScaling
+<i><size:15>.- Book an entire physical server
+<i><size:15>           .- Gives control over instance placement
+<i><size:15>.- Full visibility of sockets, cores
+<i><size:15>.- No RDS, No Placement Group,
+<i><size:15>No AutoScaling
 ====
-<i><color:blue>• On-demand (hourly) for active</color></i>
-<i><color:blue>• 1,3 years</color></i>
-<i><color:blue>(No Upfront, Partial Upfront,All Upfront)</color></i>
+<i><size:15><color:blue>• On-demand (hourly) for active</color></i>
+<i><size:15><color:blue>• 1,3 years</color></i>
+<i><size:15><color:blue>(No Upfront, Partial Upfront,All Upfront)</color></i>
 ====
 <b><color:darkred>Most expensive</color></b>
 ....
-.- software with complicated licensing
-model (per socket, per core)
-.- strong regulatory or
+<size:15>          .- software with complicated
+licensing model (per socket, per core)
+<size:15>.- strong regulatory or
 compliance needs
 ]
 
@@ -48,18 +49,18 @@ usecase dedicated_instance #yellow;line:brown;line.dotted;text:black [
  <font:impact><size:24>Dedicated</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-.- Hardware dedicated to you
-        .- May share hardware with other
-instances in same account.
-                .- No control over instance placement
-     .- NO visibility of sockets, cores
-   .- Only standard EBS volumes.
+<size:15>.- Hardware dedicated to you
+<size:15>      .- May share hardware with other
+<size:15>instances in same account.
+<size:15>             .- No control over instance placement
+<size:15>     .- NO visibility of sockets, cores
+<size:15>  .- Only standard EBS volumes.
 ====
-<i><color:blue>• On-demand (hourly) or per region fee</color></i>
+<i><size:15><color:blue>• On-demand (hourly) or per region fee</color></i>
 ====
-<b><color:darkred>Most expensive</color></b>
+<b><size:15><color:darkred>Most expensive</color></b>
 ....
-.- strong regulatory or
+<size:15>.- strong regulatory or
 compliance needs
 ]
 
@@ -67,19 +68,19 @@ usecase ec2_ondemand #pink;line:brown;line.dotted;text:black [
  <font:impact><size:24>On Demand</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-Normal features of EC2.
-No long-term commitment
+<size:15>Normal features of EC2.
+<size:15>No long-term commitment
 ====
-<i><color:blue>Pay per use:
-<i><color:blue>                   • Linux or Windows - billing per second,
-<i><color:blue>after the first minute
-<i><color:blue>• All other operating systems
-<i><color:blue>billing per hour
+<i><size:15><color:blue>Pay per use:
+<i><size:15><color:blue>                • Linux or Windows - billing per second,
+<i><size:15><color:blue>after the first minute
+<i><size:15><color:blue>• All other operating systems
+<i><size:15><color:blue>billing per hour
 ====
-<b><color:darkred>highest cost - no upfront payment
+<b><size:15><color:darkred>highest cost - no upfront payment
 ....
-short-term and Un-Interrupted workload
-can't predict the application behaviour
+<size:15>short-term and Un-Interrupted workload
+<size:15>can't predict the application behaviour
 ]
 
 
@@ -87,21 +88,21 @@ usecase ec2_capacity_reservation #darkred;line:white;line.dotted;text:white [
  <font:impact><size:24>Capacity</size></font>
  <font:impact><size:24>reservation</size></font>
 ----
-Normal features of EC2.
-No time commitment (create/cancel anytime),
+<size:15>Normal features of EC2.
+<size:15>No time commitment (create/cancel anytime),
 ====
-<i><color:pink>                    • Reserve On-Demand instances capacity
- <i><color:pink>in a specific AZ for any duration
-<i><color:pink>                          • Always access to EC2 capacity when need it
-<i><color:pink>                         • Combine with Regional Reserved Instances
-<i><color:pink>                              & Savings Plans to benefit from billing discounts
-<i><color:pink>• charged at On-Demand rate
- <i><color:pink>                 no matter if you run or not the instance
+<i><size:15><color:pink>                 • Reserve On-Demand instances capacity
+<i><size:15><color:pink>in a specific AZ for any duration
+<i><size:15><color:pink>                       • Always access to EC2 capacity when need it
+<i><size:15><color:pink>                     • Combine with Regional Reserved Instances
+<i><size:15><color:pink>                              & Savings Plans to benefit from billing discounts
+<i><size:15><color:pink>• charged at On-Demand rate
+<i><size:15><color:pink>                 no matter if you run or not the instance
 ====
-<b><color:pink>no billing discounts
+<b><size:15><color:pink>no billing discounts
 ....
-for short-term, uninterrupted workloads
-in specific AZ
+<size:15>for short-term, uninterrupted workloads
+<size:15>in specific AZ
 ]
 
 
@@ -110,28 +111,28 @@ usecase ec2_spot_instance #darkgreen;line:white;line.dotted;text:white [
  <font:impact><size:24>Spot</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-• Normal features of EC2.
-      • No long-term commitment
-                          • Define (max price) & “lose” at any time
-                         IF (max price) < (current spot price)
+<size:15>• Normal features of EC2.
+<size:15>    • No long-term commitment
+<size:15>                     • Define (max price) & “lose” at any time
+<size:15>                         IF (max price) < (current spot price)
 
 ====
-<i><color:lightgreen>        • discount up to 90% compare to On-demand
-<i><color:lightgreen>• Linux or Windows - billing per second,
-<i><color:lightgreen>after the first minute
-<i><color:lightgreen>• All other operating systems
-<i><color:lightgreen>billing per hour
+<i><size:15><color:lightgreen>        • discount up to 90% compare to On-demand
+<i><size:15><color:lightgreen>• Linux or Windows - billing per second,
+<i><size:15><color:lightgreen>after the first minute
+<i><size:15><color:lightgreen>• All other operating systems
+<i><size:15><color:lightgreen>billing per hour
 ====
-<b><color:orange>The MOST cost-efficient instances in AWS
+<b><size:15><color:orange>The MOST cost-efficient instances in AWS
 ....
-• Not suitable for critical jobs or databases
-• for workloads that are resilient to failure:
-- Batch jobs
-      - Data analysis
-              - Image processing
-                             - Any distributed workloads
-                           - Workloads with a flexible
-            start and end time
+<size:15>• Not suitable for critical jobs or databases
+<size:15>• for workloads that are resilient to failure:
+<size:15>- Batch jobs
+<size:15>    - Data analysis
+<size:15>          - Image processing
+<size:15>                       - Any distributed workloads
+<size:15>                     - Workloads with a flexible
+<size:15>            start and end time
 ]
 
 
@@ -141,21 +142,21 @@ usecase ec2_reserved_instance #lightgreen;line:white;line.dotted;text:black [
  <font:impact><size:24>Reserved</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-Normal features of EC2.
-Long-term commitment
+<size:15>Normal features of EC2.
+<size:15>Long-term commitment
 ====
-<i><color:darkgreen>               • Up to 72% discount compared to On-demand
-<i><color:darkgreen>• Reserve a specific instance attributes
-<i><color:darkgreen>(Type, Region,Tenancy, OS)
-<i><color:darkgreen> • Up to 66% discount when convertible:
-<i><color:darkgreen> change Type, OS, Scope, Tenancy
-<i><color:darkgreen>       • Reserv. Period – 1 y(+dto) | 3 y (+++dto)
-<i><color:darkgreen>• Scope – Regional or Zonal
+<i><size:15><color:darkgreen>            • Up to 72% discount compared to On-demand
+<i><size:15><color:darkgreen>• Reserve a specific instance attributes
+<i><size:15><color:darkgreen>(Type, Region,Tenancy, OS)
+<i><size:15><color:darkgreen> • Up to 66% discount when convertible:
+<i><size:15><color:darkgreen> change Type, OS, Scope, Tenancy
+<i><size:15><color:darkgreen>       • Reserv. Period – 1 y(+dto) | 3 y (+++dto)
+<i><size:15><color:darkgreen>• Scope – Regional or Zonal
 ====
-<b><color:darkred>Pay Options: No Upfrnt+, Partial Upfrnt++, All Upfrnt+++
-<b><color:darkred>buy & sell in the Reserved Instance Market
+<b><size:15><color:darkred>Pay Options: No Upfrnt+, Partial Upfrnt++, All Upfrnt+++
+<b><size:15><color:darkred>buy & sell in the Reserved Instance Market
 ....
-for steady-state usage applications (database)
+<size:15>for steady-state usage applications (database)
 
 ]
 
