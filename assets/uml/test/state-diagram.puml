@@ -1,0 +1,27 @@
+@startuml
+skinparam nodesep 100
+top to bottom direction
+skinparam linetype ortho
+
+  [*] --> CREATED
+  CREATED --> UNDER_REVIEW
+  UNDER_REVIEW -[#red]-> REJECTED
+  UNDER_REVIEW -left[#red]-> WITHDRAWN
+  UNDER_REVIEW -[#green]-> PAID_OUT
+  WITHDRAWN -> REOPENED
+  WITHDRAWN -> UNDER_REVIEW
+  REOPENED -up-> UNDER_REVIEW:  Check\nconditions\nagain
+  REJECTED -> UNDER_REVIEW
+
+  CREATED: Loss persisted
+  UNDER_REVIEW:  Processing triage\n& checkings:\ncoverage, customer
+  REJECTED: Claim not matching\ntriage | coverage
+  WITHDRAWN:  Claim still not met\nconditions to be\npaid-out
+  PAID_OUT:  Beneficiary receives\nthe compensation
+  REOPENED:  Claim met\nconditions\nto be treated
+
+  PAID_OUT --> [*]
+  WITHDRAWN --> [*]
+  REJECTED --> [*]
+
+@enduml
