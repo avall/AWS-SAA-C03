@@ -49,11 +49,11 @@ usecase dedicated_instance #yellow;line:brown;line.dotted;text:black [
  <font:impact><size:24>instance</size></font>
 ----
 .- Hardware dedicated to you
-.- May share hardware with other instances in
-same account.
-.- No control over instance placement
-.- NO visibility of sockets, cores
-.- Only standard EBS volumes.
+        .- May share hardware with other
+instances in same account.
+                .- No control over instance placement
+     .- NO visibility of sockets, cores
+   .- Only standard EBS volumes.
 ====
 <i><color:blue>• On-demand (hourly) or per region fee</color></i>
 ====
@@ -71,7 +71,7 @@ Normal features of EC2.
 No long-term commitment
 ====
 <i><color:blue>Pay per use:
-<i><color:blue>• Linux or Windows - billing per second,
+<i><color:blue>                   • Linux or Windows - billing per second,
 <i><color:blue>after the first minute
 <i><color:blue>• All other operating systems
 <i><color:blue>billing per hour
@@ -88,18 +88,20 @@ usecase ec2_capacity_reservation #darkred;line:white;line.dotted;text:white [
  <font:impact><size:24>reservation</size></font>
 ----
 Normal features of EC2.
-No long-term commitment
+No time commitment (create/cancel anytime),
 ====
-<i><color:pink>Pay per use:
-<i><color:pink>• Linux or Windows - billing per second,
-<i><color:pink>after the first minute
-<i><color:pink>• All other operating systems
-<i><color:pink>billing per hour
+<i><color:pink>                    • Reserve On-Demand instances capacity
+ <i><color:pink>in a specific AZ for any duration
+<i><color:pink>                          • Always access to EC2 capacity when need it
+<i><color:pink>                         • Combine with Regional Reserved Instances
+<i><color:pink>                              & Savings Plans to benefit from billing discounts
+<i><color:pink>• charged at On-Demand rate
+ <i><color:pink>                 no matter if you run or not the instance
 ====
-<b><color:darkred>highest cost - no upfront payment
+<b><color:pink>no billing discounts
 ....
-short-term and Un-Interrupted workload
-can't predict the application behaviour
+for short-term, uninterrupted workloads
+in specific AZ
 ]
 
 
@@ -108,19 +110,28 @@ usecase ec2_spot_instance #darkgreen;line:white;line.dotted;text:white [
  <font:impact><size:24>Spot</size></font>
  <font:impact><size:24>instance</size></font>
 ----
-Normal features of EC2.
-No long-term commitment
+            • Normal features of EC2.
+                 • No long-term commitment
+• “lose” at any time
+                             IF (max price) < (current spot price)
+
 ====
-<i><color:lightgreen>Pay per use:
+<i><color:lightgreen>        • discount up to 90% compare to On-demand
 <i><color:lightgreen>• Linux or Windows - billing per second,
 <i><color:lightgreen>after the first minute
 <i><color:lightgreen>• All other operating systems
 <i><color:lightgreen>billing per hour
 ====
-<b><color:darkred>highest cost - no upfront payment
+<b><color:orange>The MOST cost-efficient instances in AWS
 ....
-short-term and Un-Interrupted workload
-can't predict the application behaviour
+• Not suitable for critical jobs or databases
+• for workloads that are resilient to failure:
+- Batch jobs
+      - Data analysis
+              - Image processing
+                             - Any distributed workloads
+                           - Workloads with a flexible
+            start and end time
 ]
 
 
@@ -131,18 +142,21 @@ usecase ec2_reserved_instance #lightgreen;line:white;line.dotted;text:black [
  <font:impact><size:24>instance</size></font>
 ----
 Normal features of EC2.
-No long-term commitment
+Long-term commitment
 ====
-<i><color:darkgreen>Pay per use:
-<i><color:darkgreen>• Linux or Windows - billing per second,
-<i><color:darkgreen>after the first minute
-<i><color:darkgreen>• All other operating systems
-<i><color:darkgreen>billing per hour
+<i><color:darkgreen>               • Up to 72% discount compared to On-demand
+<i><color:darkgreen>• Reserve a specific instance attributes
+<i><color:darkgreen>(Type, Region,Tenancy, OS)
+<i><color:darkgreen> • Up to 66% discount when convertible:
+<i><color:darkgreen> change Type, OS, Scope, Tenancy
+<i><color:darkgreen>       • Reserv. Period – 1 y(+dto) | 3 y (+++dto)
+<i><color:darkgreen>• Scope – Regional or Zonal
 ====
-<b><color:darkred>highest cost - no upfront payment
+<b><color:darkred>Pay Options: No Upfrnt+, Partial Upfrnt++, All Upfrnt+++
+<b><color:darkred>buy & sell in the Reserved Instance Market
 ....
-short-term and Un-Interrupted workload
-can't predict the application behaviour
+for steady-state usage applications (database)
+
 ]
 
 
