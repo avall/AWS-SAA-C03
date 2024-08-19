@@ -1,0 +1,17 @@
+@startuml
+skinparam nodesep 100
+top to bottom direction
+'skinparam linetype ortho
+
+  [*] -r-> Open : Create\nSpot Instance\nrequest
+  Open --> Failed
+  Open -d-> Cancelled
+  Open -l-> Active
+  Active -d-> Cancelled
+  Active -d[#green]-> Open : <color:green>persistent
+  Active -d[#green]-> Disabled : \n  <color:green>persistent
+  Active -u[#blue]-> Closed : \n <color:blue>1-time
+  Disabled -d[#green]-> Cancelled : \n <color:green>persistent
+  Disabled -l[#green]-> Open : <color:green>persistent
+
+@enduml

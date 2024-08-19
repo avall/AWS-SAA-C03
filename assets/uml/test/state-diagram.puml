@@ -1,7 +1,7 @@
 @startuml
 skinparam nodesep 100
 top to bottom direction
-skinparam linetype ortho
+'skinparam linetype ortho
 
   [*] --> CREATED
   CREATED --> UNDER_REVIEW
