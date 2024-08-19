@@ -1,0 +1,56 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2Instances.puml
+
+top to bottom direction
+skinparam linetype ortho
+'skinparam noteTextAlignment left
+skinparam RectangleBorderThickness 0
+skinparam NoteBorderThickness 0
+skinparam NoteBorderColor #white
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing false
+skinparam nodesep 100
+
+EC2Instances(ec2, "EC2", "")
+
+note as create #white
+  create
+  request
+end note
+
+note as failed #white
+  request
+  failed
+end note
+
+rectangle "start\n(persistent)" as start {
+
+}
+
+rectangle "stop\n(persistent)" as stop_r {
+}
+
+rectangle "interrupt\n(one-time)" as interrupt_1 {
+}
+
+note   as spot_request #orange
+<b>spot request
+- desired number of instances
+- launch specification
+- request type: 1-time | persistent
+- valid from, valid until"
+end note
+
+create -r-> spot_request
+spot_request -d-> failed
+spot_request -r-> ec2 : launch\ninstances
+ec2 -u-> stop_r
+stop_r -l-> start
+start -d-> spot_request
+ec2 -l-> spot_request : interrupt\n(persistent)
+ec2 -d-> interrupt_1
+@enduml

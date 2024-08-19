@@ -5,7 +5,7 @@ usecase purchase_options #orange;line:white;line.dotted;text:black [
   <i><size:28><b>     Options</b></size></i>
 
   ----
-  <b><i><size:16>        EC2 Saving plans - Flexible across:
+<b><i><size:16>        EC2 Saving plans - Flexible across:
 <i><size:16>                                • Instance Size (e.g., m5.xlarge, m5.2xlarge)
 <i><size:16>    • OS (e.g., Linux, Windows)
 <i><size:16>                  • Tenancy (Host, Dedicated, Default)
@@ -114,8 +114,10 @@ usecase ec2_spot_instance #darkgreen;line:white;line.dotted;text:white [
 <size:15>• Normal features of EC2.
 <size:15>    • No long-term commitment
 <size:15>                     • Define (max price) & “lose” at any time
-<size:15>                         IF (max price) < (current spot price)
-
+<size:15>                   IF (max price) < (current spot price)
+<size:15>    2 minutes before stopped
+<size:15>                     • <b>block spot</b> instance during time frame
+<size:15>                   (1 to 6 hours) without interruptions
 ====
 <i><size:15><color:lightgreen>        • discount up to 90% compare to On-demand
 <i><size:15><color:lightgreen>• Linux or Windows - billing per second,
