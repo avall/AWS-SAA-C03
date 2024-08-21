@@ -114,9 +114,9 @@ usecase ec2_spot_instance #darkgreen;line:white;line.dotted;text:white [
 <size:15>• Normal features of EC2.
 <size:15>    • No long-term commitment
 <size:15>                         • Define (max price) & “lose” at any time
-<size:15>                   IF (max price) < (current spot price)
+<size:15>                             IF (our max price) < (current spot world price)
 <size:15>    2 minutes before stopped. dto 90%
-<size:15>                         • <b>block spot</b> instance during time frame
+<size:15>                        • <b>block spot</b> instance during time frame
 <size:15>                   (1 to 6 hours) without interruptions (dto 30-45%)
 ====
 <i><size:15><color:lightgreen>        • discount up to 90% (max price)
