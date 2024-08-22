@@ -1,0 +1,35 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/all.puml
+
+skinparam RectangleBorderColor #blue
+skinparam nodesep 50
+
+rectangle "CLUSTER\n\n          Same Av.Zone\n      Low latency\n                        (10Gb) High bandwidth" as sts {
+  EC2Instance(ec1, "", "")
+  EC2Instance(ec2, "", "")
+  EC2Instance(ec3, "", "")
+  EC2Instance(ec4, "", "")
+  EC2Instance(ec5, "", "")
+  EC2Instance(ec6, "", "")
+}
+
+ec1 -r- ec2
+ec2 -r- ec3
+ec1 -d- ec4
+ec2 -d- ec5
+ec3 -d- ec6
+
+ec4 -r- ec5
+ec5 -r- ec6
+
+ec1 -d- ec5
+ec2 -d- ec4
+
+ec2 -d- ec6
+ec3 -d- ec5
+
+@enduml

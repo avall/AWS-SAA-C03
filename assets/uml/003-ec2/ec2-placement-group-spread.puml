@@ -1,0 +1,70 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+
+top to bottom direction
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+SecurityGroupGroup(1a, "           Av.Zone --> us-east-1a\n       <color:#red>Max-7 EC2 instances") {
+  GenericGroup(1a11, "Rack 1") {
+    EC2Instance(1a1, "", "")
+  }
+  GenericGroup(1a12, "Rack 2") {
+    EC2Instance(1a2, "", "")
+  }
+  GenericGroup(1a13, "Rack 3") {
+    EC2Instance(1a3, "", "")
+  }
+}
+
+SecurityGroupGroup(1b, "           Av.Zone --> us-east-1b\n       <color:#red>Max-7 EC2 instances") {
+  GenericGroup(1b11, "Rack 4") {
+    EC2Instance(1b1, "", "")
+  }
+  GenericGroup(1b12, "Rack 5") {
+    EC2Instance(1b2, "", "")
+  }
+  GenericGroup(1b13, "Rack 6") {
+    EC2Instance(1b3, "", "")
+  }
+}
+
+SecurityGroupGroup(1c, "           Av.Zone --> us-east-1c\n       <color:#red>Max-7 EC2 instances") {
+  GenericGroup(1c11, "Rack 7") {
+    EC2Instance(1c1, "", "")
+  }
+  GenericGroup(1c12, "Rack 8") {
+    EC2Instance(1c2, "", "")
+  }
+  GenericGroup(1c13, "Rack 9") {
+    EC2Instance(1c3, "", "")
+  }
+}
+
+note as spread_group
+  <b>Spread Groups<color:#red> ---</color></b>
+  Different zones in the same Region
+end note
+
+spread_group -[hidden]d- 1a
+spread_group -[hidden]d- 1b
+spread_group -[hidden]d- 1c
+
+1a11 -[hidden]d- 1a12
+1a12 -[hidden]d- 1a13
+
+1b11 -[hidden]d- 1b12
+1b12 -[hidden]d- 1b13
+
+1c11 -[hidden]d- 1c12
+1c12 -[hidden]d- 1c13
+
+@enduml
