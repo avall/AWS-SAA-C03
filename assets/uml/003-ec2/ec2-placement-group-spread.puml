@@ -13,7 +13,7 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
-SecurityGroupGroup(1a, "           Av.Zone --> us-east-1a\n       <color:#red>Max-7 EC2 instances") {
+SecurityGroupGroup(1a, "Spread Group 1\n           <color:#green>Av.Zone --> us-east-1a\n       <color:#red>Max-7 EC2 instances") {
   GenericGroup(1a11, "Rack 1") {
     EC2Instance(1a1, "", "")
   }
@@ -25,7 +25,7 @@ SecurityGroupGroup(1a, "           Av.Zone --> us-east-1a\n       <color:#red>Ma
   }
 }
 
-SecurityGroupGroup(1b, "           Av.Zone --> us-east-1b\n       <color:#red>Max-7 EC2 instances") {
+SecurityGroupGroup(1b, "Spread Group 2\n           <color:#green>Av.Zone --> us-east-1b\n       <color:#red>Max-7 EC2 instances") {
   GenericGroup(1b11, "Rack 4") {
     EC2Instance(1b1, "", "")
   }
@@ -37,7 +37,7 @@ SecurityGroupGroup(1b, "           Av.Zone --> us-east-1b\n       <color:#red>Ma
   }
 }
 
-SecurityGroupGroup(1c, "           Av.Zone --> us-east-1c\n       <color:#red>Max-7 EC2 instances") {
+SecurityGroupGroup(1c, "Spread Group 3\n           <color:#green>Av.Zone --> us-east-1c\n       <color:#red>Max-7 EC2 instances") {
   GenericGroup(1c11, "Rack 7") {
     EC2Instance(1c1, "", "")
   }
@@ -51,7 +51,7 @@ SecurityGroupGroup(1c, "           Av.Zone --> us-east-1c\n       <color:#red>Ma
 
 note as spread_group
   <b>Spread Groups<color:#red> ---</color></b>
-  Different zones in the same Region
+  Different zones in the same Region <b><color:#green>us-east-1
 end note
 
 spread_group -[hidden]d- 1a

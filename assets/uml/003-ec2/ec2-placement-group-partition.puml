@@ -1,0 +1,61 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+
+top to bottom direction
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+skinparam RectangleBorderColor blue
+
+rectangle "           <color:#green>Av.Zone --> us-east-1a\n  <color:#red>Max - 7 partitions" as 1a {
+  SecurityGroupGroup(1a1, "Partition Group 1\n         <color:#darkorange>Max-100 EC2 instances") {
+    GenericGroup(1a1r1, "Rack") {
+      EC2Instance(1a11, "", "")
+      EC2Instance(1a12, "", "")
+      EC2Instance(1a13, "", "")
+    }
+  }
+
+  SecurityGroupGroup(1a2, "Partition Group 2\n         <color:#darkorange>Max-100 EC2 instances") {
+    GenericGroup(1a2r1, "Rack") {
+      EC2Instance(1a21, "", "")
+      EC2Instance(1a22, "", "")
+      EC2Instance(1a23, "", "")
+    }
+  }
+}
+
+rectangle "           <color:#green>Av.Zone --> us-east-1b\n  <color:#red>Max - 7 partitions" as 1b {
+  SecurityGroupGroup(1b1, "Partition Group 3\n         <color:#darkorange>Max-100 EC2 instances") {
+    GenericGroup(1b1r1, "Rack") {
+      EC2Instance(1b11, "", "")
+      EC2Instance(1b12, "", "")
+      EC2Instance(1b13, "", "")
+    }
+  }
+}
+
+note as spread_group
+  <b>Partition Groups<color:#red> ---</color></b>
+  Different zones in the same Region <b><color:#green>us-east-1
+  Max --> <color:#red>7 partitions</color> across zones of same region.
+end note
+
+1a11 -[hidden]d- 1a12
+1a12 -[hidden]d- 1a13
+
+1a21 -[hidden]d- 1a22
+1a22 -[hidden]d- 1a23
+
+1b11 -[hidden]d- 1b12
+1b12 -[hidden]d- 1b13
+
+
+@enduml

@@ -12,20 +12,17 @@
 !include AWSPuml/ManagementGovernance/all.puml
 !include AWSPuml/SecurityIdentityCompliance/all.puml
 
-$AWSGroupColoring(OrgGroup, $AWSColor(ManagementGovernance))
-!define OrgGroup(g_alias, g_label="Organizational units (OUs)") $AWSDefineGroup(g_alias, g_label, Organizations, OrgGroup)
-
-$AWSGroupColoring(EFSGroup, $AWSColor(Storage))
 !define EFSGroup(g_alias, g_label="Amazon  EFS") $AWSDefineGroup(g_alias, g_label, EFS, EFSGroup)
+$AWSGroupColoring(EFSGroup, $AWSColor(Storage))
 
-$AWSGroupColoring(EBSGroup, $AWSColor(Storage))
 !define EBSGroup(g_alias, g_label="Amazon  EBS") $AWSDefineGroup(g_alias, g_label, ElasticBlockStore, EBSGroup)
+$AWSGroupColoring(EBSGroup, $AWSColor(Storage))
 
-$AWSGroupColoring(S3Group, $AWSColor(Storage))
 !define S3Group(g_alias, g_label="Amazon    S3") $AWSDefineGroup(g_alias, g_label, SimpleStorageService, S3Group)
+$AWSGroupColoring(S3Group, $AWSColor(Storage))
 
-$AWSGroupColoring(EC2Group, $AWSColor(Compute))
 !define EC2Group(g_alias, g_label="Amazon    EC2") $AWSDefineGroup(g_alias, g_label, EC2, EC2Group)
+$AWSGroupColoring(EC2Group, $AWSColor(Compute))
 
 top to bottom direction
 skinparam linetype ortho
