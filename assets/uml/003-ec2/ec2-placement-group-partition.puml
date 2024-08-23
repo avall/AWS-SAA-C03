@@ -15,25 +15,27 @@ skinparam NoteShadowing true
 skinparam RectangleBorderColor blue
 
 rectangle "           <color:#green>Av.Zone --> us-east-1a\n  <color:#red>Max - 7 partitions" as 1a {
-  SecurityGroupGroup(1a1, "Partition Group 1\n         <color:#darkorange>Max-100 EC2 instances") {
-    GenericGroup(1a1r1, "Rack") {
-      EC2Instance(1a11, "", "")
-      EC2Instance(1a12, "", "")
-      EC2Instance(1a13, "", "")
-    }
+  SecurityGroupGroup(1a1, "      Partition Group 1a\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
+      GenericGroup(1a1r1, "Rack") {
+          EC2Instance(1a11, "", "")
+      }
+      GenericGroup(1a1r2, "Rack") {
+        EC2Instance(1a12, "", "")
+        EC2Instance(1a13, "", "")
+      }
   }
 
-  SecurityGroupGroup(1a2, "Partition Group 2\n         <color:#darkorange>Max-100 EC2 instances") {
-    GenericGroup(1a2r1, "Rack") {
-      EC2Instance(1a21, "", "")
-      EC2Instance(1a22, "", "")
-      EC2Instance(1a23, "", "")
+  SecurityGroupGroup(2a1, "      Partition Group 2a\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
+    GenericGroup(2a1r1, "Rack") {
+      EC2Instance(2a11, "", "")
+      EC2Instance(2a12, "", "")
+      EC2Instance(2a13, "", "")
     }
   }
 }
 
 rectangle "           <color:#green>Av.Zone --> us-east-1b\n  <color:#red>Max - 7 partitions" as 1b {
-  SecurityGroupGroup(1b1, "Partition Group 3\n         <color:#darkorange>Max-100 EC2 instances") {
+  SecurityGroupGroup(1b1, "      Partition Group 1b\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
     GenericGroup(1b1r1, "Rack") {
       EC2Instance(1b11, "", "")
       EC2Instance(1b12, "", "")
@@ -46,13 +48,15 @@ note as spread_group
   <b>Partition Groups<color:#red> ---</color></b>
   Different zones in the same Region <b><color:#green>us-east-1
   <b>Max --> <color:#red>7 partitions</color></b> in each zone of same region.
+  <b>Rack distribution</b> - Cannot be defined inside partition groups.
+  <b>Guarantee</b> - Every partition different hardware (rack)
 end note
 
 1a11 -[hidden]d- 1a12
 1a12 -[hidden]d- 1a13
 
-1a21 -[hidden]d- 1a22
-1a22 -[hidden]d- 1a23
+2a11 -[hidden]d- 2a12
+2a12 -[hidden]d- 2a13
 
 1b11 -[hidden]d- 1b12
 1b12 -[hidden]d- 1b13
