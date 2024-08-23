@@ -45,7 +45,7 @@ rectangle "           <color:#green>Av.Zone --> us-east-1b\n  <color:#red>Max - 
 note as spread_group
   <b>Partition Groups<color:#red> ---</color></b>
   Different zones in the same Region <b><color:#green>us-east-1
-  Max --> <color:#red>7 partitions</color> across zones of same region.
+  <b>Max --> <color:#red>7 partitions</color></b> in each zone of same region.
 end note
 
 1a11 -[hidden]d- 1a12
