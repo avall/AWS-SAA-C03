@@ -1,0 +1,48 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Compute/EC2Instances.puml
+!include AWSPuml/Storage/EFS.puml
+
+top to bottom direction
+skinparam linetype ortho
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+GenericGroup(1a, "<color:#blue>us-east-1a") {
+    EC2Instances(1a1, "EC2\ninstances", "")
+}
+
+GenericGroup(1b, "<color:#blue>us-east-1b") {
+    EC2Instances(1b1, "EC2\ninstances", "")
+}
+
+GenericGroup(1c, "<color:#blue>us-east-1c") {
+    EC2Instances(1c1, "EC2\ninstances", "")
+}
+
+SecurityGroupGroup(scg, "            <color:#red>Security Group            ") {
+  EFS(efs, "EFS\nfile system", "")
+}
+
+note as spread_group
+  <b>Elastic File System:
+  .- NFS v4.1 Across multiple zones
+  .- scales automatically, pay per use
+  .- security group to control access
+  .- More expensive than EBS
+  .- EFS-IA for cost savings
+end note
+
+efs <-u-> 1a1
+efs <-u-> 1b1
+efs <-u-> 1c1
+
+@enduml
