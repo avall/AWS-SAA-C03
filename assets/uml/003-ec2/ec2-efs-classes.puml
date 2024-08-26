@@ -1,0 +1,50 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Storage/EFS.puml
+!include AWSPuml/General/Document.puml
+!include AWSPuml/Storage/ElasticFileSystemFileSystem.puml
+!include AWSPuml/Storage/ElasticBlockStoreAmazonDataLifecycleManager.puml
+
+!define EFSGroup(g_alias, g_label="Amazon  Elastic File System") $AWSDefineGroup(g_alias, g_label, ElasticFileSystemFileSystem, EFSGroup)
+$AWSGroupColoring(EFSGroup, $AWSColor(Storage))
+
+top to bottom direction
+skinparam linetype ortho
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+  EFSGroup(1a, "<color:#green>EFS File system") {
+      ElasticBlockStoreAmazonDataLifecycleManager(policy, "Lifecycle\nPolicy", "")
+      GenericGroup(1b, "EFS Standard") {
+          Document(d1, "", "")
+          Document(d2, "", "")
+          Document(d3, "", "")
+          Document(d4, "", "")
+      }
+
+      GenericGroup(1c, "EFS IA") {
+          Document(d5, "", "")
+      }
+  }
+
+note left of d4 : no access for \nbetween 7-90 days
+
+note as spread_group
+  <b>Elastic File System:
+  .- EFS-IA for 90% cost savings
+end note
+
+d1 -[hidden]r- d2
+d2 -[hidden]r- d3
+d1 -[hidden]d- d4
+1b -[hidden]d-- policy
+
+d4 -d--> d5 : "<size:14>move   ."
+@enduml
