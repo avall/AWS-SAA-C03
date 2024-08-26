@@ -1,0 +1,98 @@
+@startuml
+top to bottom direction
+
+' cloudogu
+' becomes all blue color --> !include <cloudogu/common.puml>
+!include <cloudogu/tools/k8s.puml>
+' not needed !include <kubernetes/k8s-sprites-unlabeled-25pct>
+
+'AWS'
+' Include common to use icon macros.
+!include <aws/common>
+
+' Include three icons.
+!include <aws/ApplicationServices/AWSStepFunctions/AWSStepFunctions>
+!include <aws/Compute/AmazonECR/AmazonECR>
+!include <aws/Compute/AWSLambda/LambdaFunction/LambdaFunction>
+!include <aws/Compute/AmazonECS/AmazonECS>
+!include <aws/Compute/AmazonECS/ECScontainer/ECScontainer>
+
+!include <archimate/Archimate>
+!include <logos/kafka>
+
+
+' !define PUML_ENTITY1(e_type,e_background, e_sprite_color,e_sprite,e_label,e_alias,e_stereo) e_type e_background "<color:e_sprite_color><$e_sprite></color>\n<<e_stereo>>\ne_label"  as e_alias
+!define PUML_ENTITY(e_type, e_color,e_sprite,e_label,e_alias,e_stereo) e_type e_color "<<e_stereo>>\n**e_label**" <<$e_sprite>>  as e_alias
+
+skinparam defaultFontSize 13
+skinparam defaultFontName Courier
+skinparam noteTextAlignment left
+
+skinparam database {
+  FontStyle bold
+  StereotypeFontStyle normal
+}
+
+skinparam component {
+  BackgroundColor<<container>> Pink
+  BackgroundColor<<step-function>> LightGreen
+  BorderColor<<container>> Red
+  BorderColor<<lambda>> Black
+  BorderColor<<step-function>> Black
+  BorderColor black
+  BackgroundColor<<lambda>> gold
+  BackgroundColor white
+  ArrowColor #FF6655
+  ArrowFontColor #777777
+  FontStyle bold
+  StereotypeFontStyle normal
+}
+
+legend top center
+|= Arrows |
+<#1f7ed1>| Event to Execute Journey Flow by Engine  |
+<#1eba25>| Event to deploy Journey as New StepFunction |
+<#Orange>| Event to monitor 'Runner Engine' of Flow status |
+end legend
+
+
+cloud http {
+}
+component "Journey Runner" <<K8S - Pod>> #white  {
+  port port <<port>>
+
+'  [Journey API] <<container>>
+  PUML_ENTITY(rectangle,#pink,k8s{scale=.65},Journey Execution API,journey_api,container)
+}
+
+queue "<$kafka{scale=.35}>" as topic
+
+component "Journey Engine" <<AWS - StepFunction Dynamic Creation>> #white {
+	PUML_ENTITY(rectangle,#gold,LambdaFunction{scale=.40},Runner Engine,runner_engine,lambda)
+	PUML_ENTITY(rectangle,#gold,LambdaFunction{scale=.40},Deploy Engine,deploy_engine,lambda)
+
+  PUML_ENTITY(rectangle,#LightGreen,AWSStepFunctions{scale=.35},Scheduled Flow,sceduled_flow,step-function)
+  queue SQS
+  database Status_Db <<DynamoDB>>
+}
+
+note top of journey_api : Create journey flow process\nPOST /journey-executions/{id}\n\nRun journey flow (change status)\nPUT /journey-executions/{id}\n\nGET /journey-executions/{id}
+' note bottom of topic : Web Service only
+note bottom of runner_engine : Works as a monitor\nfor the Journey Execution.\nConsuming SQS topics.
+note top of deploy_engine : Responsible to create the StepFunction\nfrom Journey Flow.\ngithub:\n  cst-server-poc-step-functions-workspace
+note bottom of sceduled_flow : StepFunction process deployed into AWS
+
+
+http -d- port
+[port] -- journey_api
+journey_api .d.> topic
+topic .[#1eba25]r..> deploy_engine: Event\nto\ndeploy\nJourney
+topic .[#1f7ed1]d..> runner_engine: Event\nExecute\nJourney\nFlow
+deploy_engine -[#1eba25]d-> sceduled_flow: Event\nto\ndeploy\nJourney
+runner_engine <.[#Orange]r. [SQS]: Event to monitor\n'Runner Engine'
+runner_engine -d-> [Status_Db]
+[SQS] <.[#Orange]d. sceduled_flow
+runner_engine -d[#1f7ed1]-> sceduled_flow
+
+
+@enduml

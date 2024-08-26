@@ -1,0 +1,43 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/Storage/all.puml
+
+skinparam RectangleBorderColor #blue
+skinparam nodesep 50
+
+rectangle "<size:18><color:#blue>us-east-1a" as 1a {
+  EC2Instance(ec1, "", "")
+  EC2Instance(ec2, "", "")
+
+  ElasticBlockStoreVolume(ebs1, "EBS\n(10 GB)", "")
+  ElasticBlockStoreVolume(ebs2, "EBS\n(100 GB)", "")
+  ElasticBlockStoreVolume(ebs3, "EBS\n(50 GB)", "")
+}
+
+rectangle "<size:18><color:#blue>us-east-1b" as 1b {
+  EC2Instance(ec3, "", "")
+
+  ElasticBlockStoreVolume(ebs4, "EBS\n(10 GB)", "")
+  ElasticBlockStoreVolume(ebs5, "EBS\n(50 GB)", "")
+  ElasticBlockStoreVolume(ebs6, "EBS\n(10 GB)", "")
+}
+
+
+ec1 -[hidden]r- ec2
+ebs1 -u--> ec1
+ebs2 -u[#red]--> ec1 : <color:#red>wrong due\n<color:#red>same   EBS\n<color:#red>attached to\n<color:#red>different\n<color:#red>instances\n<color:#red>only works\n<color:#red> for io1 / io2
+ebs2 -u[#red]--> ec2 : <color:#red>wrong due\n<color:#red>same   EBS\n<color:#red>attached to\n<color:#red>different\n<color:#red>instances\n<color:#red>only works\n<color:#red> for io1 / io2
+ebs3 -u--> ec2
+
+ebs4 -[hidden]r- ebs5
+ebs5 -[hidden]r- ebs6
+
+ebs5 -u--> ec3
+
+ebs4 -u[#red]--> ec2 : <color:#red>wrong due\n<color:#red>different\n<color:#red>zone
+
+@enduml
