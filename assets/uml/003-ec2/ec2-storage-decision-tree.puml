@@ -1,0 +1,50 @@
+@startuml
+
+!function $ifNotEmpty($value, $return)
+!if $value == null || $value == ""
+    !return ""
+!else
+    !return $return
+!endif
+!endfunction
+
+skinparam nodesep 100
+'skinparam ranksep 50
+skinparam linetype ortho
+!define PUML_ENTITY(e_type, e_color,e_sprite,e_label,e_alias,e_stereo)  e_type e_color "$ifNotEmpty(e_stereo, "<<"+e_stereo+">>\n")e_label" <<$e_sprite>>  as e_alias
+!define PUML_ENTITY(e_type, e_color,e_label,e_alias)  PUML_ENTITY(e_type, e_color,null,e_label,e_alias,null)
+
+PUML_ENTITY(rectangle,#FFDBBB,Who need access to data?,root)
+PUML_ENTITY(rectangle,#FFDBBB,EC2,ec2)
+PUML_ENTITY(rectangle,#FFDBBB,From anywhere,anywhere)
+PUML_ENTITY(rectangle,#FFDBBB,Data access pattern,access_pattern)
+PUML_ENTITY(rectangle,#FFDBBB,write heavy\nread heavy,write_heavy)
+PUML_ENTITY(rectangle,#FFDBBB,write once\nread heavy,write_once)
+PUML_ENTITY(rectangle,#FFDBBB,application supports\n    S3 Integration ?,s3_support)
+PUML_ENTITY(rectangle,#FFDBBB,Operating system ?,os)
+
+PUML_ENTITY(rectangle,#FFDBBB,data persistence ?,data_persistence)
+PUML_ENTITY(rectangle,#lightgreen,**Instance**\n   **store**,instance_store)
+PUML_ENTITY(rectangle,#lightgreen,**EBS**,ebs)
+PUML_ENTITY(rectangle,#orange,"       S3      ",s3)
+PUML_ENTITY(rectangle,#lightblue,**EFS**,efs)
+PUML_ENTITY(rectangle,#orange,**FSX**,fsx)
+
+note right of write_once : <b>File storage</b>
+note top of write_heavy : <b>Block storage</b>
+
+root -d-> ec2
+root -d-> anywhere
+ec2 -d-> access_pattern
+access_pattern -d-> write_heavy
+access_pattern -d-> write_once
+write_once -d-> s3_support
+s3_support -d--> s3 : "Yes  "
+s3_support -d-> os : No\n
+os -d-> efs : "linux  "
+os -d-> fsx : "windows  "
+write_heavy -d-> data_persistence
+data_persistence -d--> instance_store : "No  "
+data_persistence -d--> ebs : "Yes "
+anywhere ---r---> s3
+@enduml

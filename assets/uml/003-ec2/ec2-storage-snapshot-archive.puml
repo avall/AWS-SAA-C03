@@ -1,0 +1,32 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/Storage/all.puml
+!include ../sprites/ebs-snapshot-archive.puml
+!include ../sprites/recycle.puml
+
+skinparam RectangleBorderColor #white
+skinparam NoteBackgroundColor lightyellow
+'skinparam nodesep 10
+
+rectangle " " as 1 {
+  ElasticBlockStoreSnapshot(snp1, "EBS\nSnapshot\nstandard","")
+  EbsSnapshotArchive(snpa1, "EBS\nSnapshot\narchive","")
+}
+
+rectangle " " as 2 {
+  ElasticBlockStoreSnapshot(snp2, "EBS\nSnapshot\nstandard","")
+  Recycle(recycle,"Recycle\nbin"  ,"")
+}
+
+note right of 1 : <b><color:#darkred>75% cheap\n<color:#darkred>24-72h to restore data
+note right of 2 : <b><color:#darkred>from 1 day\n<color:#darkred>to 1 year\n<color:#darkred>retention
+
+1 -[hidden]d- 2
+snp1 -r-> snpa1 : archive
+snp2 -r-> recycle : delete
+
+@enduml

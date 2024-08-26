@@ -1,0 +1,65 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+
+top to bottom direction
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+skinparam RectangleBorderColor blue
+
+rectangle "           <color:#green>Av.Zone --> us-east-1a\n  <color:#red>Max - 7 partitions" as 1a {
+  SecurityGroupGroup(1a1, "      Partition Group 1a\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
+      GenericGroup(1a1r1, "Rack 1a-1") {
+          EC2Instance(1a11, "", "")
+      }
+      GenericGroup(1a1r2, "Rack 1a-2") {
+        EC2Instance(1a12, "", "")
+        EC2Instance(1a13, "", "")
+      }
+  }
+
+  SecurityGroupGroup(2a1, "      Partition Group 2a\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
+    GenericGroup(2a1r1, "Rack 2a-1") {
+      EC2Instance(2a11, "", "")
+      EC2Instance(2a12, "", "")
+      EC2Instance(2a13, "", "")
+    }
+  }
+}
+
+rectangle "           <color:#green>Av.Zone --> us-east-1b\n  <color:#red>Max - 7 partitions" as 1b {
+  SecurityGroupGroup(1b1, "      Partition Group 1b\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
+    GenericGroup(1b1r1, "Rack 1b-1") {
+      EC2Instance(1b11, "", "")
+      EC2Instance(1b12, "", "")
+      EC2Instance(1b13, "", "")
+    }
+  }
+}
+
+note as spread_group
+  <b>Partition Groups<color:#red> ---</color></b>
+  Different zones in the same Region <b><color:#green>us-east-1
+  <b>Max --> <color:#red>7 partitions</color></b> in each zone of same region.
+  <b>Rack distribution</b> - Cannot be defined inside partition groups.
+  <b>Guarantee</b> - Every partition in different hardware (rack). Hardware not share between partitions.
+end note
+
+1a11 -[hidden]d- 1a12
+1a12 -[hidden]d- 1a13
+
+2a11 -[hidden]d- 2a12
+2a12 -[hidden]d- 2a13
+
+1b11 -[hidden]d- 1b12
+1b12 -[hidden]d- 1b13
+
+
+@enduml
