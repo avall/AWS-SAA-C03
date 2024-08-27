@@ -1,0 +1,49 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/Generic.puml
+!include ../../sprites/ec2-ebs.puml
+!include ../../sprites/ec2-ebs-ram.puml
+!include ../../sprites/ec2-ram-ebs-ram.puml
+!include ../../sprites/ec2-ram-ebs.puml
+
+'skinparam linetype ortho
+skinparam nodesep 50
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+rectangle "Running" as running1 {
+  EC2RAMEBS(ec2ramebs1, "", "")
+}
+note left of ec2ramebs1 : EC2\nwith Encrypted\nEBS root volume
+
+GenericGroup(hibernation, "<color:#grey>Hibernation") {
+  rectangle "Stopping" as stopping {
+    EC2RAMEBSRAM(ec2ramebsram, "", "")
+  }
+  GenericGroup(stopped, "<color:#grey>Stopped") {
+    EC2EBSRAM(ec2ebsram, "", "")
+  }
+}
+rectangle "Running" as running2 {
+  EC2RAMEBS(ec2ramebs2, "", "")
+}
+
+note top of ec2ramebs1
+  <b>Hibernation:
+  .- RAM Size — must be less than 150 GB.
+  .- not supported for bare metal instances.
+  .- AMI — Amazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows…
+  .- Root Volume — must be EBS, encrypted, not instance store, and large
+  .- Available for On-Demand, Reserved and Spot Instances
+  .- An instance can NOT be hibernated more than 60 days
+end note
+
+ec2ramebs1 -r-> ec2ramebsram : <b><size:13><color:#d97502>stop & hibernate
+ec2ramebsram ---r-> ec2ebsram : <b><size:13><color:#d97502>shutdown
+ec2ebsram  ---r-> ec2ramebs2 : <b><size:13><color:#d97502>start
+
+@enduml
