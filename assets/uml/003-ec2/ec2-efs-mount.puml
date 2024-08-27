@@ -1,0 +1,47 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Storage/ElasticFileSystemFileSystem.puml
+!include ../../sprites/eni.puml
+
+top to bottom direction
+'skinparam linetype ortho
+'skinparam nodesep 50
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+ElasticFileSystemFileSystem(efs, "Elastic\nFile System","")
+
+GenericGroup(1b, "<color:#grey>Av. Zone 1") {
+  EC2Instance(ec1, "EC2\nLinux", "")
+  eni(eni1, "EFS\nmount\ntarget", "")
+}
+
+GenericGroup(1c, "<color:#grey>Av. Zone 2") {
+  EC2Instance(ec2, "EC2\nLinux", "")
+  eni(eni2, "EFS\nmount\ntarget", "")
+}
+
+'note left of d4 : no access for \nbetween 7-90 days
+
+note as spread_group
+  <b>Elastic File System:
+  .- Hundreds of instances across AZs
+  .- only for linux (POSIX)
+  .- Higher price than EBS
+  .- Security Group to control access.
+  .- EFS-IA for cost savings
+end note
+
+efs <-u--> eni1
+efs <-u--> eni2
+
+eni1 <-u-> ec1
+eni2 <-u-> ec2
+
+@enduml

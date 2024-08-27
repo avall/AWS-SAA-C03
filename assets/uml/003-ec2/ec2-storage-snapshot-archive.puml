@@ -5,8 +5,8 @@
 !include AWSPuml/AWSSimplified.puml
 !include AWSPuml/Compute/all.puml
 !include AWSPuml/Storage/all.puml
-!include ../sprites/ebs-snapshot-archive.puml
-!include ../sprites/recycle.puml
+!include ../../sprites/ebs-snapshot-archive.puml
+!include ../../sprites/recycle.puml
 
 skinparam RectangleBorderColor #white
 skinparam NoteBackgroundColor lightyellow
