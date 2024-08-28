@@ -1,0 +1,51 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Storage/ElasticFileSystemFileSystem.puml
+!include ../../sprites/eni.puml
+
+'top to bottom direction
+skinparam linetype ortho
+skinparam nodesep 1
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+GenericGroup(1b, "<color:#grey>Av. Zone") {
+  GenericGroup(1b1, " ") {
+    together {
+      EC2Instance(ec1, "EC2", "")
+      eni(eni1, "eth0 - primary ENI\n192.168.0.31", "")
+      eni(eni2, "eth1 - secondary ENI\n192.168.0.42", "")
+    }
+  }
+  GenericGroup(1b2, " ") {
+    together {
+      EC2Instance(ec2, "EC2", "")
+      eni(eni3, "eth0 - primary ENI", "")
+      eni(eni4, "", "")
+    }
+  }
+}
+
+eni1 -[hidden]d- eni2
+eni2 -[hidden]d- eni3
+eni3 -[hidden]d- eni4
+
+eni2 -d-> eni4 : <b><size:14>can be\n     <b><size:14>moved to
+
+note as eni
+  <b>Elastic Network Interface:
+  .- Virtual Network Card. Can have MAC address.
+  .- Bound to Av.Zone
+  .- One or more security groups
+  .- One Public IPv4
+  .- Primary private IPv4 address, one or more secondary private IPv4 addresses.
+  .- One Elastic IP (IPv4) per private IPv4 address
+end note
+
+@enduml
