@@ -1,0 +1,39 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/AutoScalingGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+
+skinparam nodesep 5
+skinparam linetype ortho
+
+AutoScalingGroupGroup(asg1, "<color:#e67402>Auto Scaling Group") {
+  GenericGroup(max1, "Maximum Capacity") {
+    GenericGroup(d1, "Desired Capacity") {
+      GenericGroup(min1, "Minimum Capacity") {
+        EC2Instance(ec1, "EC2", "")
+        EC2Instance(ec2, "EC2", "")
+      }
+      EC2Instance(ec3, "EC2", "")
+      EC2Instance(ec4, "EC2", "")
+    }
+    GenericGroup(dscout, "Scale out as needed") {
+      EC2Instance(ec5, "EC2", "")
+      EC2Instance(ec6, "EC2", "")
+      EC2Instance(ec7, "EC2", "")
+    }
+  }
+}
+
+ec1 -[hidden]r- ec2
+ec2 -[hidden]r- ec3
+ec3 -[hidden]r- ec4
+ec4 -[hidden]r- ec5
+ec5 -[hidden]r- ec6
+ec6 -[hidden]r- ec7
+
+
+@enduml
