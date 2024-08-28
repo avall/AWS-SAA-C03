@@ -19,24 +19,30 @@ GenericGroup(1b, "<color:#grey>Av. Zone") {
   GenericGroup(1b1, " ") {
     together {
       EC2Instance(ec1, "EC2", "")
-      eni(eni1, "eth0 - primary ENI\n192.168.0.31", "")
-      eni(eni2, "eth1 - secondary ENI\n192.168.0.42", "")
+      eni(eni1, "eth0\nprimary ENI\n192.168.0.31", "")
+      eni(eni2, "eth1\nsecondary ENI\n192.168.0.42", "")
     }
   }
   GenericGroup(1b2, " ") {
     together {
       EC2Instance(ec2, "EC2", "")
-      eni(eni3, "eth0 - primary ENI", "")
-      eni(eni4, "", "")
+      eni(eni3, "          eth0\n          primary ENI\n", "")
+      eni(eni4, "  \n  \n", "")
     }
   }
 }
 
-eni1 -[hidden]d- eni2
-eni2 -[hidden]d- eni3
-eni3 -[hidden]d- eni4
+ec1 -[hidden]d- eni1
+ec1 -[hidden]d- eni2
 
-eni2 -d-> eni4 : <b><size:14>can be\n     <b><size:14>moved to
+ec2 -[hidden]d- eni3
+ec2 -[hidden]d- eni4
+
+eni1 -[hidden]r- eni2
+'eni2 -[hidden]d- eni3
+eni3 -[hidden]r- eni4
+
+eni2 -> eni4 : <b><size:14><color:#8d02e3><size:15> can  be\n       <b><color:#8d02e3><size:15>moved  to\n
 
 note as eni
   <b>Elastic Network Interface:
