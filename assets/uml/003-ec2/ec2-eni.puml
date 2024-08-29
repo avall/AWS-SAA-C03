@@ -42,7 +42,7 @@ eni1 -[hidden]r- eni2
 'eni2 -[hidden]d- eni3
 eni3 -[hidden]r- eni4
 
-eni2 -> eni4 : <b><size:14><color:#8d02e3><size:15> can  be\n       <b><color:#8d02e3><size:15>moved  to\n
+eni2 -[#8d02e3]> eni4 : <b><size:14><color:#8d02e3><size:15> can  be\n       <b><color:#8d02e3><size:15>moved  to\n
 
 note as eni
   <b>Elastic Network Interface:
