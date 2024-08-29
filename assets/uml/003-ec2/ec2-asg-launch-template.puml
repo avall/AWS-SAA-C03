@@ -1,0 +1,37 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2AMI.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Groups/AutoScalingGroup.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementRole.puml
+!include AWSPuml/SecurityIdentityCompliance/IdentityAccessManagementAddon.puml
+!include AWSPuml/Containers/ElasticContainerServiceTask.puml
+!include AWSPuml/Groups/SecurityGroup.puml
+!include AWSPuml/Storage/ElasticBlockStoreMultipleVolumes.puml
+!include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancing.puml
+!include AWSPuml/NetworkingContentDelivery/VPCVirtualprivatecloudVPC.puml
+!include AWSPuml/Compute/EC2AutoScalingResource.puml
+!include ../../sprites/privatesubnet.puml
+
+!define AGSGroup(g_alias, g_label="Amazon  EFS") $AWSDefineGroup(g_alias, g_label, ElasticContainerServiceTask, AGSGroup)
+$AWSGroupColoring(AGSGroup, $AWSColor(Compute))
+
+skinparam nodesep 25
+
+AGSGroup(ags, "ASG Launch Template") {
+  SecurityGroupGroup(sg, "<color:c70202>Security Group")
+  EC2AMI(ami, "AMI", "")
+  EC2Instance(ec2, "Instance\ntype", "")
+  EC2AutoScalingResource(asg, "Max / Min\ncapacity", "")
+  IdentityAccessManagementRole(iam, "IAM Roles", "")
+  IdentityAccessManagementAddon(iama, "SSH  Key  pair", "")
+  ElasticBlockStoreMultipleVolumes(volumes, "EBS Volumes", "")
+  ElasticLoadBalancing(elb, "Elastic\nLoad Balancer","")
+  VPCVirtualprivatecloudVPC(vpc, "VPC", "")
+  PrivateSubnet(subnet, "Subnet", "")
+}
+
+@enduml
