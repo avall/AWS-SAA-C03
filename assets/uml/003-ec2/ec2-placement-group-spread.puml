@@ -13,6 +13,12 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
 SecurityGroupGroup(1a, "Spread Group 1\n           <color:#green>Av.Zone --> us-east-1a\n       <color:#red>Max-7 EC2 instances") {
   GenericGroup(1a11, "Rack 1") {
     EC2Instance(1a1, "", "")

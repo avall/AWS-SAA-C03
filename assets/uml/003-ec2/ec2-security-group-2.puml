@@ -19,6 +19,12 @@ skinparam NoteBorderColor #white
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing false
 
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
 RegionGroup(region, "Region") {
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
       PrivateSubnetGroup(subnet1, "Subnet A (private)") {

@@ -18,6 +18,12 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
 Internet(internet, "", "")
 
 Client(client, "Client computer\nat home", "")

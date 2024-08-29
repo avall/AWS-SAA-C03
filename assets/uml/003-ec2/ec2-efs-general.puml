@@ -16,6 +16,12 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
 GenericGroup(1a, "<color:#blue>us-east-1a") {
     EC2Instances(1a1, "EC2\ninstances", "")
 }

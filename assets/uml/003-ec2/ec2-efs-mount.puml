@@ -6,7 +6,13 @@
 !include AWSPuml/Compute/EC2Instance.puml
 !include AWSPuml/Groups/Generic.puml
 !include AWSPuml/Storage/ElasticFileSystemFileSystem.puml
-!include ../../sprites/eni.puml
+!include AWSPuml/NetworkingContentDelivery/VPCElasticNetworkInterface.puml
+
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
 
 top to bottom direction
 'skinparam linetype ortho
@@ -19,12 +25,12 @@ ElasticFileSystemFileSystem(efs, "Elastic\nFile System","")
 
 GenericGroup(1b, "<color:#grey>Av. Zone 1") {
   EC2Instance(ec1, "EC2\nLinux", "")
-  eni(eni1, "EFS\nmount\ntarget", "")
+  VPCElasticNetworkInterface(eni1, "EFS\nmount\ntarget", "")
 }
 
 GenericGroup(1c, "<color:#grey>Av. Zone 2") {
   EC2Instance(ec2, "EC2\nLinux", "")
-  eni(eni2, "EFS\nmount\ntarget", "")
+  VPCElasticNetworkInterface(eni2, "EFS\nmount\ntarget", "")
 }
 
 'note left of d4 : no access for \nbetween 7-90 days

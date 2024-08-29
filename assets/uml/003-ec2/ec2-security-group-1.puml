@@ -19,6 +19,12 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
 Internet(internet, "", "")
 
 Client(client, "", "")

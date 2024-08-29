@@ -6,7 +6,7 @@
 !include AWSPuml/Compute/EC2Instance.puml
 !include AWSPuml/Groups/Generic.puml
 !include AWSPuml/Storage/ElasticFileSystemFileSystem.puml
-!include ../../sprites/eni.puml
+!include AWSPuml/NetworkingContentDelivery/VPCElasticNetworkInterface.puml
 
 'top to bottom direction
 skinparam linetype ortho
@@ -19,15 +19,15 @@ GenericGroup(1b, "<color:#grey>Av. Zone") {
   GenericGroup(1b1, " ") {
     together {
       EC2Instance(ec1, "EC2", "")
-      eni(eni1, "eth0\nprimary ENI\n192.168.0.31", "")
-      eni(eni2, "eth1\nsecondary ENI\n192.168.0.42", "")
+      VPCElasticNetworkInterface(eni1, "eth0\nprimary ENI\n192.168.0.31", "")
+      VPCElasticNetworkInterface(eni2, "eth1\nsecondary ENI\n192.168.0.42", "")
     }
   }
   GenericGroup(1b2, " ") {
     together {
       EC2Instance(ec2, "EC2", "")
-      eni(eni3, "          eth0\n          primary ENI\n", "")
-      eni(eni4, "  \n  \n", "")
+      VPCElasticNetworkInterface(eni3, "          eth0\n          primary ENI\n", "")
+      VPCElasticNetworkInterface(eni4, "  \n  \n", "")
     }
   }
 }

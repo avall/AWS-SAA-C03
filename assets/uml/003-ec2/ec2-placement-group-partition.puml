@@ -14,6 +14,12 @@ skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 skinparam RectangleBorderColor blue
 
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
 rectangle "           <color:#green>Av.Zone --> us-east-1a\n  <color:#red>Max - 7 partitions" as 1a {
   SecurityGroupGroup(1a1, "      Partition Group 1a\n<color:#darkorange>      Max EC2 instances\n<color:#darkorange>Account limits") {
       GenericGroup(1a1r1, "Rack 1a-1") {
@@ -46,10 +52,10 @@ rectangle "           <color:#green>Av.Zone --> us-east-1b\n  <color:#red>Max - 
 
 note as spread_group
   <b>Partition Groups<color:#red> ---</color></b>
-  Different zones in the same Region <b><color:#green>us-east-1
-  <b>Max --> <color:#red>7 partitions</color></b> in each zone of same region.
-  <b>Rack distribution</b> - Cannot be defined inside partition groups.
-  <b>Guarantee</b> - Every partition in different hardware (rack). Hardware not share between partitions.
+  <b>.- Different zones</b> in the same Region <b><color:#green>us-east-1
+  <b>.- Max --> <color:#red>7 partitions</color></b> in each zone of same region.
+  <b>.- Rack distribution</b> - Cannot be defined inside partition groups.
+  <b>.- Guarantee</b> - Every partition in different hardware (rack). Hardware not shared between partitions.
 end note
 
 1a11 -[hidden]d- 1a12

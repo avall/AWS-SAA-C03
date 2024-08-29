@@ -1,0 +1,69 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/AutoScalingGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancing.puml
+!include AWSPuml/General/Users.puml
+
+skinparam nodesep 7
+'skinparam linetype ortho
+skinparam ArrowThickness 1
+skinparam ArrowColor grey
+skinparam NoteShadowing true
+skinparam NoteTextAlignment left
+
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
+Users(users, "Users","")
+ElasticLoadBalancing(elb, "Elastic\nLoad Balancer","")
+
+note right of elb #lightyellow
+  <b>Auto Scaling Group
+  .- <b>Distribute incoming traffic</b> across multiple servers or EC2 instances.
+  .- Provide a <b>single DNS entry</b> point for your application
+  .- Perform regular <b>health checks</b> to determine the status of each downstream instance
+  .- <b>Handle SSL termination</b> offloading the task of decrypting HTTPS traffic from the downstream instances.
+  .- Can enforce <b>session stickiness</b> by associating a user with a specific server based on a cookie or other session-related information.
+  .- <b>High Availability</b> across zones.
+  .- <b>Separate</b> public traffic from private traffic.
+end note
+
+AutoScalingGroupGroup(asg1, "<color:#e67402>Auto Scaling Group") {
+    EC2Instance(ec1, "EC2", "")
+    EC2Instance(ec2, "EC2", "")
+    EC2Instance(ec3, "EC2", "")
+    EC2Instance(ec4, "EC2", "")
+
+    GenericGroup(dscout, "Scale out as needed") {
+      EC2Instance(ec5, "EC2", "")
+      EC2Instance(ec6, "EC2", "")
+      EC2Instance(ec7, "EC2", "")
+    }
+  }
+}
+
+users -d-> elb
+ec1 -[hidden]r- ec2
+ec2 -[hidden]r- ec3
+ec3 -[hidden]r- ec4
+ec4 -[hidden]r- ec5
+ec5 -[hidden]r- ec6
+ec6 -[hidden]r- ec7
+
+elb -d-> ec1
+elb -d-> ec2
+elb -d-> ec3
+elb -d-> ec4
+elb -d-> ec5
+elb -d-> ec6
+elb -d-> ec7 : \n  <size:14>ELB can check the <b>health</b> of our EC2 instances.
+
+@enduml

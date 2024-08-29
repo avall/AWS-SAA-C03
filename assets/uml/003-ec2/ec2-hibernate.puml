@@ -15,10 +15,16 @@ skinparam noteTextAlignment left
 skinparam NoteBackgroundColor lightyellow
 skinparam NoteShadowing true
 
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
 rectangle "Running" as running1 {
   EC2RAMEBS(ec2ramebs1, "", "")
 }
-note left of ec2ramebs1 : EC2\nwith Encrypted\nEBS root volume
+note left of ec2ramebs1 : <b>EC2\nwith Encrypted\nEBS root volume
 
 GenericGroup(hibernation, "<color:#grey>Hibernation") {
   rectangle "Stopping" as stopping {
