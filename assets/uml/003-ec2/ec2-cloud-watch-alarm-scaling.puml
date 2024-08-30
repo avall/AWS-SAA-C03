@@ -1,0 +1,53 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/AutoScalingGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancing.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/ManagementGovernance/CloudWatchAlarm.puml
+
+top to bottom direction
+'skinparam nodesep 80
+skinparam linetype ortho
+skinparam ArrowThickness 1
+skinparam ArrowColor grey
+skinparam NoteShadowing true
+skinparam NoteTextAlignment left
+
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
+CloudWatchAlarm(clw, "CloudWatch\nalarm","")
+
+AutoScalingGroupGroup(asg1, "<color:#e67402>Auto Scaling Group") {
+    EC2Instance(ec1, "EC2", "")
+    EC2Instance(ec2, "EC2", "")
+    EC2Instance(ec3, "EC2", "")
+
+    GenericGroup(dscout, "Scale in/out as needed") {
+      EC2Instance(ec5, "EC2", "")
+      EC2Instance(ec6, "EC2", "")
+    }
+}
+
+note left of clw #lightyellow
+<b>Simple / Step Scaling
+  • When a CloudWatch alarm is triggered (example CPU > 70%), then add (scale out) 2 instances (EC2)
+  • When a CloudWatch alarm is triggered (example CPU < 30%), then remove (scale in) 1 instance (EC2)
+end note
+
+clw -d--> asg1 : <size:14>trigger\n<size:14>scaling
+
+ec1 -[hidden]r- ec2
+ec2 -[hidden]r- ec3
+ec3 -[hidden]r- ec5
+ec5 -[hidden]r- ec6
+
+@enduml
