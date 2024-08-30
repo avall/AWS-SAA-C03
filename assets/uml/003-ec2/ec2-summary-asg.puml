@@ -1,0 +1,49 @@
+@startuml
+
+
+note as what #lightyellow
+<b>What
+  Launch template /
+  configuration
+end note
+
+note as where #lightyellow
+<b>Where
+  Auto Scaling Group
+end note
+
+note as when1 #lightyellow
+<b>When
+  <b><color:blue>Scheduled action
+  .- increase the min capacity
+     to 10 units at 5pm on Fridays
+end note
+
+note as when2 #lightyellow
+<b>When
+  <b><color:blue>Simple / Step Scaling
+  .- When a CloudWatch alarm is triggered
+      (example CPU > 70%) then add 2 units
+end note
+
+note as when3 #lightyellow
+<b>When
+  <b><color:blue>Target Tracking Scaling
+  .- (always) average ASG CPU
+      to stay at around 40%
+end note
+
+note as when4 #lightyellow
+<b>When
+  <b><color:blue>Predictive Scaling
+  .- scales using historical data and
+     machine learning algorithms
+end note
+
+what -d- where
+where -d- when1
+where -d- when2
+where -d- when3
+where -d- when4
+
+@enduml
