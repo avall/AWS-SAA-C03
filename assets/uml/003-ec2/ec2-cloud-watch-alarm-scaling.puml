@@ -7,7 +7,6 @@
 !include AWSPuml/Groups/Generic.puml
 !include AWSPuml/Compute/EC2Instance.puml
 !include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancing.puml
-!include AWSPuml/General/Users.puml
 !include AWSPuml/ManagementGovernance/CloudWatchAlarm.puml
 
 top to bottom direction

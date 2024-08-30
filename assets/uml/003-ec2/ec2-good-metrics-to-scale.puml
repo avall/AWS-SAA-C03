@@ -1,0 +1,69 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Groups/AutoScalingGroup.puml
+!include AWSPuml/Groups/Generic.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancing.puml
+!include AWSPuml/General/Users.puml
+!include AWSPuml/NetworkingContentDelivery/ElasticLoadBalancingApplicationLoadBalancer.puml
+
+top to bottom direction
+skinparam nodesep 15
+'skinparam ranksep 70
+'skinparam linetype ortho
+skinparam ArrowThickness 1
+skinparam ArrowColor grey
+skinparam NoteShadowing true
+skinparam NoteTextAlignment left
+
+<style>
+note {
+  MaximumWidth 500
+}
+</style>
+
+Users(users, "User","")
+ElasticLoadBalancingApplicationLoadBalancer(clw, "Application\nload balancer","")
+
+AutoScalingGroupGroup(asg1, "<color:#e67402>Auto Scaling Group") {
+    EC2Instance(ec1, "EC2\nCPU utilization", "")
+    EC2Instance(ec2, "EC2\nCPU utilization", "")
+    EC2Instance(ec3, "EC2\nCPU utilization", "")
+
+    GenericGroup(dscout, "Scale in/out as needed") {
+      EC2Instance(ec5, "EC2", "")
+      EC2Instance(ec6, "EC2", "")
+    }
+}
+
+note left of clw #lightyellow
+<b>Simple / Step Scaling
+• **CPU-Utilization**: Average CPU utilization across your instances
+• **Request Count Per Target**: to make sure the number of requests per EC2 instances is stable
+• **Average Network In / Out** (if you’re application is network bound)
+• Any** custom metric** (that you push using CloudWatch)
+end note
+
+users -d-> clw
+clw -d---> ec1 : <size:14>avg.\nnetwork\n<size:14>traffic
+clw -d---> ec1
+clw -d---> ec1
+
+clw -d[#blue]---> ec2
+clw -d[#blue]---> ec2
+clw -d[#blue]---> ec2
+
+clw -d[#orange]---> ec3
+clw -d[#orange]---> ec3
+clw -d[#orange]---> ec3 : <size:14>request\n<size:14>per target\nEC2
+
+
+ec1 -[hidden]r- ec2
+ec2 -[hidden]r- ec3
+ec3 -[hidden]r- ec5
+ec5 -[hidden]r- ec6
+
+@enduml
