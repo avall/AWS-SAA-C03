@@ -1,0 +1,13 @@
+@startuml
+start
+
+:scaling action occurs;
+if (default cooldown in effect ?) then (yes\n  )
+  :ignore\naction;
+else (  no\n)
+  :launch or
+  terminate instance;
+endif
+
+stop
+@enduml
