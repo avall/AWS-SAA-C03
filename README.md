@@ -20,5 +20,5 @@
   - [Elastic Network Interface (ENI)](./assets/md/003-ec2.md#112-elastic-network-interface-eni)
   - [Networking](./assets/md/003-ec2.md#113-ec2-networking)
   - [Auto Scaling](./assets/md/003-ec2.md#114-ec2-autoscaling)
-- [AWS-Virtual Private Cloud (VPC) Introduction](./assets/md/004-VPC-Introduction.md)
+- [AWS-Virtual Private Cloud (VPC) Introduction](./assets/md/004-VPC-introduction.md)
 - [AWS-Elastic Load Balancer (ELB)](./assets/md/005-ElasticLoadBalancer.md)
