@@ -1,7 +1,7 @@
 * [Return to table of contents](../../README.md)
-# Control Tower
+# 2-Control Tower
 
-## Designing a Security Strategy for Multiple AWS Accounts
+## 2.1 Designing a Security Strategy for Multiple AWS Accounts
 - AWS Control Tower: Helps set up and govern a secure multi-account AWS
 environment. It automates the setup of AWS accounts, and it enforces 
 governance using AWS Organizations.
@@ -17,7 +17,7 @@ governance using AWS Organizations.
    down control over the services and actions that are allowed or denied across
    multiple AWS accounts.
 
-## Federate a Directory Service with IAM Roles
+## 2.2 Federate a Directory Service with IAM Roles
 - Federating a directory service involves the integration of AWS IAM with an external identity
 provider (IdP), such as Keycloak or Microsoft Active Directory or an LDAP-based system. 
 This allows users to access AWS resources using their existing corporate credentials. 
