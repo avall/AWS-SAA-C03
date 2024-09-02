@@ -5,6 +5,7 @@
  For example, your application runs on a t2.micro then Scaling vertically means running it on a t2.large
 - Vertical scalability is very common for non distributed systems, such as a database: RDS, ElastiCache are services that can scale ver tically.
 - There’s usually a limit to how much you can vertically scale (hardware limit)
+
 ![](../uml/000b-basic-scalability/vertical.svg)
 
 ## 0b.2 Horizontal Scalability
@@ -12,6 +13,7 @@
 making an individual machine more powerful, you distribute the load
 across multiple machines.
 - Implies distributed systems. This is very common for web applications & modern applications
+
 ![](../uml/000b-basic-scalability/horizontal.svg)
 
 ## 0b.3 High availability
