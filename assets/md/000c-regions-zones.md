@@ -2,7 +2,7 @@
 # 0-Regions & zones
 
 ## 0.1 Domain model
-![](../uml/000-regions-zones/domain-model.svg)
+![](../uml/000c-regions-zones/domain-model.svg)
 
 ## 0.2 Regions
 - **Compliance** with data governance and legal requirements: data never leaves a region without your explicit permission

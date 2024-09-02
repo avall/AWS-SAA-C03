@@ -1,0 +1,46 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/Groups/Generic.puml
+!include <tupadr3/common>
+!include <office/Servers/web_server>
+!include ../../sprites/internet-gateway.puml
+
+skinparam nodesep 1
+skinparam RectangleBorderColor #white
+skinparam NoteBorderColor #white
+
+together {
+    GenericGroup(ca, "<color:red><b>Company A</b>\n       private network\n       192.168.0.1 / 22")  {
+      Client(client1, "computer\nat company A", "")
+      Client(client2, "computer\nat company A", "")
+      Client(client3, "computer\nat company A", "")
+    }
+    InternetGateway(gwa, "<color:red><size:12><b>Internet Gateway A</b>\npublic  149.140.72.10", "")
+}
+
+together {
+  GenericGroup(cb, "<color:green><b>Company B</b>\n       private network\n       192.168.0.1 / 22")  {
+    Client(client4, "computer\nat company B", "")
+    Client(client5, "computer\nat company B", "")
+    Client(client6, "computer\nat company B", "")
+  }
+  InternetGateway(gwb, "<color:green><size:12><b>Internet Gateway B</b>\n    public  253.144.139.205", "")
+}
+
+OFF_WEB_SERVER(w1,<b>web server</b>\n     79.216.59.75)
+OFF_WEB_SERVER(w2,<b>web server</b>\n       211.139.37.43)
+
+rectangle www {
+}
+
+w1 -d-> www
+w2 -d-> www
+gwa -d[hidden]-> ca
+gwb -d[hidden]-> cb
+gwa -u-> www
+gwb -u-> www
+@enduml
