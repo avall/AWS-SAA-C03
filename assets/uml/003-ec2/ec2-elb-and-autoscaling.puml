@@ -63,6 +63,6 @@ elb -d-> ec3
 elb -d-> ec4
 elb -d-> ec5
 elb -d-> ec6
-elb -d-> ec7 : \n  <size:14>ELB can check the <b>health</b> of our EC2 instances.
+elb -d-> ec7 : \n  <size:14><color:red>ELB can also check the <b>health</b> of our EC2 instances.
 
 @enduml
