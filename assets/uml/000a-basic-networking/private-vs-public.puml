@@ -33,9 +33,7 @@ together {
 
 OFF_WEB_SERVER(w1,<b>web server</b>\n     79.216.59.75)
 OFF_WEB_SERVER(w2,<b>web server</b>\n       211.139.37.43)
-
-rectangle www {
-}
+Internet(www, "", "")
 
 w1 -d-> www
 w2 -d-> www
