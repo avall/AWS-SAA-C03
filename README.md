@@ -1,6 +1,10 @@
 # AWS-SAA-C03
 
 - [Basic Networking](./assets/md/000a-basic-networking.md)
+  - [Introduction](./assets/md/000a-basic-networking.md#0a1-introduction)
+  - [Private](./assets/md/000a-basic-networking.md#0a2-private)
+  - [Public](./assets/md/000a-basic-networking.md#0a3-public)
+  - [Private vs Public](./assets/md/000a-basic-networking.md#0a4-private-vs-public-ip)
 - [Basic Scalability](./assets/md/000b-basic-scalability.md)
 - [AWS-Regions & Zones](./assets/md/000c-regions-zones.md)
   - [Domain model](./assets/md/000c-regions-zones.md#01-domain-model)
