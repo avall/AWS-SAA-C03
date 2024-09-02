@@ -1,0 +1,36 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/General/all.puml
+
+skinparam nodesep 1
+skinparam RectangleBorderColor #white
+
+rectangle " " as 1 {
+  together {
+    Client(client1, "", "")
+  }
+}
+
+rectangle " " as 2 {
+  together {
+    Client(client2, "", "")
+    Client(client3, "", "")
+  }
+}
+
+rectangle " " as 3 {
+  together {
+    Client(client4, "", "")
+    Client(client5, "", "")
+    Client(client6, "", "")
+  }
+  client4 -r- client5
+  client5 -r- client6
+}
+1 -d[hidden]- 2
+2 -d[hidden]- 3
+
+@enduml

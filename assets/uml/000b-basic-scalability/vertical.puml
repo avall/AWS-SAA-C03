@@ -1,0 +1,37 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/General/all.puml
+
+skinparam nodesep 1
+skinparam RectangleBorderColor #white
+
+!function $ifNotEmpty($value, $return)
+!if $value == null || $value == ""
+    !return " "
+!else
+    !return $return
+!endif
+!endfunction
+
+skinparam nodesep 1
+'skinparam ranksep 50
+skinparam linetype ortho
+!define PUML_ENTITY(e_type, e_color,e_sprite,e_label,e_alias,e_stereo)  e_type e_color "$ifNotEmpty(e_stereo, "<<"+e_stereo+">>\n")$ifNotEmpty(e_label,e_label)" <<$e_sprite>>  as e_alias
+!define PUML_ENTITY(e_type, e_color,e_sprite,e_label,e_alias)  PUML_ENTITY(e_type, e_color,e_sprite,e_label,e_alias,null)
+!define PUML_ENTITY(e_type, e_color,e_label,e_alias)  PUML_ENTITY(e_type, e_color,null,e_label,e_alias,null)
+
+PUML_ENTITY(rectangle,#white,Client{scale=.45},' ',c1)
+PUML_ENTITY(rectangle,#white,Client{scale=.65},' ',c2)
+PUML_ENTITY(rectangle,#white,Client{scale=.85},' ',c3)
+PUML_ENTITY(rectangle,#white,Client{scale=1.05},' ',c4)
+PUML_ENTITY(rectangle,#white,Client{scale=1.25},' ',c5)
+
+c1 -r[hidden]- c2
+c2 -r[hidden]- c3
+c3 -r[hidden]- c4
+c4 -r[hidden]- c5
+
+@enduml
