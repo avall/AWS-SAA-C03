@@ -1,0 +1,24 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2AMI.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Groups/all.puml
+
+skinparam nodesep 50
+
+AvailabilityZoneGroup(zone1, "           Availability Zone A\nus-east-1a") {
+    EC2Instance(ec211, "stopped", "")
+}
+AvailabilityZoneGroup(zone2, "           Availability Zone B\nus-east-1b") {
+    EC2Instance(ec221, "", "")
+}
+
+EC2AMI(ami, "custom\nAMI", "")
+
+ec211 -r-> ami : create AMI
+ami -r-> ec221 : launch from AMI
+
+@enduml

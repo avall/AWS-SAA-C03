@@ -35,6 +35,7 @@
   - [Spot fleets](./assets/md/003-ec2.md#38-spot-fleets)
   - [Placement groups](./assets/md/003-ec2.md#39-placement-groups)
   - [Storage](./assets/md/003-ec2.md#310-ec2-storage-ebs--efs)
+  - [AMI](./assets/md/003-ec2.md#310a-ec2-ami-amazon-machine-image)
   - [Hibernate](./assets/md/003-ec2.md#311-ec2-hibernate)
   - [Elastic Network Interface (ENI)](./assets/md/003-ec2.md#312-elastic-network-interface-eni)
   - [Networking](./assets/md/003-ec2.md#313-ec2-networking)
