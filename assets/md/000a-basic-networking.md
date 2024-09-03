@@ -11,6 +11,10 @@
   - 172.16.0.0 – 172.31.255.255 (172.16.0.0 **/12**): Default range for AWS VPCs. "**/12**" means first **12** bits are fixed.
   - 192.168.0.0 – 192.168.255.255 (192.168.0.0 **/16**): Frequently employed in home. "**/16**" means first **16** bits are fixed.
     networks.
+- Ranges:
+  - **/ 32** $`\ 2ˆ(32 - 32) = 2ˆ0 = 1 \`$
+
+[Convert from CIDR to ip-range & viceversa](https://www.ipaddressguide.com/cidr)
 
 ## 0a.2 Private
 - Private IP means the machine can only be identified on a private network only
