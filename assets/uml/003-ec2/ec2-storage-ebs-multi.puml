@@ -1,0 +1,60 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/Compute/EC2Instance.puml
+!include AWSPuml/Storage/ElasticBlockStoreVolume.puml
+
+skinparam NoteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam RectangleBorderColor #blue
+skinparam nodesep 50
+
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
+rectangle "<size:18><color:#blue>us-east-1a" as 1a {
+  EC2Instance(ec1, "", "")
+  EC2Instance(ec2, "", "")
+  EC2Instance(ec3, "", "")
+
+  ElasticBlockStoreVolume(ebs1, "EBS\ndata", "")
+  ElasticBlockStoreVolume(ebs2, "EBS\ncopied data", "")
+  ElasticBlockStoreVolume(ebs3, "EBS\ncopied data", "")
+
+  ec1 -r- ebs1
+  ec2 -r- ebs2
+  ec3 -r- ebs3
+
+  ec1 -d[hidden]- ec2
+  ec2 -d[hidden]- ec3
+}
+
+rectangle "<size:18><color:#blue>us-east-1a" as 1b {
+  note as note
+    <b>io1 / io2</b>  Multi-attach
+    (1 EBS attached to multiple EC2)
+  end note
+
+  together {
+    EC2Instance(ec4, "", "")
+    EC2Instance(ec5, "", "")
+    EC2Instance(ec6, "", "")
+  }
+
+  ElasticBlockStoreVolume(ebs4, "EBS\n(single volume)\ndata", "")
+
+  ec4 -d[hidden]- ec5
+  ec5 -d[hidden]- ec6
+
+  ec4 -r- ebs4
+  ec5 -r- ebs4
+  ec6 -r- ebs4
+}
+
+
+@enduml
