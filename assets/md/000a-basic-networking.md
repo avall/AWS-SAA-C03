@@ -6,7 +6,7 @@
     - IPv4:1.160.10.240\
     - IPv6:3ffe:1900:4545:3:200:f8ff:fe21:67cf\
 - we will only be using IPv4. IPv4 is still the most common format used online.
-- Three main blocks established by IANA:
+- Three main blocks established by IANA (Internet Assigned Numbers Authority) for private networks:
   - 10.0.0.0 – 10.255.255.255 (10.0.0.0 **/8**): Often utilized in large networks. "**/8**" means first **8** bits are fixed.
   - 172.16.0.0 – 172.31.255.255 (172.16.0.0 **/12**): Default range for AWS VPCs. "**/12**" means first **12** bits are fixed.
   - 192.168.0.0 – 192.168.255.255 (192.168.0.0 **/16**): Frequently employed in home. "**/16**" means first **16** bits are fixed.
