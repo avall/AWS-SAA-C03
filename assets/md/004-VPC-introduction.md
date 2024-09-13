@@ -13,3 +13,16 @@ is adding gateway services.
 
 ## Domain Model
 ![VPC Domain Model](../uml/004-vpc/vpc-domain-model.svg)
+
+## Internet Gateway
+
+## Route tables
+- Each VPC has a default route table called the main route table.
+
+
+## Subnet
+- The private subnets are accessible from Internet, private VPN connection or external network location because we have:
+  - Gateway Services 
+  - Route Tables
+defined in the VPC. 
+
