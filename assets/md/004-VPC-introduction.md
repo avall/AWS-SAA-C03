@@ -21,7 +21,7 @@ is adding gateway services.
 
 
 ## Subnet
-- The private subnets are accessible from Internet, private VPN connection or external network location because we have:
+- The private subnets are accessible from Internet, from private VPN connection or from external network location because we have:
   - Gateway Services 
   - Route Tables
 defined in the VPC. 
