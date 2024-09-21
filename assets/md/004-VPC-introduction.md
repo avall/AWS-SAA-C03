@@ -6,10 +6,17 @@
 
 ## Introduction
 - A VPC is an isolated network space where we can define logical public & private subnets across multiple availability zones in the same region.
-- The only way to access the VPC from: Internet, Private VPN connection, External locations
-is adding gateway services.
+- The only way to access the VPC from: 
+  - Internet
+  - Private VPN connection
+  - External locations
+
+  is adding gateway services.
 - VPC provides a logically isolated section of the AWS Cloud where you can define your own virtual network environment.
 - Multiple VPCs can coexist within a single AWS region, with a soft limit of 5 VPCs per region.
+
+## By default
+- Each VPC has a default route table called the main route table.
 
 ## Domain Model
 ![VPC Domain Model](../uml/004-vpc/vpc-domain-model.svg)
@@ -21,8 +28,14 @@ is adding gateway services.
 
 
 ## Subnet
-- The private subnets are accessible from Internet, from private VPN connection or from external network location because we have:
-  - Gateway Services 
-  - Route Tables
-defined in the VPC. 
+- The private subnets are accessible from:
+  - Internet
+  - private VPN connection
+  - from external network location\
+
+  because we have:
+    - Gateway Services 
+    - Route Tables
+
+  defined in the VPC. 
 
