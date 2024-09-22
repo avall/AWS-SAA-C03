@@ -16,7 +16,7 @@
 - The default VPC range falls within the private address space (172.16.0.0/12)
 - Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses.
 - Each VPC has a default route table called **the main route table** that provides local routing throughout each VPC.
-  It (**the main route table**) is associated with every subnet ([Subnet](#Subnet) ) in the VPC, but we can create custom route tables.
+  It (**the main route table**) is associated with every subnet ([Subnet](#Subnet)) in the VPC, but we can create custom route tables.
 - New EC2 instances are launched **_into the default VPC_** if no subnet is specified.
 - We also get a public and a private IPv4 DNS names.
 
@@ -38,6 +38,8 @@ The CIDR block size for each VPC should be in the range between:
 ## Subnet
 - A **subnet** is a **range of IP addresses** in your VPC. A subnet must reside in a single **Availability Zone**.
   After you add subnets, you can deploy AWS resources in your VPC.
+- Every subnet in a VPC must be associated with a ([Route table](#Route-tables)) which controls the traffic routing for that subnet.
+  Multiple subnets can be associated and controlled with a single ([Route table](#Route-tables)) that is assigned to multiple subnets.
 - AWS reserves 5 IP addresses (first 4 & last 1) in each subnet. These 5 IP addresses are not available for use and can’t be assigned to an EC2 instance.
 if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP addresses are: 
   - 10.0.0.0 – Network Address
@@ -68,6 +70,7 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 - A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed. 
 Every subnet in a VPC must be associated with a route table which controls the traffic routing for that subnet. Each
 route in a table specifies a destination and a target, such as a specific gateway or instance.
+- Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
 - Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be 
 ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
 - The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point 

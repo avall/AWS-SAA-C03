@@ -28,6 +28,6 @@ VPC    "1" --- "0..n" AvZone : > covers
 AvZone "1" --- "0..n" Subnet : < belongs
 VPC    "1" -r-  "1" igw
 VPC    "1" -l-- "n" rt
-Subnet    "1" -l-- "1" rt
+Subnet    "n" -l-- "1" rt : > define routes\nfor multiple
 
 @enduml
