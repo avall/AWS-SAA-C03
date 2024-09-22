@@ -6,28 +6,74 @@
 
 ## Introduction
 - A VPC is an isolated network space where we can define logical public & private subnets across multiple availability zones in the same region.
-- The only way to access the VPC from: 
+  A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.
+- VPC provides a logically isolated section of the AWS Cloud where you can define your own virtual network environment.
+
+![VPC Overview](../images/vpc-001.svg)
+
+## By default
+- All new AWS accounts have a default VPC.
+- The default VPC range falls within the private address space (172.16.0.0/12)
+- Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses.
+- Each VPC has a default route table called **the main route table** that provides local routing throughout each VPC.
+  It (**the main route table**) is associated with every subnet ([Subnet](#Subnet) ) in the VPC, but we can create custom route tables.
+- New EC2 instances are launched **_into the default VPC_** if no subnet is specified.
+- We also get a public and a private IPv4 DNS names.
+
+## Domain Model
+- Each VPC is associated with a **CIDR (classless inter-domain routing) block**, defining its IPv4 address range.
+A **VPC can have** a maximum of **5 CIDR (classless inter-domain routing) blocks** associated with it.
+The CIDR block size for each VPC should be in the range between:
+  - /28 (16 IP addresses) = $`2^{(32 - 28)} = 2^4 = 16`$
+  - /16 (65536 IP addresses) = $`2^{(32 - 16)} = 2^16 = 65536`$
+- Multiple VPCs can coexist within a single AWS region, with a soft limit of 5 VPCs per region (can be increased).
+- It is crucial to ensure that the CIDR (classless inter-domain routing) range of our VPC does not overlap with other networks.
+- As VPCs are designed to be private, only specific IPv4 address ranges are allowed. These include:
+  - 10.0.0.0 – 10.255.255.255 (10.0.0.0/8) - **_big networks_**
+  - 172.16.0.0 – 172.31.255.255 (172.16.0.0/12) --- (16 = *fixed 0001*  0000) --- (31 = *fixed 0001*  1111) - **_default VPC networks_**
+  - 192.168.0.0 – 192.168.255.255 (192.168.0.0/16) - **_home networks_**
+
+![VPC Domain Model](../uml/004-vpc/vpc-domain-model.svg)
+
+## Subnet
+- A **subnet** is a **range of IP addresses** in your VPC. A subnet must reside in a single **Availability Zone**.
+  After you add subnets, you can deploy AWS resources in your VPC.
+- AWS reserves 5 IP addresses (first 4 & last 1) in each subnet. These 5 IP addresses are not available for use and can’t be assigned to an EC2 instance.
+if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP addresses are: 
+  - 10.0.0.0 – Network Address
+  - 10.0.0.1 – reserved by AWS for the VPC router
+  - 10.0.0.2 – reserved by AWS for mapping to Amazon-provided DNS
+  - 10.0.0.3 – reserved by AWS for future use
+  - 10.0.0.255 – Network Broadcast Address.AWS does not support broadcast in aVPC, therefore the address is reserved
+- Sample: if we need 29 IP addresses for EC2 instances:
+  - We can’t choose a subnet of size /27 ($`2^{(32 - 27)} = 2^5 = 32`$ IP addresses,$`32 – 5 = 27 < 29`$)
+  - We need to choose a subnet of size /26 ($`2^{(32 - 26)} = 2^6 = 64`$ IP addresses,$`64 – 5 = 59 > 29`$)
+
+## Internet Gateway
+- Allows resources (e.g., EC2 instances) in a VPC to connect to the Internet. Allows communication between instances in your VPC
+  and the internet. It serves as a gateway for internet-bound traffic, enabling instances within your VPC to connect to the internet 
+  or for the internet to reach your instances. To enable internet access, we must attach an Internet Gateway to our VPC.
+- Scales horizontally and it is highly available and redundant.
+- Must be created separately from a VPC.
+- Internet Gateways, on their own, do not allow Internet access... Route tables must be also edited!
+- One VPC can only be attached to one IGW and vice versa
+- The only way to access the VPC from:
   - Internet
   - Private VPN connection
   - External locations
 
   is adding gateway services.
-- VPC provides a logically isolated section of the AWS Cloud where you can define your own virtual network environment.
-- Multiple VPCs can coexist within a single AWS region, with a soft limit of 5 VPCs per region.
-
-## By default
-- Each VPC has a default route table called the main route table.
-
-## Domain Model
-![VPC Domain Model](../uml/004-vpc/vpc-domain-model.svg)
-
-## Internet Gateway
 
 ## Route tables
-- Each VPC has a default route table called the main route table.
+- A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed. 
+Every subnet in a VPC must be associated with a route table which controls the traffic routing for that subnet. Each
+route in a table specifies a destination and a target, such as a specific gateway or instance.
+- Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be 
+ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
+- The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point 
+to an Internet Gateway for internet-bound traffic.
 
-
-## Subnet
+## Considerations
 - The private subnets are accessible from:
   - Internet
   - private VPN connection

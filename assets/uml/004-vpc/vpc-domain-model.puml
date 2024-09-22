@@ -15,10 +15,19 @@ class "CIDR\n(Classless\nInter-Domai\nRouting)" as CIDR {
 class "Availability\nZone" as AvZone {
 }
 
-Region "1" ---> "5" VPC
-VPC    "1" ---> "5" CIDR
-CIDR   "1" -l--> "0..n" Subnet
-VPC    "1" ---> "0..n" AvZone : covers
-AvZone "1" ---> "0..n" Subnet : belongs
+class "Internet Gateway\n(IGW)" as igw {
+}
+
+class "Route table" as rt {
+}
+
+Region "1" --- "5" VPC
+VPC    "1" --- "5" CIDR
+CIDR   "1" -l-- "0..n" Subnet
+VPC    "1" --- "0..n" AvZone : > covers
+AvZone "1" --- "0..n" Subnet : < belongs
+VPC    "1" -r-  "1" igw
+VPC    "1" -l-- "n" rt
+Subnet    "1" -l-- "1" rt
 
 @enduml
