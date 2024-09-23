@@ -69,12 +69,14 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 ## Route tables
 - A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed. 
 Every subnet in a VPC must be associated with a route table which controls the traffic routing for that subnet. Each
-route in a table specifies a destination and a target, such as a specific gateway or instance.
+route in a table specifies a destination and a target, such as a specific gateway or instance. Use route tables to determine 
+where network traffic, from your subnet or gateway, is directed.
+- The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point
+  to an Internet Gateway for internet-bound traffic.
 - Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
 - Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be 
 ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
-- The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point 
-to an Internet Gateway for internet-bound traffic.
+- The main route table also defines the routing for all subnets that are not explicitly associated with any other custom route table
 
 ## Considerations
 - The private subnets are accessible from:
@@ -88,3 +90,13 @@ to an Internet Gateway for internet-bound traffic.
 
   defined in the VPC. 
 
+## Summary
+- To enable internet access for the instances (EC2) included in the public subnet(s), we must:
+  - Create an Internet Gateway. 
+  - Attach an Internet Gateway to our VPC.
+  - Create a custom route table or modify the main route table for our subnet(s).
+  - Add a route to the Internet Gateway (0.0.0.0/0) in the route table,
+    directing internet-bound traffic to the Internet Gateway.
+  - Associate the route table with the subnet(s) that need internet access.
+
+![VPC Overview](../images/vpc-002.svg)
