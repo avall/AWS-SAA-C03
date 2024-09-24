@@ -73,6 +73,15 @@ route in a table specifies a destination and a target, such as a specific gatewa
 where network traffic, from your subnet or gateway, is directed.
 - The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point
   to an Internet Gateway for internet-bound traffic.
+- The route table will use the most specific route that matches either IPv4 traffic or IPv6 traffic to determine how to route the traffic.\
+Sample of a **_route table_**:
+
+| Destination   | Target                | Description                                                                                                                                                                                                                                                                                                |
+|---------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10.0.0.0/16   | local                 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                                                                       |
+| 0.0.0.0/0     | igw-12345678901234567 | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0 --> Not 10.0.0.0/16 AND Not 172.31.0.0/16**) then is sent through **_target = IGW_** (AWS internet gateway). |
+| 172.31.0.0/16 | pcx-11223344556677889 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 172.31.0.0/16**) then is sent through **_target = peering connection_**.                                                                                |
+
 - Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
 - Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be 
 ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
