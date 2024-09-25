@@ -27,15 +27,15 @@ skinparam NoteShadowing false
 
 RegionGroup(region, "Region") {
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
-      PrivateSubnetGroup(subnet1, "Subnet A (private)") {
-        EC2Instance(ec21, "EC2", "")
-        EC2Instance(ec22, "EC2", "")
-        EC2Instance(ec23, "EC2", "")
+      PrivateSubnetGroup(subnet1, "Subnet A (private)") #cce1e3 {
+        EC2Instance(ec21, "EC2", "") #cce1e3
+        EC2Instance(ec22, "EC2", "") #cce1e3
+        EC2Instance(ec23, "EC2", "") #cce1e3
       }
-      PrivateSubnetGroup(subnet2, "Subnet B (private)") {
-        EC2Instance(ec2a, "EC2", "")
-        EC2Instance(ec2b, "EC2", "")
-        EC2Instance(ec2c, "EC2", "")
+      PrivateSubnetGroup(subnet2, "Subnet B (private)") #cce1e3 {
+        EC2Instance(ec2a, "EC2", "") #cce1e3
+        EC2Instance(ec2b, "EC2", "") #cce1e3
+        EC2Instance(ec2c, "EC2", "") #cce1e3
       }
       SecurityGroupGroup(security_group1, "Security Group 1") {
           note as s11 #white
