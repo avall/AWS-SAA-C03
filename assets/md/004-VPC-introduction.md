@@ -74,10 +74,29 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 
   is adding gateway services.
 
-## NAT Instance (Old component)
+## NAT (Network Address Translation) Instance (Old component)
+- It allows EC2 instances in private subnets to initiate outbound connections to the internet while
+  hiding their private IP addresses.
+- The NAT Instance must be launched in a public subnet. This ensures
+  that it has a route to the internet and can forward traffic from private
+  instances to the internet.
+- The NAT Instance must have an Elastic IP (EIP) attached to it. An Elastic IP provides a static, 
+  public IP address that remains associated with the NAT Instance even if it is stopped and restarted. 
+  This is crucial for ensuring consistent outbound connectivity.
+- Route Tables associated with private subnets must be configured to route
+  outbound traffic to the NAT Instance. This is achieved by adding a route
+  with the destination of 0.0.0.0/0 (all traffic) and the target as the NAT
+  Instance.
+
+- | Destination   | Target | Description                                                                                                                                                                                                                                                  |
+  |---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 10.0.0.0/16   | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                         |
+  | 0.0.0.0/0     | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0**) then is sent through **_target = NAT_** (AWS NAT instance). |
+
+
 ![VPC Overview](../images/vpc-003.svg)
 
-## NAT Gateway
+## NAT (Network Address Translation) Gateway
 ![VPC Overview](../images/vpc-004.svg)
 
 ## Route tables
