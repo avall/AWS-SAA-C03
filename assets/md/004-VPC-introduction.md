@@ -51,6 +51,14 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
   - We can’t choose a subnet of size /27 ($`2^{(32 - 27)} = 2^5 = 32`$ IP addresses,$`32 – 5 = 27 < 29`$)
   - We need to choose a subnet of size /26 ($`2^{(32 - 26)} = 2^6 = 64`$ IP addresses,$`64 – 5 = 59 > 29`$)
 
+### Public subnet
+- Auto-assign public IP address is enabled (EC2).
+- The traffic, in that subnet, can be routed to the Internet Gateway (through default route table rules).
+
+### Private subnet
+- Auto-assign public IP address is disabled (EC2).
+- The traffic, in that subnet, CANNOT be, directly, routed to the Internet Gateway.
+
 ## Internet Gateway
 - Allows resources (e.g., EC2 instances) in a VPC to connect to the Internet. Allows communication between instances in your VPC
   and the internet. It serves as a gateway for internet-bound traffic, enabling instances within your VPC to connect to the internet 
@@ -65,6 +73,12 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
   - External locations
 
   is adding gateway services.
+
+## NAT Instance (Old component)
+![VPC Overview](../images/vpc-003.svg)
+
+## NAT Gateway
+![VPC Overview](../images/vpc-004.svg)
 
 ## Route tables
 - A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed. 
@@ -107,5 +121,10 @@ ignored and it will remain unassigned if we do not associate it with any subnets
   - Add a route to the Internet Gateway (0.0.0.0/0) in the route table,
     directing internet-bound traffic to the Internet Gateway.
   - Associate the route table with the subnet(s) that need internet access.
+- NAT Gateway is a fully managed service by AWS, providing higher
+  bandwidth, high availability, and simplified administration for outbound
+  internet connectivity from private subnets. It is designed to be scalable and
+  removes the operational overhead associated with managing NAT Instances.
+
 
 ![VPC Overview](../images/vpc-002.svg)
