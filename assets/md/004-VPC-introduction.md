@@ -88,10 +88,10 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
   with the destination of 0.0.0.0/0 (all traffic) and the target as the NAT
   Instance.
 
-- | Destination   | Target | Description                                                                                                                                                                                                                                                  |
-  |---------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 10.0.0.0/16   | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                         |
-  | 0.0.0.0/0     | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0**) then is sent through **_target = NAT_** (AWS NAT instance). |
+- | Destination  | Target | Description                                                                                                                                                                                                                                                  |
+  |--------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 10.20.0.0/16 | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                         |
+  | 0.0.0.0/0    | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0**) then is sent through **_target = NAT_** (AWS NAT instance). |
 
 
 ![VPC Overview](../images/vpc-003.svg)
