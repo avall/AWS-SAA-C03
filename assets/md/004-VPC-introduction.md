@@ -41,22 +41,22 @@ The CIDR block size for each VPC should be in the range between:
 - Every subnet in a VPC must be associated with a ([Route table](#Route-tables)) which controls the traffic routing for that subnet.
   Multiple subnets can be associated and controlled with a single ([Route table](#Route-tables)) that is assigned to multiple subnets.
 - AWS reserves 5 IP addresses (first 4 & last 1) in each subnet. These 5 IP addresses are not available for use and can’t be assigned to an EC2 instance.
-if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP addresses are: 
-  - 10.0.0.0 – Network Address
-  - 10.0.0.1 – reserved by AWS for the VPC router
-  - 10.0.0.2 – reserved by AWS for mapping to Amazon-provided DNS
-  - 10.0.0.3 – reserved by AWS for future use
-  - 10.0.0.255 – Network Broadcast Address.AWS does not support broadcast in aVPC, therefore the address is reserved
+if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserved IP addresses are: 
+  - **_10.0.0.0_** – Network Address
+  - **_10.0.0.1_** – reserved by AWS for the VPC router
+  - **_10.0.0.2_** – reserved by AWS for mapping to Amazon-provided DNS
+  - **_10.0.0.3_** – reserved by AWS for future use
+  - **_10.0.0.255_** – Network Broadcast Address.AWS does not support broadcast in aVPC, therefore the address is reserved
 - Sample: if we need 29 IP addresses for EC2 instances:
   - We can’t choose a subnet of size /27 ($`2^{(32 - 27)} = 2^5 = 32`$ IP addresses,$`32 – 5 = 27 < 29`$)
   - We need to choose a subnet of size /26 ($`2^{(32 - 26)} = 2^6 = 64`$ IP addresses,$`64 – 5 = 59 > 29`$)
 
 ### Public subnet
-- Auto-assign public IP address is enabled (EC2).
+- Enabled (EC2) --> Auto-assign public IP address.
 - The traffic, in that subnet, can be routed to the Internet Gateway (through default route table rules).
 
 ### Private subnet
-- Auto-assign public IP address is disabled (EC2).
+- Disabled (EC2) --> Auto-assign public IP address.
 - The traffic, in that subnet, CANNOT be, directly, routed to the Internet Gateway.
 
 ## Internet Gateway
@@ -96,7 +96,7 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 - The main route table also defines the routing for all subnets that are not explicitly associated with any other custom route table
 
 ## NAT (Network Address Translation) Instance (Outdated Old component)
-- It allows EC2 instances in private subnets to initiate outbound connections to the internet while
+- It allows EC2 instances in private subnets to initiate, indirectly, outbound connections to the internet while
   hiding their private IP addresses.
 - The NAT Instance must be launched in a public subnet. This ensures
   that it has a route to the internet and can forward traffic from private
@@ -117,6 +117,18 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 ![VPC Overview](../images/vpc-003.svg)
 
 ## NAT (Network Address Translation) Gateway
+- Enables instances in a private subnet to access, indirectly, the Internet without exposing their private IP addresses.
+  - AWS-managed.
+  - higher bandwidth
+  - high availability
+  - no administration
+- NAT Gateway is resilient within a single Availability Zone. 
+- It is created in a specific Availability Zone, uses an Elastic IP.
+- We Must create multiple NAT Gateways in multiple AZs for fault-tolerance.
+- No Security Groups management is required.
+- 5 Gbps of bandwidth with automatic scaling up to 100 Gbps.
+- Pay per hour for usage and bandwidth
+
 ![VPC Overview](../images/vpc-004.svg)
 
 ## Considerations
@@ -145,6 +157,7 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 - NAT Gateway is a fully managed service by AWS, providing:
   - higher bandwidth 
   - high availability
+  - no administration required.
   - simplified administration for outbound
     internet connectivity from private subnets. 
 
