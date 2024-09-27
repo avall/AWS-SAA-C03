@@ -108,6 +108,15 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
   outbound traffic to the NAT Instance. This is achieved by adding a route
   with the destination of 0.0.0.0/0 (all traffic) and the target as the NAT
   Instance.
+- Internet traffic bandwidth depends on EC2 instance type.
+- Not highly available / resilient setup out of the box
+  - We need to create an ASG in multi-AZ + resilient user-data script
+- We  must manage Security Groups & rules:
+  - Inbound:
+    - Allow HTTP / HTTPS traffic coming from Private Subnets
+    - Allow SSH from your home network (access is provided through Internet Gateway)
+  - Outbound:
+    - Allow HTTP / HTTPS traffic to the Internet
 
 - | Destination  | Target | Description                                                                                                                                                                                                                                                  |
   |--------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -130,6 +139,17 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
 - Pay per hour for usage and bandwidth
 
 ![VPC Overview](../images/vpc-004.svg)
+
+|                      | NAT Gateway                                       | NAT Instance                                      |
+|----------------------|---------------------------------------------------|---------------------------------------------------|
+| Availability         | Highly available within AZ (create in another AZ) | Use a script to manage failover between instances |
+| Bandwidth            | Up to 100 Gbps                                    | Depends on EC2 instance type                      |
+| Maintenance          | Managed by AWS                                    | Managed by ours (e.g., software, OS patches, ...) |
+| Cost                 | Per hour & amount of data transferred.            | Per hour, EC2 instance type and size, + network $ |
+| Public IPv4          | YES                                               | YES                                               |
+| Private IPv4         | YES                                               | YES                                               |
+| Security Groups      | Not needed                                        | Needed                                            |
+| Use as Bastion Host? | No                                                | Yes                                               |
 
 ## Considerations
 - The private subnets are accessible from:
