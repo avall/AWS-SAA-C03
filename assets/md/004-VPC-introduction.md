@@ -74,7 +74,28 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
 
   is adding gateway services.
 
-## NAT (Network Address Translation) Instance (Old component)
+## Route tables
+- A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed.
+  Every subnet in a VPC must be associated with a route table which controls the traffic routing for that subnet. Each
+  route in a table specifies a destination and a target, such as a specific gateway or instance. Use route tables to determine
+  where network traffic, from your subnet or gateway, is directed.
+- The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point
+  to an Internet Gateway for internet-bound traffic.
+- The route table will use the most specific route that matches either IPv4 traffic or IPv6 traffic to determine how to route the traffic.\
+  Sample of a **_route table_**:
+
+| Destination   | Target                | Description                                                                                                                                                                                                                                                                                                |
+|---------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10.0.0.0/16   | local                 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                                                                       |
+| 0.0.0.0/0     | igw-12345678901234567 | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0 --> Not 10.0.0.0/16 AND Not 172.31.0.0/16**) then is sent through **_target = IGW_** (AWS internet gateway). |
+| 172.31.0.0/16 | pcx-11223344556677889 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 172.31.0.0/16**) then is sent through **_target = peering connection_**.                                                                                |
+
+- Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
+- Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be
+  ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
+- The main route table also defines the routing for all subnets that are not explicitly associated with any other custom route table
+
+## NAT (Network Address Translation) Instance (Outdated Old component)
 - It allows EC2 instances in private subnets to initiate outbound connections to the internet while
   hiding their private IP addresses.
 - The NAT Instance must be launched in a public subnet. This ensures
@@ -93,32 +114,10 @@ if CIDR (classless inter-domain routing) block 10.0.0.0/24, then reserved IP add
   | 10.20.0.0/16 | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                         |
   | 0.0.0.0/0    | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0**) then is sent through **_target = NAT_** (AWS NAT instance). |
 
-
 ![VPC Overview](../images/vpc-003.svg)
 
 ## NAT (Network Address Translation) Gateway
 ![VPC Overview](../images/vpc-004.svg)
-
-## Route tables
-- A Route Table is a set of rules, called routes, that are used to determine where network traffic is directed. 
-Every subnet in a VPC must be associated with a route table which controls the traffic routing for that subnet. Each
-route in a table specifies a destination and a target, such as a specific gateway or instance. Use route tables to determine 
-where network traffic, from your subnet or gateway, is directed.
-- The routes, in a route table, define how traffic is directed. For example, a default route (0.0.0.0/0) might point
-  to an Internet Gateway for internet-bound traffic.
-- The route table will use the most specific route that matches either IPv4 traffic or IPv6 traffic to determine how to route the traffic.\
-Sample of a **_route table_**:
-
-| Destination   | Target                | Description                                                                                                                                                                                                                                                                                                |
-|---------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 10.0.0.0/16   | local                 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                                                                       |
-| 0.0.0.0/0     | igw-12345678901234567 | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0 --> Not 10.0.0.0/16 AND Not 172.31.0.0/16**) then is sent through **_target = IGW_** (AWS internet gateway). |
-| 172.31.0.0/16 | pcx-11223344556677889 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 172.31.0.0/16**) then is sent through **_target = peering connection_**.                                                                                |
-
-- Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
-- Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be 
-ignored and it will remain unassigned if we do not associate it with any subnets within the VPC. The **_main route table_** can be modified.
-- The main route table also defines the routing for all subnets that are not explicitly associated with any other custom route table
 
 ## Considerations
 - The private subnets are accessible from:
@@ -140,10 +139,16 @@ ignored and it will remain unassigned if we do not associate it with any subnets
   - Add a route to the Internet Gateway (0.0.0.0/0) in the route table,
     directing internet-bound traffic to the Internet Gateway.
   - Associate the route table with the subnet(s) that need internet access.
-- NAT Gateway is a fully managed service by AWS, providing higher
-  bandwidth, high availability, and simplified administration for outbound
-  internet connectivity from private subnets. It is designed to be scalable and
-  removes the operational overhead associated with managing NAT Instances.
-
 
 ![VPC Overview](../images/vpc-002.svg)
+
+- NAT Gateway is a fully managed service by AWS, providing:
+  - higher bandwidth 
+  - high availability
+  - simplified administration for outbound
+    internet connectivity from private subnets. 
+
+  It is designed to be scalable and removes the operational overhead
+  associated with managing NAT Instances.
+
+![VPC Overview](../images/vpc-004.svg)
