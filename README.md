@@ -52,6 +52,7 @@
   - [Route Table](./assets/md/004-VPC-introduction.md#route-tables)
   - [NAT Instance](./assets/md/004-VPC-introduction.md#nat-instance)
   - [NAT Gateway](./assets/md/004-VPC-introduction.md#nat-gateway)
+  - [Comparing NAT Gateway and NAT Instance](./assets/md/004-VPC-introduction.md#comparing-nat-gateway--nat-instance)
   - [Considerations](./assets/md/004-VPC-introduction.md#considerations)
   - [Summary](./assets/md/004-VPC-introduction.md#summary)
 - [AWS-Elastic Load Balancer (ELB)](./assets/md/005-ElasticLoadBalancer.md)
