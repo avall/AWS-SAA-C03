@@ -179,6 +179,8 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
 | Security Groups      | Not needed                                        | Needed                                            |
 | Use as Bastion Host? | No                                                | Yes                                               |
 
+## Bastion hosts
+
 ## Considerations
 - The private subnets are accessible from:
   - Internet
