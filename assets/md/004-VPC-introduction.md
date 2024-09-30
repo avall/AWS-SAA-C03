@@ -12,13 +12,13 @@
 ![VPC Overview](../images/vpc-001.svg)
 
 ## By default
-- All new AWS accounts have a default VPC.
-- The default VPC range falls within the private address space (172.16.0.0/12)
-- Default VPC has Internet connectivity and all EC2 instances inside it have public IPv4 addresses.
+- All new AWS accounts have a **default VPC**.
+- The **default VPC** range falls within the private address space (172.16.0.0 / 12)
+- **Default VPC** has Internet connectivity and all EC2 instances inside it have public IPv4 addresses.
 - Each VPC has a default route table called **the main route table** that provides local routing throughout each VPC.
   It (**the main route table**) is associated with every subnet ([Subnet](#Subnet)) in the VPC, but we can create custom route tables.
 - New EC2 instances are launched **_into the default VPC_** if no subnet is specified.
-- We also get a public and a private IPv4 DNS names.
+- We also get a public and a private IPv4 **DNS names**.
 
 ## Domain Model
 - Each VPC is associated with a **CIDR (classless inter-domain routing) block**, defining its IPv4 address range.
@@ -84,11 +84,11 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
 - The route table will use the most specific route that matches either IPv4 traffic or IPv6 traffic to determine how to route the traffic.\
   Sample of a **_route table_**:
 
-| Destination     | Target                | Description                                                                                                                                                                                                                                                                                                |
-|-----------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 10.0.0.0 / 16   | local                 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                                                                       |
-| 0.0.0.0 / 0     | igw-12345678901234567 | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0 --> Not 10.0.0.0/16 AND Not 172.31.0.0/16**) then is sent through **_target = IGW_** (AWS internet gateway). |
-| 172.31.0.0 / 16 | pcx-11223344556677889 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 172.31.0.0/16**) then is sent through **_target = peering connection_**.                                                                                |
+| Destination     | Target                | Description                                                                                                                                                                                                                                                                                                      |
+|-----------------|-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10.0.0.0 / 16   | local                 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0 / 16**) then is sent through **_target = local_** network.                                                                                           |
+| 0.0.0.0 / 0     | igw-12345678901234567 | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0 / 0 --> Not 10.0.0.0 / 16 AND Not 172.31.0.0 / 16**) then is sent through **_target = IGW_** (AWS internet gateway). |
+| 172.31.0.0 / 16 | pcx-11223344556677889 | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 172.31.0.0 / 16**) then is sent through **_target = peering connection_**.                                                                                    |
 
 - Multiple ([Subnets](#Subnet)) can be associated and controlled with a single route table that is assigned to multiple ([Subnets](#Subnet)).
 - Each VPC has a default route table called **_the main route table_**. The **_main route table_** cannot be deleted but it can be
@@ -118,10 +118,10 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
   - Outbound:
     - Allow HTTP / HTTPS traffic to the Internet
 
-- | Destination    | Target | Description                                                                                                                                                                                                                                                  |
-  |----------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-  | 10.20.0.0 / 16 | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0/16**) then is sent through **_target = local_** network.                                         |
-  | 0.0.0.0 / 0    | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0**) then is sent through **_target = NAT_** (AWS NAT instance). |
+- | Destination    | Target | Description                                                                                                                                                                                                                                                    |
+  |----------------|--------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+  | 10.20.0.0 / 16 | local  | When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.0.0.0 / 16**) then is sent through **_target = local_** network.                                         |
+  | 0.0.0.0 / 0    | NAT    | This is the less specific route. When any component (service) **_from inside the subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0 / 0**) then is sent through **_target = NAT_** (AWS NAT instance). |
 
 ![VPC Overview](../images/vpc-003.svg)
 
@@ -142,11 +142,11 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
 
 ### Route tables
 
-| Public Subnet    |          |                                                                                                                                                                                                                                                                                                       |
-|------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Destination      | Target   | Description                                                                                                                                                                                                                                                                                                      |
-| 10.10.0.0 / 16   | local    | When any component (service) **_from inside the public subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.10.0.0/16**) then is sent through **_target = local_** network.                                                                                     |
-| 0.0.0.0 / 0      | IGW      | This is the less specific route. When any component (service) **_from inside the public subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0/0 --> Not 10.10.0.0/16**) then is sent through **_target = IGW_** (AWS internet gateway). |
+| Public Subnet    |          |                                                                                                                                                                                                                                                                                                  |
+|------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Destination      | Target   | Description                                                                                                                                                                                                                                                                                      |
+| 10.10.0.0 / 16   | local    | When any component (service) **_from inside the public subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 10.10.0.0 / 16**) then is sent through **_target = local_** network.                                                                   |
+| 0.0.0.0 / 0      | IGW      | This is the less specific route. When any component (service) **_from inside the public subnet_** (where table route is assigned) is demanding to connect to the ip-range (**destination = 0.0.0.0 / 0 --> Not 10.10.0.0 / 16**) then is sent through **_target = IGW_** (AWS internet gateway). |
 
 | Private Subnet 1a |           |                                                                                                                                                                                                                                                                                                       |
 |-------------------|-----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
