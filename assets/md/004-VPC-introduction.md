@@ -181,6 +181,10 @@ if CIDR (classless inter-domain routing) block **_10.0.0.0 / 24_**, then reserve
 | Use as Bastion Host? | No                                                  | Yes                                                 |
 
 ## Bastion hosts
+- A bastion host is an EC2 instance that acts as a secure gateway to access private instances within an AWS VPC (Virtual Private Cloud) environment. 
+It is a dedicated server that provides secure access to resources in the private network from outside the VPC. The bastion host is often referred 
+to as a jump host or jump server because it is used to jump from the internet into the private network.
+- 
 
 ## Considerations
 - The private subnets are accessible from:
