@@ -31,8 +31,8 @@ Client(client, "", "")
 RegionGroup(region, "Region") {
   VPCInternetGateway(vpc_gateway,"internet\ngateway","")
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
-      SecurityGroupGroup(security_group, "Security Group") {
-          PublicSubnetGroup(subnet) #cce3d4 {
+      PublicSubnetGroup(subnet) #cce3d4 {
+          SecurityGroupGroup(security_group, "Security Group")  #cce3d4 {
             EC2Instance(ec2, "EC2", "") #cce3d4
           }
       }
@@ -42,5 +42,6 @@ RegionGroup(region, "Region") {
 
 client <-l-> internet
 internet <-d-> vpc_gateway
-vpc_gateway <-l-> ec2
+vpc_gateway <-l-> subnet
+
 @enduml
