@@ -14,5 +14,5 @@ and new features aren’t available in every Region
 
 ## 0.3 Zones
 - Each availability zone (AZ) is one or more discrete data centers with redundant power, networking, and connectivity
-- They’re separate from each other, so that they’re isolated from disasters
+- They’re separate from each other (max 100km), so that they’re isolated from disasters
 - They’re connected with high bandwidth, ultra-low latency networking
