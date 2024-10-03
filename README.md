@@ -57,6 +57,8 @@
   - [Considerations](./assets/md/004-VPC-introduction.md#considerations)
   - [Summary](./assets/md/004-VPC-introduction.md#summary)
 - [AWS-Elastic Load Balancer (ELB)](./assets/md/005-ElasticLoadBalancer.md)
+  - [General knowledge](./assets/md/005-ElasticLoadBalancer.md#general-knowledge)
+  - [ELB Introduction](./assets/md/005-ElasticLoadBalancer.md#introduction-elb)
 - [DNS (Introduction)](./assets/md/006-DNS-Introduction.md)
 - [Route 53](./assets/md/007-Route-53.md)
 - [RDS, Aurora, Elasticcache](./assets/md/008-RDS-Aurora-Elasticcache.md)
