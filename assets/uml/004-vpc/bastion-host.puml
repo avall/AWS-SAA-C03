@@ -1,0 +1,61 @@
+@startuml
+
+!define AWSPuml https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v18.0/dist
+!include AWSPuml/AWSCommon.puml
+!include AWSPuml/AWSSimplified.puml
+!include AWSPuml/NetworkingContentDelivery/all.puml
+!include AWSPuml/Groups/all.puml
+!include AWSPuml/Storage/all.puml
+!include AWSPuml/Containers/all.puml
+!include AWSPuml/General/all.puml
+!include AWSPuml/ManagementGovernance/all.puml
+!include AWSPuml/SecurityIdentityCompliance/all.puml
+!include AWSPuml/Compute/all.puml
+!include AWSPuml/NetworkingContentDelivery/VPCInternetGateway.puml
+
+top to bottom direction
+'skinparam linetype ortho
+skinparam noteTextAlignment left
+skinparam NoteBackgroundColor lightyellow
+skinparam NoteShadowing true
+
+<style>
+  note {
+    MaximumWidth 450
+  }
+</style>
+
+Internet(internet, "", "")
+
+Client(client, "", "")
+RegionGroup(region, "Region") {
+  VPCInternetGateway(vpc_gateway,"internet\ngateway","")
+  VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
+      PublicSubnetGroup(subnet) #cce3d4 {
+          SecurityGroupGroup(security_group, "Security Group\nBastion Host SG")  #cce3d4 {
+            EC2Instance(ec2, "EC2\nBastion Host", "") #cce3d4
+          }
+      }
+      PrivateSubnetGroup(prsubnet) #cce1e3 {
+          SecurityGroupGroup(pr_security_group, "Security Group\nPrivate instances") #cce1e3 {
+            EC2Instance(pr_ec2_1, "EC2", "") #cce1e3
+            EC2Instance(pr_ec2_2, "EC2", "") #cce1e3
+            EC2Instance(pr_ec2_3, "EC2", "") #cce1e3
+          }
+      }
+      note top of security_group : <b>Security Group</b>\n.- allow inbound traffic on port 22 (SSH)\nfrom specific IP addresses\n(known range of addresses CIDR).\nThis ensures that only authorized connections\ncan access the Bastion Host.
+      note bottom of pr_security_group : <b>Security Group, private instances</b>\n.- allow security group of bastion host\n.- allow private IP of bastion host\nThis ensures that only connections from\nthe Bastion Host are allowed to access\nprivate instances.
+  }
+}
+
+pr_ec2_1 <-r[hidden]-> pr_ec2_2
+pr_ec2_2 <-r[hidden]-> pr_ec2_3
+client <-l-> internet
+internet <-d-> vpc_gateway
+vpc_gateway <-d-> subnet
+ec2 <-d-> pr_ec2_1 : <b><size:15> ssh
+ec2 <-d-> pr_ec2_2 : <b><size:15> ssh
+ec2 <-d-> pr_ec2_3 : <b><size:15> ssh
+
+
+@enduml
