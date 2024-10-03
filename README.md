@@ -57,6 +57,7 @@
   - [Considerations](./assets/md/004-VPC-introduction.md#considerations)
   - [Summary](./assets/md/004-VPC-introduction.md#summary)
 - [AWS-Elastic Load Balancer (ELB)](./assets/md/005-ElasticLoadBalancer.md)
+  - [Health check](./assets/md/005-ElasticLoadBalancer.md#load-balancers)
   - [General knowledge](./assets/md/005-ElasticLoadBalancer.md#general-knowledge)
   - [ELB Introduction](./assets/md/005-ElasticLoadBalancer.md#introduction-elb)
 - [DNS (Introduction)](./assets/md/006-DNS-Introduction.md)

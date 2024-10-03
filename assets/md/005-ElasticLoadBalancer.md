@@ -1,4 +1,8 @@
 * [Return to table of contents](../../README.md)
+# Pre-knowledge
+## Health checks
+- Health checks are used to ensure that the load balancer can handle
+
 # Load Balancer
 ## General knowledge
 - Load balancers optimize:

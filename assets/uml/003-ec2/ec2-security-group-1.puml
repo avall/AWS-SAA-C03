@@ -32,7 +32,7 @@ RegionGroup(region, "Region") {
   VPCInternetGateway(vpc_gateway,"internet\ngateway","")
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
       PublicSubnetGroup(subnet, "<color:#7AA116>Public subnet") #EAF3E9 {
-          SecurityGroupGroup(security_group, "Security Group")  #EAF3E9 {
+          SecurityGroupGroup(security_group, "<color:#ff0000>Security Group")  #EAF3E9 {
             EC2Instance(ec2, "EC2", "") #EAF3E9
           }
       }
