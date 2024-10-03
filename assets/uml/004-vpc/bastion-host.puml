@@ -31,16 +31,16 @@ Client(client, "", "")
 RegionGroup(region, "Region") {
   VPCInternetGateway(vpc_gateway,"internet\ngateway","")
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
-      PublicSubnetGroup(subnet) #cce3d4 {
-          SecurityGroupGroup(security_group, "Security Group\nBastion Host SG")  #cce3d4 {
-            EC2Instance(ec2, "EC2\nBastion Host", "") #cce3d4
+      PublicSubnetGroup(subnet, "<color:#7AA116>Public subnet") #EAF3E9 {
+          SecurityGroupGroup(security_group, "<color:#ff0000>Security Group\n<color:#ff0000>Bastion Host SG")  #EAF3E9 {
+            EC2Instance(ec2, "EC2\nBastion Host", "") #EAF3E9
           }
       }
-      PrivateSubnetGroup(prsubnet) #cce1e3 {
-          SecurityGroupGroup(pr_security_group, "Security Group\nPrivate instances") #cce1e3 {
-            EC2Instance(pr_ec2_1, "EC2", "") #cce1e3
-            EC2Instance(pr_ec2_2, "EC2", "") #cce1e3
-            EC2Instance(pr_ec2_3, "EC2", "") #cce1e3
+      PrivateSubnetGroup(prsubnet,"<color:#137EBA>Private subnet") #E9F2F9 {
+          SecurityGroupGroup(pr_security_group, "<color:#ff0000>Security Group\n<color:#ff0000>Private instances") #E9F2F9 {
+            EC2Instance(pr_ec2_1, "EC2", "") #E9F2F9
+            EC2Instance(pr_ec2_2, "EC2", "") #E9F2F9
+            EC2Instance(pr_ec2_3, "EC2", "") #E9F2F9
           }
       }
       note top of security_group : <b>Security Group</b>\n.- allow inbound traffic on port 22 (SSH)\nfrom specific IP addresses\n(known range of addresses CIDR).\nThis ensures that only authorized connections\ncan access the Bastion Host.

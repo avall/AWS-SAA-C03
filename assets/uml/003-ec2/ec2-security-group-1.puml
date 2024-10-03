@@ -31,9 +31,9 @@ Client(client, "", "")
 RegionGroup(region, "Region") {
   VPCInternetGateway(vpc_gateway,"internet\ngateway","")
   VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
-      PublicSubnetGroup(subnet) #cce3d4 {
-          SecurityGroupGroup(security_group, "Security Group")  #cce3d4 {
-            EC2Instance(ec2, "EC2", "") #cce3d4
+      PublicSubnetGroup(subnet, "<color:#7AA116>Public subnet") #EAF3E9 {
+          SecurityGroupGroup(security_group, "Security Group")  #EAF3E9 {
+            EC2Instance(ec2, "EC2", "") #EAF3E9
           }
       }
       note bottom of security_group : <b>Security Group</b>\ncontrol inbound & outbound traffic
