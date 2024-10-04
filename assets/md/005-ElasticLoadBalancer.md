@@ -72,17 +72,17 @@ traffic across multiple resources.
     you to automatically scale the number of instances based on demand. It
     dynamically adjusts the number of instances behind the load balancer to
     handle changes in traffic.
+    <br/><br/>
+  ![Auto Scaling groups](../uml/003-ec2/ec2-good-metrics-to-scale.svg)
 
-![Auto Scaling groups](../uml/003-ec2/ec2-good-metrics-to-scale.svg)
-
+    <br/>
   - **Health checks**: ELB regularly performs health checks on registered
     instances and routes traffic only to healthy instances. If an instance is
     unhealthy, ELB will automatically stop sending traffic to that instance
     until it passes the health check again.
-
-  
-  ![VPC Overview](../images/health-check.svg)
-  
+    <br/><br/>
+![VPC Overview](../images/health-check.svg)
+    <br/><br/>
   - **ELB supports SSL termination**, allowing it to handle HTTPS traffic. It
     also integrates with AWS Certificate Manager for easy management of
     SSL/TLS certificates. Network Load Balancer additionally provides source
