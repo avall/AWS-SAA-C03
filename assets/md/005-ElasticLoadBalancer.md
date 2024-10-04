@@ -23,7 +23,7 @@ it is removed from the target group and will not receive traffic until it is dee
   - managing failures.
   - providing centralized access points.
 
-- Features:
+- **_General Features_**:
   - **Spread load across multiple downstream instances**: distribute incoming
     traffic across multiple servers or EC2 instances. This ensures that no
     single server is overwhelmed and improves the overall performance and
@@ -63,3 +63,31 @@ in multiple Availability Zones (AZs).
 application traffic across Amazon EC2 instances, Amazon ECS containers, AWS Lambda functions & IP addresses.
 - ELB helps to ensure that your application is highly available and scalable by distributing incoming
 traffic across multiple resources.
+- _**ELB key features**_:
+  - **High Availability**: ELB is designed for high availability by distributing
+    traffic across multiple Availability Zones. If one zone becomes
+    unavailable, traffic is automatically routed to healthy instances in other
+    zones.
+  - **Automatic scaling**: ELB integrates with Auto Scaling Groups, allowing
+    you to automatically scale the number of instances based on demand. It
+    dynamically adjusts the number of instances behind the load balancer to
+    handle changes in traffic.
+
+![Auto Scaling groups](../uml/003-ec2/ec2-good-metrics-to-scale.svg)
+
+  - **Health checks**: ELB regularly performs health checks on registered
+    instances and routes traffic only to healthy instances. If an instance is
+    unhealthy, ELB will automatically stop sending traffic to that instance
+    until it passes the health check again.
+
+  
+  ![VPC Overview](../images/health-check.svg)
+  
+  - **ELB supports SSL termination**, allowing it to handle HTTPS traffic. It
+    also integrates with AWS Certificate Manager for easy management of
+    SSL/TLS certificates. Network Load Balancer additionally provides source
+    IP preservation, enabling applications that rely on the IP address of the
+    client.
+  - **ELB integrates with AWS CloudWatch**, providing metrics and logs to
+    monitor the performance and health of the load balancer. This includes
+    information on request rates, latency, and error rates.

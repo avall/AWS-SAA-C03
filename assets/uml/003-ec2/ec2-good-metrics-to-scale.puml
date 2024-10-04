@@ -21,7 +21,7 @@ skinparam NoteTextAlignment left
 
 <style>
 note {
-  MaximumWidth 500
+  MaximumWidth 400
 }
 </style>
 
@@ -45,6 +45,17 @@ note left of clw #lightyellow
 • **Request Count Per Target**: to make sure the number of requests per EC2 instances is stable
 • **Average Network In / Out** (if you’re application is network bound)
 • Any** custom metric** (that you push using CloudWatch)
+end note
+
+note right of clw #lightyellow
+  <b>Elastic Load Balancer (ELB)
+  .- <b>Distribute incoming traffic</b> across multiple servers or EC2 instances.
+  .- Provide a <b>single DNS entry</b> point for your application
+  .- Perform regular <b>health checks</b> to determine the status of each downstream instance
+  .- <b>Handle SSL termination</b> offloading the task of decrypting HTTPS traffic from the downstream instances.
+  .- Can enforce <b>session stickiness</b> by associating a user with a specific server based on a cookie or other session-related information.
+  .- <b>High Availability</b> across zones.
+  .- <b>Separate</b> public traffic from private traffic.
 end note
 
 users -d-> clw
