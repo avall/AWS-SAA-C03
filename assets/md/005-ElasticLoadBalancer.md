@@ -91,3 +91,18 @@ traffic across multiple resources.
   - **ELB integrates with AWS CloudWatch**, providing metrics and logs to
     monitor the performance and health of the load balancer. This includes
     information on request rates, latency, and error rates.
+
+
+- Types of Load Balancer: 
+  - **Application Load Balancer (ALB)**:
+  - **Network Load Balancer (NLB)**:
+  - **Gateway Load Balancer (GLB)**:
+  - **Classic Load Balancer (CLB)**:
+
+## Application Load Balancer (ALB)
+
+## Network Load Balancer (NLB)
+
+## Gateway Load Balancer (GLB)
+
+## Classic Load Balancer (CLB)
