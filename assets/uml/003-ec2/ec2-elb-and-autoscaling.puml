@@ -42,7 +42,7 @@ AutoScalingGroupGroup(asg1, "<color:#e67402>Auto Scaling Group") {
     EC2Instance(ec3, "EC2", "")
     EC2Instance(ec4, "EC2", "")
 
-    GenericGroup(dscout, "Scale out/in as needed") {
+    GenericGroup(dscout, "Scale out(+) / in(-) as needed") {
       EC2Instance(ec5, "EC2", "")
       EC2Instance(ec6, "EC2", "")
       EC2Instance(ec7, "EC2", "")
