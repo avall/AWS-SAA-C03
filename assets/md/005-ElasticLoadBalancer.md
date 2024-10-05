@@ -96,7 +96,9 @@ traffic across multiple resources.
 ## Types of Load Balancer
 ### Application Load Balancer (ALB)
 - it operates at the operation layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
-- 
+
+![VPC Overview](../images/alb.svg)
+
 ### Network Load Balancer (NLB)
 
 ### Gateway Load Balancer (GLB)
