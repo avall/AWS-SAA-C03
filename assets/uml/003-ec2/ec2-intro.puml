@@ -32,10 +32,10 @@ AWSCloudGroup(cloud)  {
     VPCGroup(vpc, "Virtual Private Cloud(VPC)\n(isolation capabilities)")  {
       AvailabilityZoneGroup(zone, "\t Availability Zone \t")  {
         ElasticBlockStoreVolume(ebs, "EBS\n(Elastic Block Storage)", "")
-        PublicSubnetGroup(subnet) #cce3d4 {
-          SecurityGroupGroup(security_group, "Security Group") #cce3d4 {
-              EC2Instance(ec2, "EC2\nIaaS\n(infra as a service)", "") #cce3d4
-              IdentityAccessManagementAddon(ec2key,"","") #cce3d4
+        PublicSubnetGroup(subnet, "<color:#7AA116>Public subnet") #EAF3E9 {
+          SecurityGroupGroup(security_group, "Security Group") #EAF3E9 {
+              EC2Instance(ec2, "EC2\nIaaS\n(infra as a service)", "") #EAF3E9
+              IdentityAccessManagementAddon(ec2key,"","") #EAF3E9
               ec2key -[hidden]r- ec2
           }
           note bottom of security_group : <b>Security Group</b>\ncontrol inbound & outbound traffic

@@ -48,7 +48,7 @@ note left of clw #lightyellow
 end note
 
 note right of clw #lightyellow
-  <b>Elastic Load Balancer (ELB)
+  <b>Application Load Balancer (ELB)
   .- <b>Distribute incoming traffic</b> across multiple servers or EC2 instances.
   .- Provide a <b>single DNS entry</b> point for your application
   .- Perform regular <b>health checks</b> to determine the status of each downstream instance
