@@ -93,16 +93,12 @@ traffic across multiple resources.
     information on request rates, latency, and error rates.
 
 
-- Types of Load Balancer: 
-  - **Application Load Balancer (ALB)**:
-  - **Network Load Balancer (NLB)**:
-  - **Gateway Load Balancer (GLB)**:
-  - **Classic Load Balancer (CLB)**:
+## Types of Load Balancer
+### Application Load Balancer (ALB)
+- it operates at the operation layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
+- 
+### Network Load Balancer (NLB)
 
-## Application Load Balancer (ALB)
+### Gateway Load Balancer (GLB)
 
-## Network Load Balancer (NLB)
-
-## Gateway Load Balancer (GLB)
-
-## Classic Load Balancer (CLB)
+### Classic Load Balancer (CLB)
