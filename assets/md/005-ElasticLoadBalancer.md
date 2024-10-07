@@ -106,11 +106,18 @@ traffic across multiple resources.
     hostname in the URL, query string parameters, and headers. This
     enables you to route traffic to different target groups based on specific
     conditions.
-  - integrates seamlessly with Amazon ECS (Elastic Container Service),
-    offering a port mapping feature that allows dynamic port redirection
-    within ECS.
+  - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
+    seamlessly with Amazon ECS (Elastic Container Service), offering a port mapping 
+    feature that allows dynamic port redirection within ECS.
 
 ![VPC Overview](../images/alb.svg)
+
+#### Architecture tip
+- To give external & internal users access to a private application (located in private subnet).
+  - If we stop the public side, the internal side is not affected.
+  - We don't mix Public & Private traffic. Better for security reasons.
+  - Save money because internal accesses are not spending money regarding internet traffic.
+
 
 ### Network Load Balancer (NLB)
 
