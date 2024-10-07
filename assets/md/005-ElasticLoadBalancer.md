@@ -118,7 +118,7 @@ traffic across multiple resources.
   - We don't mix Public & Private traffic. Better for security reasons.
   - Save money because internal accesses are not spending money regarding internet traffic.
 
-
+![VPC Overview](../images/alb-architecture-tip.svg)
 ### Network Load Balancer (NLB)
 
 ### Gateway Load Balancer (GLB)
