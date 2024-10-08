@@ -112,7 +112,7 @@ traffic across multiple resources.
 
 ![VPC Overview](../images/alb.svg)
 
-#### Architecture tip
+#### **Architecture tip**
 - To give external & internal users access to a private application (located in private subnet).
   - If we stop the public side, the internal side is not affected.
   - We don't mix Public & Private traffic. Better for security reasons.

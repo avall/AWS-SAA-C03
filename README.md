@@ -62,6 +62,7 @@
   - [ELB Introduction](./assets/md/005-ElasticLoadBalancer.md#introduction-elb)
   - [Types of Load Balancer](./assets/md/005-ElasticLoadBalancer.md#types-of-load-balancer)
     - [Application Load Balancer](./assets/md/005-ElasticLoadBalancer.md#application-load-balancer-alb)
+      - [Architectural Tip](./assets/md/005-ElasticLoadBalancer.md#architecture-tip)
     - [Network Load Balancer](./assets/md/005-ElasticLoadBalancer.md#network-load-balancer-nlb)
     - [Gateway Load Balancer](./assets/md/005-ElasticLoadBalancer.md#gateway-load-balancer-glb)
     - [Classic Load Balancer](./assets/md/005-ElasticLoadBalancer.md#classic-load-balancer-clb)
