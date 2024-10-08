@@ -96,6 +96,12 @@ traffic across multiple resources.
 ## Types of Load Balancer
 ### Application Load Balancer (ALB)
 - it operates at the **_application_** layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
+- it provides fixed hostname **_XXX.region.elb.amazonaws.com_**
+- When ordering an Application Load Balancer, we must choose **_IF_** the load balancer 
+  accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
+- The target service don't see the IP of the requester.
+  - The true IP of the client is inserted in the header X-Forwarded-For
+  - We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)
 - ALB supports:
   - routing to multiple applications on the same machine, making it well-
     suited for containerized applications where multiple services run on a
