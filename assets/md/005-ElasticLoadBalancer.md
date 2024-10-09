@@ -100,8 +100,8 @@ traffic across multiple resources.
 - When ordering an Application Load Balancer, we must choose **_IF_** the load balancer 
   accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
 - The target service don't see the IP of the requester.
-  - The true IP of the client is inserted in the header X-Forwarded-For
-  - We can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)
+  - The true IP of the client is inserted in the header **_X-Forwarded-For_**
+  - We can also get Port (**_X-Forwarded-Port_**) and proto (_**X-Forwarded-Proto**_)
 - ALB supports:
   - routing to multiple applications on the same machine, making it well-
     suited for containerized applications where multiple services run on a
