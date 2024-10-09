@@ -117,6 +117,10 @@ traffic across multiple resources.
   - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
     seamlessly with Amazon ECS (Elastic Container Service), offering a port mapping 
     feature that allows dynamic port redirection within ECS.
+#### **Load Balancer Security Group**
+  - Allow HTTP / HTTPS traffic coming from anywhere.
+#### **Service Security Group**
+  - Allow traffic only from the load balancer.
 
 ![VPC Overview](../images/alb-2.svg)
 
