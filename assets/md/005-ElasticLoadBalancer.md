@@ -99,22 +99,26 @@ traffic across multiple resources.
 - it provides fixed hostname **_XXX.region.elb.amazonaws.com_**
 - When ordering an Application Load Balancer, we must choose **_IF_** the load balancer 
   accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
+- Health checks are at the target group level
 - The target service don't see the IP of the requester.
   - The true IP of the client is inserted in the header **_X-Forwarded-For_**
   - We can also get Port (**_X-Forwarded-Port_**) and proto (_**X-Forwarded-Proto**_)
 - ALB supports:
+  - Load balancing to multiple HTTP applications across machines (target groups).
   - routing to multiple applications on the same machine, making it well-
     suited for containerized applications where multiple services run on a
     single host.
-  - Redirects, which can be useful for scenarios like redirecting HTTP traffic
-    to HTTPS for improved security.
   - Flexible routing based on various factors, including path in the URL,
     hostname in the URL, query string parameters, and headers. This
     enables you to route traffic to different target groups based on specific
     conditions.
+  - Redirects, which can be useful for scenarios like redirecting HTTP traffic
+    to HTTPS for improved security.
   - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
     seamlessly with Amazon ECS (Elastic Container Service), offering a port mapping 
     feature that allows dynamic port redirection within ECS.
+
+![VPC Overview](../images/alb-2.svg)
 
 ![VPC Overview](../images/alb.svg)
 
