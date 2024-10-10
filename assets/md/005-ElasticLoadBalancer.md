@@ -97,8 +97,11 @@ traffic across multiple resources.
 ### Application Load Balancer (ALB)
 - it operates at the **_application_** layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
 - it provides fixed hostname **_XXX.region.elb.amazonaws.com_**
-- When ordering an Application Load Balancer, we must choose **_IF_** the load balancer 
-  accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
+- When ordering an Application Load Balancer, we must choose:
+  - **_IF_** the load balancer 
+    accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
+  - The **_Availability Zones / Subnets_** where the ALB will operate. Remember that we assign Av.Zones to EC2 instances 
+    when we set the **_Subnet_** in the definition.
 - Health checks are at the target group level
 - The target service don't see the IP of the requester.
   - The true IP of the client is inserted in the header **_X-Forwarded-For_**
