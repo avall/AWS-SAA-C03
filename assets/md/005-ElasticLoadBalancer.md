@@ -1,7 +1,7 @@
 * [Return to table of contents](../../README.md)
 # Pre-knowledge
-## Health checks
-- Health checks are used to monitor the status of targets in a load balancer’s target group. 
+## Health check
+- Health check are used to monitor the status of targets in a load balancer’s target group. 
 Requests for online availability status are sent to registered targets at a configured interval 
 to verify that registered targets are available to serve traffic. If a target fails a health check, 
 it is removed from the target group and will not receive traffic until it is deemed healthy again.
@@ -10,6 +10,9 @@ it is removed from the target group and will not receive traffic until it is dee
   - If the response is not 200 (OK), then the instance is unhealthy.
 
 ![VPC Overview](../images/health-check.svg)
+
+## Target group
+- Target group is a set (group) of one or more registered destinations (services) that receive traffic.
 
 # Load Balancer
 ## General knowledge
