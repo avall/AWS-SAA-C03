@@ -105,10 +105,10 @@ traffic across multiple resources.
     accepts **_public inbound traffic (Internet-facing)_** or **_private inbound traffic (internal)_**
   - The **_Availability Zones / Subnets_** where the ALB will operate. Remember that we assign Av.Zones to EC2 instances 
     when we set the **_Subnet_** in the EC2 definition. Remember that each **_subnet_** is defined in a **_single availability zone_**, 
-- Health checks are at the target group level
+- **Health checks** are at the **target group level**
 - The target service don't see the IP of the requester.
   - The true IP of the client is inserted in the header **_X-Forwarded-For_**
-  - We can also get Port (**_X-Forwarded-Port_**) and proto (_**X-Forwarded-Proto**_)
+  - We can also get Port (**_X-Forwarded-Port_**) and the protocol (_**X-Forwarded-Proto**_)
 - ALB supports:
   - Load balancing to multiple HTTP applications across machines (target groups).
   - routing to multiple applications on the same machine, making it well-
@@ -139,6 +139,7 @@ traffic across multiple resources.
   - Save money because internal accesses are not spending money regarding internet traffic.
 
 ![VPC Overview](../images/alb-architecture-tip.svg)
+
 ### Network Load Balancer (NLB)
 
 ### Gateway Load Balancer (GLB)
