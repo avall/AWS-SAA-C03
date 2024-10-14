@@ -114,10 +114,13 @@ traffic across multiple resources.
   - routing to multiple applications on the same machine, making it well-
     suited for containerized applications where multiple services run on a
     single host.
-  - Flexible routing based on various factors, including path in the URL,
-    hostname in the URL, query string parameters, and headers. This
-    enables you to route traffic to different target groups based on specific
-    conditions.
+  - Flexible routing based on various factors, including:
+    - path in the URL.
+    - hostname in the URL.
+    - query string parameters.
+    - headers ( **_host-header_**, **_HTTP-header_** ).
+    
+    This enables you to route traffic to different target groups based on specific conditions.
   - Redirects, which can be useful for scenarios like redirecting HTTP traffic
     to HTTPS for improved security.
   - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
