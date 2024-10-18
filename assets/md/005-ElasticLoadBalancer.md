@@ -126,10 +126,20 @@ traffic across multiple resources.
   - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
     seamlessly with Amazon ECS (Elastic Container Service), offering a port mapping 
     feature that allows dynamic port redirection within ECS.
-#### **Load Balancer Security Group**
+#### **Listener**
+  - It is a process that checks (listen) for connection requests, using the protocol and port that you configure.
+  - Each listener has a rule based on which an action is taken based on a request.
+
+| **Listener (protocol & port)** | **Rule**                           | **Action**                                         |
+|--------------------------------|------------------------------------|----------------------------------------------------|
+| http / 80                      | Check if `User-Agent` is Mozilla   | Forward To.                                        |
+| http / 80                      | Check if `Host` Header is demo.com | Redirect to.                                       |
+| http / 80                      | Check if path is `/videos`         | Fixed response. `200` & `Content-Type: Text/plain` |
+
+#### **Application Load Balancer Security Group**
   - Allow HTTP / HTTPS traffic coming from anywhere.
 #### **Service Security Group**
-  - Allow traffic only from the load balancer.
+  - Allow traffic only from the application load balancer.
 
 ![VPC Overview](../images/alb-2.svg)
 

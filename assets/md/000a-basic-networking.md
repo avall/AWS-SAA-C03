@@ -41,3 +41,19 @@
 
 ## 0a.4 Private vs Public IP
 ![](../uml/000a-basic-networking/private-vs-public.svg)
+
+## What is IPv6 ?
+- IPv4 was designed to provide $`2^32`$ unique IP addresses.
+More or less `4,294,967,296` IP addresses can be assigned 
+to a single machine. They’ll be exhausted soon 
+- IPv6 is designed to provide $`2^{128}`$ unique IP addresses.
+- Every IPv6 address in AWS is public and Internet-routable (**_no private range_**).
+- Format ---> `x . x . x . x . x . x . x . x` (`x` is hexadecimal & the range of every `x` can be from `0000` to `ffff`)
+Every `x` is **_16_** bits long. `ffff` means `65535` --> `(f)1111 (f)1111 (f)1111 (f)1111`. `f` is `16` in decimal.
+- Samples:
+  - 2001:db8:3333:4444:5555:6666:7777:8888
+  - 2001:db8:3333:4444:cccc:dddd:eeee:ffff
+  - :: --> all 8 segments are zero
+  - 2001:db8:: --> the last 6 segments are zero
+  - ::1234:5678 --> the first 6 segments are zero 
+  - 2001:db8::1234:5678 --> the middle 4 segments are zero
