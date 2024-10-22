@@ -64,6 +64,7 @@
   - [General knowledge](./assets/md/005-ElasticLoadBalancer.md#general-knowledge)
   - [ELB Introduction](./assets/md/005-ElasticLoadBalancer.md#introduction-elb)
   - [Listeners](./assets/md/005-ElasticLoadBalancer.md#listener)
+  - [Cross-zone load balancing](./assets/md/005-ElasticLoadBalancer.md#cross-zone-load-balancing)
   - [Types of Load Balancer](./assets/md/005-ElasticLoadBalancer.md#types-of-load-balancer)
     - [Application Load Balancer](./assets/md/005-ElasticLoadBalancer.md#application-load-balancer-alb)
       - [Load Balancer Security Group](./assets/md/005-ElasticLoadBalancer.md#load-balancer-security-group)

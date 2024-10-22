@@ -107,9 +107,26 @@ traffic across multiple resources.
 
 ![Listener](../images/elb-listener.svg)
 
+## Cross Zone Load Balancing
+- it may increase data transfer costs between
+  instances in different AZs (Network Load Balancer - NLB).
+- Enabled by default in Application Load Balancer (ALB)
+- Disabled by default in Network Load Balancer (NLB)
+
+### Enabled
+![](../images/elb-cross-zone-load-balancing-enabled.svg)
+
+### Disabled
+![](../images/elb-cross-zone-load-balancing-disabled.svg)
+
+
 ## Types of Load Balancer
 ### Application Load Balancer (ALB)
 - it operates at the **_application_** layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
+
+![OSI Layers](../images/osi.svg)
+
+
 - it provides fixed hostname **_XXX.region.elb.amazonaws.com_**
 - When ordering an Application Load Balancer, we must choose:
   - **_IF_** the load balancer 
@@ -117,6 +134,7 @@ traffic across multiple resources.
   - The **_Availability Zones / Subnets_** where the ALB will operate. Remember that we assign Av.Zones to EC2 instances 
     when we set the **_Subnet_** in the EC2 definition. Remember that each **_subnet_** is defined in a **_single availability zone_**, 
 - **Health checks** are at the **target group level**
+- Cross-zone load balancing is enabled by default. No charges for inter AZ data traffic.
 - The target service don't see the IP of the requester.
   - The true IP of the client is inserted in the header **_X-Forwarded-For_**
   - We can also get Port (**_X-Forwarded-Port_**) and the protocol (_**X-Forwarded-Proto**_)
@@ -156,6 +174,11 @@ traffic across multiple resources.
 ![VPC Overview](../images/alb-architecture-tip.svg)
 
 ### Network Load Balancer (NLB)
+- Network Load Balancer operates on the 4th layer of the OSI model.
+- Cross-zone load balancing is disabled by default. We pay charges for inter AZ data traffic (if enabled).
+
+
+
 
 ### Gateway Load Balancer (GLB)
 
