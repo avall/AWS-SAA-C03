@@ -22,7 +22,7 @@ it is removed from the target group and will not receive traffic until it is dee
   potentially leading to uneven utilization of resources.
 - Sticky Session works for Classic Load Balancer (CLB), Application Load Balancer (ALB) & 
   Network Load Balancer (NLB).
-- For both CLB & ALB, the “cookie” used for stickiness has an expiration date that we control
+- For both **CLB** & **ALB**, the “cookie” used for stickiness has an expiration date that we control
 
 ### With sticky sessions
 ![](../images/with-sticky-sessions.svg)
@@ -151,6 +151,13 @@ traffic across multiple resources.
   instances in different AZs (Network Load Balancer - NLB).
 - Enabled by default in Application Load Balancer (ALB)
 - Disabled by default in Network Load Balancer (NLB)
+
+| **ELB** | **Cross Zone enabled by default**           | **Charges inter AZ data** |
+|---------|---------------------------------------------|---------------------------|
+| ALB     | Yes (can be disabled at Target Group level) | No                        |
+| CLB     | No                                          | No                        |
+| NLB     | No                                          | Yes                       |
+
 
 ### Enabled
 ![](../images/elb-cross-zone-load-balancing-enabled.svg)
