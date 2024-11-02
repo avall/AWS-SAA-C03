@@ -86,15 +86,15 @@ it is removed from the target group and will not receive traffic until it is dee
     checks to determine the status of each downstream instance. If an
     instance is found to be unhealthy, the load balancer can take it out of
     rotation, preventing it from receiving traffic until it is healthy again.
-  - **Provide SSL Termination (HTTPS) for your websites**: load balancers can
-    handle SSL termination, offloading the task of decrypting HTTPS traffic
+  - <span id="provide-ssl-termination">**Provide SSL Termination (HTTPS) for your websites**:</span>
+    load balancers can handle SSL termination, offloading the task of decrypting HTTPS traffic
     from the downstream instances. This helps in reducing the
     computational load on the instances, improving overall performance.
-  - **Enforce stickiness with cookies**: can enforce session stickiness by
+  - <span id="enforce-stickiness-with-cookies">**Enforce stickiness with cookies**:</span>  can enforce session stickiness by
     associating a user with a specific server based on a cookie or other
     session-related information. This ensures that subsequent requests from
     the same user are directed to the same backend server, maintaining
-    session state.
+    session state. [Sticky Session](#sticky-sessions)
   - **High Availability across zones**: load balancers can be configured to
     operate across multiple Availability Zones (AZs). This enhances the high
     availability of your application by distributing traffic across
@@ -228,7 +228,7 @@ traffic across multiple resources.
 
 ## Types of Load Balancer
 ### Application Load Balancer (ALB)
-- it operates at the **_application_** layer that it is the 7th layer of the OSI (Open Systems Interconnection) model.
+- it operates at the **_application_** layer that it is the 7th layer (application) of the OSI (Open Systems Interconnection) model.
 
 ![OSI Layers](../images/osi.svg)
 
@@ -241,6 +241,7 @@ traffic across multiple resources.
     when we set the **_Subnet_** in the EC2 definition. Remember that each **_subnet_** is defined in a **_single availability zone_**, 
 - **Health checks** are at the **target group level**
 - Cross-zone load balancing is enabled by default. No charges for inter AZ data traffic.
+- ALB uses either **_round-robin_** or a **_least-available-request_** algorithm for target- ing registered EC2 instances.
 - The target service don't see the IP of the requester.
   - The true IP of the client is inserted in the header **_X-Forwarded-For_**
   - We can also get Port (**_X-Forwarded-Port_**) and the protocol (_**X-Forwarded-Proto**_)
@@ -263,15 +264,18 @@ traffic across multiple resources.
     feature that allows dynamic port redirection within ECS.
   - Server Name Indication (SNI) enables you to secure multiple websites using a
     single secure listener.
+  - IPv4 and IPv6 for **_Internet-facing_** load balancers; for internal load balancers, it supports only IPv4.
+  - Amazon Cognito integration to provide end-user authentication.
+  - [TLS / SSL Termination](#provide-ssl-termination)
 
 #### **Application Load Balancer Security Group**
   - Allow HTTP / HTTPS traffic coming from anywhere.
 #### **Service Security Group**
   - Allow traffic only from the application load balancer.
 
-![VPC Overview](../images/alb-2.svg)
+![](../images/alb-2.svg)
 
-![VPC Overview](../images/alb.svg)
+![](../images/alb.svg)
 
 #### **Architecture tip**
 - To give external & internal users access to a private application (located in private subnet).
@@ -279,15 +283,45 @@ traffic across multiple resources.
   - We don't mix Public & Private traffic. Better for security reasons.
   - Save money because internal accesses are not spending money regarding internet traffic.
 
-![VPC Overview](../images/alb-architecture-tip.svg)
+![](../images/alb-architecture-tip.svg)
 
 ### Network Load Balancer (NLB)
-- Network Load Balancer operates on the 4th layer (transport) of the OSI (Open Systems Interconnection) model.
+- Network Load Balancer provides TCP and UDP load balancing at the 4th layer (transport) of the OSI (Open Systems Interconnection) model.
 
 ![OSI Layers](../images/osi.svg)
 
+- Forward TCP & UDP traffic to your instances.
+
+![](../images/nlb-1.svg)
 - Cross-zone load balancing is disabled by default. We pay charges for inter AZ data traffic (if enabled).
-- Server Name Indication (SNI): Serves multiple websites using a single TLS listener.
+- NLB uses a flow-based algorithm to distribute traffic to the targets in a target group. This means it distributes
+  traffic based on the number of connections rather than on the amount of data transferred.
+- NLB can scale to handle millions of requests per second at very low latencies (~ 100ms).
+- For use cases such as gaming applications, financial systems.
+
+#### Target groups
+
+
+#### NLB features:
+  - Health Checks support the TCP, HTTP and HTTPS Protocols.
+  - Server Name Indication (SNI): Serves multiple websites using a single TLS listener.
+  - TLS offloading: Client TLS session termination is supported, allowing TLS termination tasks to be carried out by the load balancer.
+    [TLS / SSL Termination](#provide-ssl-termination)
+  - [Sticky Sessions](#sticky-sessions) can be defined per target session.
+  - **_Preserve client-side source IP address_**: Backend servers can see the IP address of the client.
+  - **_Static IP address_**: Has one static IP address per AZ.
+  - **_EIP support:_** An Elastic IP address can be assigned for each AZ. This is useful for scenarios where whitelisting specific IP addresses is required
+  - **_DNS fail-over_**: If there are no healthy targets available, Route 53 directs traffic to load balancer nodes in other AZs.
+  - **_Route 53 integration_**: Route 53 can route traffic to an alternate NLB in another AWS region.
+  - **_Zonal isolation_**: The NLB can be enabled in a single AZ, supporting applications that require zonal isolation.
+#### NLB supports:
+  - Load balancing applications hosted at AWS & on premises using IPv4/IPv6 addresses.
+  - Connections across **peered VPCs** in **different AWS regions**.
+  - Long-running connections, which are ideal for **_WebSocket_** applications.
+  - Failover across AWS regions, using **Route 53** health checks.
+  - Preserving the source IP addresses of the clients that are connecting.
+  - “end-to-end security” with TLS termination performed by the NLB. [TLS / SSL Termination](#provide-ssl-termination)
+
 
 
 
