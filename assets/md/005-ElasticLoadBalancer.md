@@ -11,6 +11,14 @@ it is removed from the target group and will not receive traffic until it is dee
 
 ![VPC Overview](../images/health-check.svg)
 
+## Introduction SSL-TLS
+- Load balancers on AWS use `X.509` certificates for SSL/TLS encryption. These
+  certificates are essential for securing the communication between clients
+  and the load balancer. An `SSL Certificate` allows traffic between our clients and our load balancer
+  to be encrypted in transit (in-flight encryption).
+
+![](../images/elb-certificates.svg)
+
 ## Sticky sessions
 - Use case: make sure the user doesn’t lose his session data.
 - Sticky sessions are used to ensure that a user's session is always directed to the same backend server.
@@ -134,6 +142,37 @@ traffic across multiple resources.
     monitor the performance and health of the load balancer. This includes
     information on request rates, latency, and error rates.
 
+## SSL-TLS
+- We can use ACM (AWS Certificate Manager) to provision, manage, and deploy SSL/TLS certificates for
+  your load balancers. Alternatively, we have the option to upload our own
+  SSL/TLS certificates if they are not managed through ACM; this provides
+  flexibility for using certificates obtained from other sources.
+- | **ELB** | **Number of SSL/TLS certificates** | **SNI (Server Name Indication)**                                       |
+  |---------|------------------------------------|------------------------------------------------------------------------|
+  | CLB     | 1                                  | No (must use `N` CLBs for `N` hostnames with `N` SSL/TLS certificates) |
+  | ALB     | 1 .. 25                            | Yes                                                                    |
+  | NLB     | 1 .. 25                            | Yes                                                                    |
+- When configuring an HTTPS listener on a load balancer:
+  - we must specify a default certificate. This certificate is used when the client does not support
+    Server Name Indication (SNI) or when the SNI request does not match any of
+    the specified certificates.
+  - Clients can use SNI to specify the hostname they are trying to reach.
+  - SNI allows multiple SSL/TLS certificates (to support multiple domains) to be associated with a single IP address,
+    enabling the load balancer to determine the correct certificate to present based on
+    the requested hostname.
+  - Ability to specify a security policy to support older versions of SSL /TLS (legacy clients)
+
+### Server Name Indication (SNI)
+- Server Name Indication (SNI) enables the load balancer to determine the correct certificate to present based on the requested hostname.
+- It is a mechanism that allows a load balancer to identify the correct certificate to use based on the requested hostname.
+- Application load balancers support hosting multiple certificates per ALB, enabling multiple websites 
+  with separate domains to be hosted by a single ALB. Up to 25 certificates can be attached per ALB. 
+  SNI enables the assignment of the correct SSL/TLS certificate 
+  to the associated server. The ALB sends the website’s or domain’s public key to the end user to establish 
+  a secure connection with the load balancer.
+
+![](../images/sni.svg)
+
 ## **Listener**
 - It is a process that checks (listen) for connection requests, using the protocol and port that you configure.
 - Each listener has a rule based on which an action is taken based on a request.
@@ -222,6 +261,8 @@ traffic across multiple resources.
   - Has a port mapping feature to redirect to a dynamic port in ECS. Integrates 
     seamlessly with Amazon ECS (Elastic Container Service), offering a port mapping 
     feature that allows dynamic port redirection within ECS.
+  - Server Name Indication (SNI) enables you to secure multiple websites using a
+    single secure listener.
 
 #### **Application Load Balancer Security Group**
   - Allow HTTP / HTTPS traffic coming from anywhere.
@@ -241,9 +282,12 @@ traffic across multiple resources.
 ![VPC Overview](../images/alb-architecture-tip.svg)
 
 ### Network Load Balancer (NLB)
-- Network Load Balancer operates on the 4th layer of the OSI model.
-- Cross-zone load balancing is disabled by default. We pay charges for inter AZ data traffic (if enabled).
+- Network Load Balancer operates on the 4th layer (transport) of the OSI (Open Systems Interconnection) model.
 
+![OSI Layers](../images/osi.svg)
+
+- Cross-zone load balancing is disabled by default. We pay charges for inter AZ data traffic (if enabled).
+- Server Name Indication (SNI): Serves multiple websites using a single TLS listener.
 
 
 
