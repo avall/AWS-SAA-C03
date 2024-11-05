@@ -5,7 +5,7 @@
 - [CIDR — Classless Inter-Domain Routing](./003-ec2.md#34-cidr--classless-inter-domain-routing)
 
 ## Introduction
-- A VPC is an isolated network space where we can define logical public & private subnets across multiple availability zones in the same region.
+- A VPC is a logically isolated virtual network. A VPC is an isolated network space where we can define logical public & private subnets across multiple availability zones in the same region.
   A VPC is a virtual network that closely resembles a traditional network that you'd operate in your own data center.
 - VPC provides a logically isolated section of the AWS Cloud where you can define your own virtual network environment.
 
