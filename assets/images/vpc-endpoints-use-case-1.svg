@@ -25,8 +25,8 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.0690214"
-     inkscape:cx="422.81661"
-     inkscape:cy="375.57714"
+     inkscape:cx="376.04486"
+     inkscape:cy="371.8354"
      inkscape:window-width="2096"
      inkscape:window-height="1198"
      inkscape:window-x="1990"
@@ -800,7 +800,7 @@
          stroke="none"
          class="k s"
          id="tspan14-8-3-5"
-         style="font-size:17.9346px;fill:#4f0099;fill-opacity:1;stroke-width:3.1774">Provider VPC</tspan></tspan></text><text
+         style="font-size:17.9346px;fill:#4f0099;fill-opacity:1;stroke-width:3.1774">VPC-2</tspan></tspan></text><text
      xml:space="preserve"
      x="578.22076"
      y="142.77409"
@@ -818,9 +818,7 @@
          stroke="none"
          class="k s"
          id="tspan14-8-3-5-3"
-         style="font-size:13.3333px;fill:#4f0099;fill-opacity:1;stroke-width:3.1774"><tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Arial;-inkscape-font-specification:'Arial Bold'"
-   id="tspan12">another</tspan> AWS account</tspan></tspan></text><text
+         style="font-size:13.3333px;fill:#4f0099;fill-opacity:1;stroke-width:3.1774">same AWS account</tspan></tspan></text><text
      xml:space="preserve"
      x="580.25061"
      y="548.74884"
