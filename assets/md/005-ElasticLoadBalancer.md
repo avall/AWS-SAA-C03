@@ -301,6 +301,7 @@ traffic across multiple resources.
 
 #### Target groups
 
+![](../images/nlb-target-groups.svg)
 
 #### NLB features:
   - Health Checks support the TCP, HTTP and HTTPS Protocols.
@@ -309,8 +310,8 @@ traffic across multiple resources.
     [TLS / SSL Termination](#provide-ssl-termination)
   - [Sticky Sessions](#sticky-sessions) can be defined per target session.
   - **_Preserve client-side source IP address_**: Backend servers can see the IP address of the client.
-  - **_Static IP address_**: Has one static IP address per AZ.
-  - **_EIP support:_** An Elastic IP address can be assigned for each AZ. This is useful for scenarios where whitelisting specific IP addresses is required
+  - **_Static IP address_**: NLB provides one static IP address per AZ. ALB does not. So we can use it when we require a static IP for our LB.
+  - **_EIP support:_** It is the only ELB that supports EIP. An Elastic IP address can be assigned for each AZ. This is useful for scenarios where whitelisting specific IP addresses is required
   - **_DNS fail-over_**: If there are no healthy targets available, Route 53 directs traffic to load balancer nodes in other AZs.
   - **_Route 53 integration_**: Route 53 can route traffic to an alternate NLB in another AWS region.
   - **_Zonal isolation_**: The NLB can be enabled in a single AZ, supporting applications that require zonal isolation.
@@ -321,9 +322,33 @@ traffic across multiple resources.
   - Failover across AWS regions, using **Route 53** health checks.
   - Preserving the source IP addresses of the clients that are connecting.
   - “end-to-end security” with TLS termination performed by the NLB. [TLS / SSL Termination](#provide-ssl-termination)
+#### NLB is good when
+  - We need Layer 4 type of requests when using TCP / UDP ports or for non-HTTP protocols. For example, 
+    if you have many applications & they are defined with ports.
+  - We need low latency.
+  - We need a fixed IP (static IP) of the LB to use it with 3rd party DNS management tool to use it 
+    for A records where the ALB IP addresses change and can't be used for A records. 
+  - We need to preserve the client’s source IP address.
 
+#### Use cases
+- Imagine a massively multiplayer online game that requires low-latency connections for real-time gameplay. 
+The gaming company uses NLB to distribute incoming player connections across a fleet of game servers. NLB’s ability 
+to handle millions of concurrent TCP connections with low latency ensures smooth gameplay for users worldwide
+- Streaming Services: For managing video and audio streaming services with huge traffic volumes.
+- _**AWS PrivateLink**_ is a highly available, scalable technology that we can use to privately **_connect our VPC_** 
+  to services **_as if they were in our VPC_**. 
+  We do not need to use an internet gateway, NAT device, public IP address, AWS Direct Connect connection, or AWS Site-to-Site VPN connection 
+  to allow communication with the service from our private subnets. Therefore, we control the specific API endpoints, sites, and services that are reachable from our VPC.
+  - On the left has several EC2 instances in a private subnet and three interface VPC endpoints
+  - The top-most VPC endpoint connects to a service hosted by another AWS account. With one static IP per Availability Zone on NLB, you get full control over your IP addresses.
+    -  This enables various use cases as follows:
+       - Allow-listing of IP addresses for firewall rules.
+       - Pointing a DNS Zone apex to an application fronted by an ALB. Utilizing ALB as a target of NLB, a DNS A-record type can be used to resolve your zone apex to the NLB static IP addresses.
+       - When legacy clients cannot utilize DNS resulting in a need for hard-coded IP addresses. 
+  - The middle VPC endpoint connects to an AWS Marketplace partner service.
+  - The bottom VPC endpoint connects to a service hosted in a different VPC in the same AWS account.
 
-
+![](../images/vpc-endpoints-use-case-1.svg)
 
 ### Gateway Load Balancer (GLB)
 
