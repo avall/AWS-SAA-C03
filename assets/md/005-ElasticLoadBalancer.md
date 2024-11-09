@@ -352,4 +352,24 @@ to handle millions of concurrent TCP connections with low latency ensures smooth
 
 ### Gateway Load Balancer (GLB)
 
+![OSI Layers](../images/osi.svg)
+
+- OSI Layer 3
+  - operate bump-in-the-wire mode
+  - acting as `next-hop` gateway (handles routing traffic between different network segments, such as VPCs, subnets, or the internet)
+  - no packet rewrite.
+- OSI Layer 4 load balancer
+  - scaling
+  - stickiness
+  - health checks
+  - flow rerouting
+- All target groups must be in the same region.
+
+
+#### Target groups
+- private IP addresses.
+- EC2 instances
+
+![](../images/gwlb-001.svg)
+
 ### Classic Load Balancer (CLB)
