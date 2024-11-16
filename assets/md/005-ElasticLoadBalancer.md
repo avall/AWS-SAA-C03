@@ -228,7 +228,7 @@ traffic across multiple resources.
 
 ## Types of Load Balancer
 ### Application Load Balancer (ALB)
-- it operates at the **_application_** layer that it is the 7th layer (application) of the OSI (Open Systems Interconnection) model.
+- it operates at the **_application_** layer that it is the **_7th layer (application)_** of the OSI (Open Systems Interconnection) model.
 
 ![OSI Layers](../images/osi.svg)
 
@@ -286,7 +286,7 @@ traffic across multiple resources.
 ![](../images/alb-architecture-tip.svg)
 
 ### Network Load Balancer (NLB)
-- Network Load Balancer provides TCP and UDP load balancing at the 4th layer (transport) of the OSI (Open Systems Interconnection) model.
+- Network Load Balancer provides TCP and UDP load balancing at the **_4th layer (transport)_** of the OSI (Open Systems Interconnection) model.
 
 ![OSI Layers](../images/osi.svg)
 
@@ -355,8 +355,7 @@ to handle millions of concurrent TCP connections with low latency ensures smooth
 ![OSI Layers](../images/osi.svg)
 
 - OSI Layer 3
-  - operate bump-in-the-wire mode
-  - acting as `next-hop` gateway (handles routing traffic between different network segments, such as VPCs, subnets, or the internet)
+  - acting as `next-hop` gateway (handles routing traffic between different network segments, such as VPCs, subnets or the internet)
   - no packet rewrite.
 - OSI Layer 4 load balancer
   - scaling
@@ -364,6 +363,15 @@ to handle millions of concurrent TCP connections with low latency ensures smooth
   - health checks
   - flow rerouting
 - All target groups must be in the same region.
+- Benefits:
+  - auto-scalable
+  - fault-tolerant
+  - operate bump-in-the-wire mode.
+    A "bump in the wire" in communications refers to a device or system inserted into
+    a data transmission pathway to perform certain functions, typically without altering
+    the overall architecture of the system. The term emphasizes that the device is an additional,
+    often minimal, element in the communication flow, as if it's just a "bump" along the wire.
+    Keys: Transparent Operation, Minimal Intrusion, Inline Placement.
 
 
 #### Target groups
