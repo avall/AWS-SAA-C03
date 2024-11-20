@@ -2,4 +2,4 @@
 # DNS
 ## Introduction
 
-![](../images/dns-1.svg)
+![](../images/dns-intro.svg)
