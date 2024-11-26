@@ -9,11 +9,11 @@
    id="svg1"
    sodipodi:docname="dns-intro.svg"
    inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xml:space="preserve"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
      id="namedview1"
      pagecolor="#ffffff"
      bordercolor="#000000"
@@ -24,17 +24,15 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.89887065"
-     inkscape:cx="312.6145"
-     inkscape:cy="354.88977"
+     inkscape:cx="282.02056"
+     inkscape:cy="305.38321"
      inkscape:window-width="1536"
-     inkscape:window-height="1137"
-     inkscape:window-x="2347"
-     inkscape:window-y="25"
+     inkscape:window-height="998"
+     inkscape:window-x="1920"
+     inkscape:window-y="361"
      inkscape:window-maximized="0"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs1">
-    <marker
+     inkscape:current-layer="layer1" /><defs
+     id="defs1"><marker
        style="overflow:visible"
        id="RoundedArrow-7-9-4-82"
        refX="0"
@@ -46,16 +44,13 @@
        viewBox="0 0 1 1"
        inkscape:isstock="true"
        inkscape:collect="always"
-       preserveAspectRatio="xMidYMid">
-      <path
+       preserveAspectRatio="xMidYMid"><path
          transform="scale(0.7)"
          d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
-         id="path8-0-4-3-0" />
-    </marker>
-    <marker
+         id="path8-0-4-3-0" /></marker><marker
        style="overflow:visible"
-       id="RoundedArrow-7-9-4-82-1"
+       id="RoundedArrow-7-9-4-82-5"
        refX="0"
        refY="0"
        orient="auto-start-reverse"
@@ -65,38 +60,14 @@
        viewBox="0 0 1 1"
        inkscape:isstock="true"
        inkscape:collect="always"
-       preserveAspectRatio="xMidYMid">
-      <path
+       preserveAspectRatio="xMidYMid"><path
          transform="scale(0.7)"
          d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
          style="fill:context-stroke;fill-rule:evenodd;stroke:none"
-         id="path8-0-4-3-0-0" />
-    </marker>
-    <marker
-       style="overflow:visible"
-       id="RoundedArrow-3-0-4"
-       refX="0"
-       refY="0"
-       orient="auto-start-reverse"
-       inkscape:stockid="Rounded arrow"
-       markerWidth="3"
-       markerHeight="3"
-       viewBox="0 0 1 1"
-       inkscape:isstock="true"
-       inkscape:collect="always"
-       preserveAspectRatio="xMidYMid">
-      <path
-         transform="scale(0.7)"
-         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
-         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
-         id="path8-8-4-8" />
-    </marker>
-  </defs>
-  <g
+         id="path8-0-4-3-0-4" /></marker></defs><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
-    <text
+     id="layer1"><text
        xml:space="preserve"
        style="font-weight:bold;font-size:6.35px;line-height:5.62674px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#000006;fill-opacity:0.597826;stroke:#010000;stroke-width:0"
        x="67.194496"
@@ -112,8 +83,7 @@
    style="fill:#00b806;fill-opacity:0.93"
    id="tspan9">leadmgm</tspan>.<tspan
    style="fill:#ff6029;fill-opacity:0.75;stroke:#000000;stroke-opacity:1"
-   id="tspan5">com</tspan></tspan></text>
-    <text
+   id="tspan5">com</tspan></tspan></text><text
        xml:space="preserve"
        style="font-weight:bold;font-size:4.93889px;line-height:4.37634px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#007bff;fill-opacity:0.630435;stroke:#000000;stroke-width:0;stroke-opacity:1"
        x="4.9610519"
@@ -133,8 +103,7 @@
          style="font-size:4.93889px;line-height:4.37634px;fill:#007bff;fill-opacity:0.630435;stroke-width:0"
          x="4.9610519"
          y="17.014448"
-         id="tspan7">subdomain</tspan></text>
-    <text
+         id="tspan7">subdomain</tspan></text><text
        xml:space="preserve"
        style="font-weight:bold;font-size:4.93889px;line-height:4.37634px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#00b800;fill-opacity:0.927536;stroke:#000000;stroke-width:0;stroke-opacity:1"
        x="93.171005"
@@ -149,8 +118,7 @@
          style="font-size:4.93889px;line-height:4.37634px;fill:#00b800;fill-opacity:0.927536;stroke-width:0"
          x="93.171005"
          y="33.44524"
-         id="tspan7-9">second level domain</tspan></text>
-    <text
+         id="tspan7-9">second level domain</tspan></text><text
        xml:space="preserve"
        style="font-weight:bold;font-size:4.93889px;line-height:4.37634px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#ff6029;fill-opacity:0.746377;stroke:#000000;stroke-width:0;stroke-opacity:1"
        x="165.05237"
@@ -170,24 +138,25 @@
          style="font-size:4.93889px;line-height:4.37634px;fill:#ff6029;fill-opacity:0.746377;stroke-width:0"
          x="165.05237"
          y="16.562284"
-         id="tspan7-3">subdomain</tspan></text>
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#007bff;stroke-width:0.13;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.63;marker-end:url(#RoundedArrow-7-9-4-82)"
-       d="m 50.58215,11.283292 11.356787,0.08749"
-       id="path6-4-7"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ff6029;stroke-width:0.13;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.75;marker-start:url(#RoundedArrow-7-9-4-82-1)"
-       d="m 148.9612,11.13001 11.35679,0.08749"
-       id="path6-4-7-0"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#00b800;stroke-width:0.13;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.93;marker-start:url(#RoundedArrow-3-0-4)"
-       d="m 115.53221,17.987754 -0.0876,9.720111"
-       id="path9-3-0-5"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
-  </g>
-</svg>
+         id="tspan7-3">subdomain</tspan></text><rect
+       style="fill:#00b800;fill-opacity:0.93;stroke:#00b800;stroke-width:0.204736;stroke-dasharray:none;stroke-opacity:0.93;marker-start:url(#RoundedArrow-7-9-4-82)"
+       id="rect50269"
+       width="10.256599"
+       height="0.39043748"
+       x="17.409237"
+       y="112.97247"
+       transform="matrix(0,1,1,0,0,0)" /><rect
+       style="fill:#ff6029;fill-opacity:0.75;stroke:#df6029;stroke-width:0.214872;stroke-dasharray:none;stroke-opacity:0.75;marker-start:url(#RoundedArrow-7-9-4-82-5)"
+       id="rect50269-8"
+       width="15.16188"
+       height="0.29092121"
+       x="147.4241"
+       y="-11.210191"
+       transform="scale(1,-1)" /><rect
+       style="fill:#007bff;fill-opacity:0.83;stroke:#007bff;stroke-width:0.210813;stroke-dasharray:none;stroke-opacity:0.83;marker-start:url(#RoundedArrow-7-9-4-82)"
+       id="rect50269-8-4"
+       width="12.844465"
+       height="0.3301653"
+       x="-62.256107"
+       y="-11.244544"
+       transform="scale(-1)" /></g></svg>
