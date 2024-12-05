@@ -66,7 +66,14 @@ domain names into IP addresses:
   - **_MX_** (Mail Exchange): points to mail servers responsible for receiving
   email on behalf of the domain.
   - Sample: \
-  `google.com.		74	IN	MX	10 smtp.google.com.`
+  `google.com.		74	IN	MX	10 smtp.google.com.`\
+  `google.com.      202 IN  MX  20 alt1.aspmx.l.google.com.`
+  
+  - `10, 20` are the priority levels.  Lower number belongs to higher priority. It means 
+  the highest priority must be for `smtp.google.com.`
+  - `smtp.google.com.` is the mail server.
+  - `74, 202` is the TTL (Time To Live). The time (in seconds)
+    a system can cache this record before needing to refresh it from the DNS server. 
 
 ### TXT record
   - **_TXT_** (Text Record): holds text information, often used for domain
@@ -74,4 +81,5 @@ domain names into IP addresses:
 
 ### SOA record
   - **_SOA_** (Start of Authority): contains information about the domain & the
-  DNS server responsible for the domain.
+  DNS server responsible for the domain. Provides essential parameters for the zone, 
+  including primary name server and administrator email address
