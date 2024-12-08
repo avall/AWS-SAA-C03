@@ -82,4 +82,7 @@ domain names into IP addresses:
 ### SOA record
   - **_SOA_** (Start of Authority): contains information about the domain & the
   DNS server responsible for the domain. Provides essential parameters for the zone, 
-  including primary name server and administrator email address
+  including primary name server and administrator email address.
+
+## How works
+![](../images/dns-how-works.svg)
