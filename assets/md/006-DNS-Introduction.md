@@ -1,10 +1,38 @@
 * [Return to table of contents](../../README.md)
 # DNS
+## Glossary
+- **_Domain Registrar_**  
+  A domain registrar is a company accredited to register and manage domain names.
+  They act as an intermediary between us and the registries that control 
+  top-level domains (TLDs) like .com, .org, and .net. When we want a domain name, 
+  we go through a registrar. They handle the registration process, allow us 
+  to manage our domain's settings (like DNS records), and ensure 
+  our domain remains active as long as you renew it
+  Samples are: Amazon Route 53, GoDaddy, ...
+- **_Zone file_**: A zone file is a text file that contains the DNS records for a domain; the
+  records are hosted on DNS servers and are essential for the proper
+  functioning of the DNS system, enabling the translation of human-readable
+  domain names into IP addresses.
+- **_DNS record_**: DNS records are the individual entries in the zone file. Each record contains specific information about a domain.
+  DNS records provide the necessary mapping between domain names and the underlying infrastructure, enabling us to easily access websites and online services.
+- **_Name Server_**: resolves DNS queries (Authoritative or Non-Authoritative)
+- _**Top Level Domain (TLD)**_: .com, .us, .in, .gov, .org, ...
+- **_Second Level Domain (SLD)_**: amazon.com, google.com, ...
+
 ## Introduction
 
 - Domain Name System (DNS) is a decentralized system that translates
   human-readable domain names (like www.example.com) into IP addresses.
-- The anatomy of domain name: **_tenant.api.leadmgm.com_**
+- The anatomy of domain name: **_tenant.api.leadmgm.com_**. 
+  DNS uses hierarchical naming structure:\
+  ```
+  .com 
+  example.com 
+  www.example.com
+  api.example.com
+  ```
+
+
 - The RFC explains the anatomy as a syntax [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5)
 ![](../images/dns-intro.svg)
 
