@@ -15,6 +15,9 @@
   domain names into IP addresses.
 - **_DNS record_**: DNS records are the individual entries in the zone file. Each record contains specific information about a domain.
   DNS records provide the necessary mapping between domain names and the underlying infrastructure, enabling us to easily access websites and online services.
+  It is a piece of information stored in the DNS system that maps domain names (like example.com) 
+  to specific resources or services, such as IP addresses or email servers. These records guide web traffic and other communications to the right destination on the internet. 
+  The DNS records are stored in authoritative DNS servers and are queried whenever someone tries to access a domain. 
 - **_Name Server_**: resolves DNS queries (Authoritative or Non-Authoritative)
 - _**Top Level Domain (TLD)**_: .com, .us, .in, .gov, .org, ...
 - **_Second Level Domain (SLD)_**: amazon.com, google.com, ...
