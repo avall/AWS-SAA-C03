@@ -39,6 +39,7 @@
 - The RFC explains the anatomy as a syntax [RFC-1034](https://datatracker.ietf.org/doc/html/rfc1034#section-3.5)
 ![](../images/dns-intro.svg)
 
+## Zone file
 - A **_zone file_** is a **_text file_** that contains the DNS records for a domain; the
 records are hosted on DNS servers and are essential for the proper
 functioning of the DNS system, enabling the translation of human-readable
@@ -92,6 +93,7 @@ domain names into IP addresses:
 
 ### NS record
   - **_NS_** (Name Server): specifies authoritative DNS servers for the domain.
+    Identifies the name servers available to answer queries.
 
 ### MX record
   - **_MX_** (Mail Exchange): points to mail servers responsible for receiving
@@ -112,7 +114,8 @@ domain names into IP addresses:
 
 ### SOA record
   - **_SOA_** (Start of Authority): contains information about the domain & the
-  DNS server responsible for the domain. Provides essential parameters for the zone, 
+  DNS server responsible for the domain. Indicates the authoritative location for 
+  answering queries for your domain. Provides essential parameters for the zone, 
   including primary name server and administrator email address.
 
 ## How works
