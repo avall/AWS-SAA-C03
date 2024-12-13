@@ -1,13 +1,20 @@
 * [Return to table of contents](../../README.md)
 # DNS
 ## Glossary
+- A **_DNS Service_** is responsible for managing the DNS records associated
+  with a domain name
 - **_Domain Registrar_**  
+  A Domain Registrar is a company or service where we can purchase or
+  register domain names typically by paying annual charges (e.g., GoDaddy, Amazon Registrar Inc., ...).
   A domain registrar is a company accredited to register and manage domain names.
   They act as an intermediary between us and the registries that control 
   top-level domains (TLDs) like .com, .org, and .net. When we want a domain name, 
-  we go through a registrar. They handle the registration process, allow us 
-  to manage our domain's settings (like DNS records), and ensure 
-  our domain remains active as long as you renew it
+  we go through a registrar. They handle the registration process and currently, 
+  practically all Domain Registrar companies allow us 
+  to manage our domain's settings (like DNS records) and ensure 
+  our domain remains active as long as we renew it. It means that currently
+  all the domain registrars companies are also offering DNS services. 
+- Currently, the Domain Registrar usually provides you with a DNS service to manage your DNS records.
   Samples are: Amazon Route 53, GoDaddy, ...
 - **_Zone file_**: A zone file is a text file that contains the DNS records for a domain; the
   records are hosted on DNS servers and are essential for the proper
@@ -44,13 +51,16 @@
 records are hosted on DNS servers and are essential for the proper
 functioning of the DNS system, enabling the translation of human-readable
 domain names into IP addresses:
+### TTL (time to live)
+- Indicates the Time to Live (TTL) value, or the time (in seconds)
+  a system can cache the current record before needing to refresh it from the DNS server.
 
 ### A record
   - **_A_** Record (Address Record): maps a domain or subdomain to an IPv4
   address. \
   `google.com. 300 IN A 142.250.150.102`
     - **_google.com._** represents the domain name.
-    - **_300_** indicates the Time to Live (TTL) value, or the time (in seconds) 
+    - **_300_** indicates the Time to Live ([TTL](#ttl-time-to-live)) value, or the time (in seconds) 
     a system can cache this record before needing to refresh it from the DNS server.
     - **_IN_** means the class, which is almost invariably “IN” for internet in this context.
     - **_A_** specifies the type of the DNS record – an address record, in this case.
@@ -74,7 +84,7 @@ domain names into IP addresses:
   `blog.mozilla.com.         60        IN        CNAME   mozilla.wpengine.com.` \
   it means:
     - `blog.mozilla.com.` is the new hostname or alias
-    - `60` is the TTL (time to live)
+    - `60` is the ([TTL](#ttl-time-to-live)) (time to live)
     - `IN` is the class
     - `CNAME` is the type
     - `mozilla.wpengine.com.` is the existing one commonly called target.
@@ -105,7 +115,7 @@ domain names into IP addresses:
   - `10, 20` are the priority levels.  Lower number belongs to higher priority. It means 
   the highest priority must be for `smtp.google.com.`
   - `smtp.google.com.` is the mail server.
-  - `74, 202` is the TTL (Time To Live). The time (in seconds)
+  - `74, 202` is the ([TTL](#ttl-time-to-live)) (Time To Live). The time (in seconds)
     a system can cache this record before needing to refresh it from the DNS server. 
 
 ### TXT record
