@@ -109,3 +109,4 @@ qa/V3/database/database.ini
 ## Fleet
 ##########################
 /.fleet/
+.aider.context.yaml
