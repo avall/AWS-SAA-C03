@@ -1,8 +1,46 @@
 * [Return to table of contents](../../README.md)
 # RDS (Relational Database Service)
 ## Amazon RDS Introduction
+- It’s a managed DB service for DBs that use SQL as a query language.
+  It allows us to create databases in the cloud that are managed by AWS
+  - Postgres (RLS - Row Level Security)
+    - RLS is a security mechanism that controls access to rows in a table based on the user's criteria.  It allows fine-grained control over data visibility.
+      Good option to manage multi-tenancy (pool model) DBs.
+    ```
+      CREATE POLICY order_access ON orders
+      USING (customer_id = current_customer_id());
+    ```
+  - MySQL
+  - MariaDB
+  - Oracle
+  - Microsoft SQL Server
+  - IBM DB2
+  - Aurora (AWS Proprietary database)
+
 ## RDS versus deploying DB on EC2
+- RDS is a managed service:
+  - Automated provisioning, OS patching
+  - Continuous backups and restore to specific timestamp (Point in Time Restore)! • Monitoring dashboards
+  - Read replicas for improved read performance
+  - Multi AZ setup for DR (Disaster Recovery)
+  - Maintenance windows for upgrades
+  - Scaling capability (vertical and horizontal) • Storage backed by EBS
+- BUT we cannot SSH into our instances that allocates the DB server.
+
 ## RDS – Storage Auto Scaling
+- Helps us increase storage on our RDS DB instance dynamically
+- When RDS detects we are running out of free database storage, it scales automatically
+- Avoid manually scaling our database storage
+- We have to set Maximum Storage Threshold (maximum limit for DB storage)
+- Automatically modify storage if:
+  - Free storage is less than 10% of allocated storage.
+  - Low-storage lasts at least 5 minutes, We are in storage under limits for at least 5 minutes.
+  - 6 hours have passed since last modification
+- Useful for applications with unpredictable workloads
+- Supports all RDS database engines
+
+
+
 ## RDS Read Replicas
 ### For read scalability
 ### Use cases
