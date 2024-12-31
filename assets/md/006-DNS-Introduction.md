@@ -51,6 +51,9 @@
 records are hosted on DNS servers and are essential for the proper
 functioning of the DNS system, enabling the translation of human-readable
 domain names into IP addresses:
+
+![DNS records we must know](../images/DNS-record-types.svg)
+
 ### TTL (time to live)
 - Indicates the Time to Live (TTL) value, or the time (in seconds)
   a system can cache the current record before needing to refresh it from the DNS server.
