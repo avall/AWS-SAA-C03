@@ -20,11 +20,16 @@
 ## RDS versus deploying DB on EC2
 - RDS is a managed service:
   - Automated provisioning, OS patching
-  - Continuous backups and restore to specific timestamp (Point in Time Restore)! • Monitoring dashboards
+  - Continuous backups and restore to specific timestamp (Point in Time Restore)
+  - Snapshots: manual, can make copies of snapshots cross region
+  - Monitoring dashboards
+  - Launched within a VPC, usually in private subnet, control network access using security groups (important when using Lambda)
   - Read replicas for improved read performance
   - Multi AZ setup for DR (Disaster Recovery)
   - Maintenance windows for upgrades
-  - Scaling capability (vertical and horizontal) • Storage backed by EBS
+  - Scaling capability (vertical and horizontal) 
+  - Storage backed by EBS
+  - RDS Events: get notified via SNS for events (operations, outages...)
 - BUT we cannot SSH into our instances that allocates the DB server.
 
 ## RDS – Storage Auto Scaling
@@ -75,7 +80,6 @@
 
   ![](../images/RDS-read-replicas-network-cost.svg)
 
-
 ## RDS Backups
 - Automated backups:
   - Daily full backup of the database (during the backup window)
@@ -95,6 +99,18 @@
   - Restore the backup file onto a new RDS instance running MySQL
 
 ## RDS Multi AZ (Disaster Recovery)
+- When we **_enable_** the _**Multi-AZ**_ option in Amazon RDS, AWS automatically provisions 
+  a **_standby database instance_** in a different availability zone (AZ) from the primary instance (master).
+  This **_standby instance_** is not active for read or write operations but is synchronized with 
+  the primary instance (master) to ensure the data is up to date.
+- The replication between the primary instance (master) and the standby instance is **_Synchronous_**.
+- Automatic failover (commutation) in case of loss of AZ, loss of network, instance or storage failure.
+  No manual intervention is needed in backend apps.
+- The standby instance is not used for auto-scaling.
+
+  ![](../images/RDS-standby.svg)
+
+
 ## RDS From Single-AZ to Multi-AZ
 ## RDS Custom
 ## RDS Security
