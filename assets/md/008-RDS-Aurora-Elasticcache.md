@@ -114,7 +114,31 @@
 
 
 ## RDS From Single-AZ to Multi-AZ
+- Zero downtime operation (no need to stop the DB)
+- Just click on “modify” for the database
+- The following happens internally:
+  - A snapshot is taken
+  - A new DB is restored from the snapshot in a new AZ
+  - Synchronization is established between the two databases
+
+
+![](../images/RDS-from-single-az-to-multiple-az.svg)
+
 ## RDS Custom
+- Managed Oracle and Microsoft SQL Server Database with OS and database customization
+- RDS: Automates setup, operation, and scaling of database in AWS
+- Custom: access to the underlying database and OS so we can 
+  - Configure settings
+  - Install patches
+  - Enable native features
+  - Access the underlying EC2 Instance using SSH or SSM Session Manager
+  - De-activate Automation Mode to perform your customization, better to take a DB snapshot before
+- RDS vs. RDS Custom
+  - RDS: entire database and the OS to be managed by AWS
+  - RDS Custom: full admin access to the underlying OS and the database
+
+![](../images/RDS-custom.svg)
+
 ## RDS Security
 - At-rest encryption:
   - Database master & replicas encryption using AWS KMS – must be defined as launch time 
