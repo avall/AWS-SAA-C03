@@ -70,9 +70,10 @@
    ![](../images/RDS-read-replicas-use-case-2.svg)
 
 ### Network cost
-- In AWS there’s a network cost when data goes from one AZ to another 
-- For RDS Read Replicas within the same region, you don’t pay that fee
+- In principle, In AWS there’s a network cost when any data goes from one AZ to another 
+- But For RDS Read Replicas within the same region, we don’t pay that fee
 
+  ![](../images/RDS-read-replicas-network-cost.svg)
 
 
 ## RDS Backups
