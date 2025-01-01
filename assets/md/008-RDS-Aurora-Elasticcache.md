@@ -39,7 +39,7 @@
 - Useful for applications with unpredictable workloads
 - Supports all RDS database engines
 
-
+![RDS Auto Scaling](../images/RDS-autoscaling.svg)
 
 ## RDS Read Replicas
 ### For read scalability
