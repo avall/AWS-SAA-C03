@@ -170,6 +170,7 @@
 - Manual DB Snapshots
   - Manually triggered by the user
   - Retention of backup for as long as you want
+
 ## Aurora Restore options
 - Restoring an Aurora backup or a snapshot creates a new database.
 - Restoring MySQL Aurora cluster from S3
