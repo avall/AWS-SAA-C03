@@ -78,6 +78,7 @@
 - In principle, In AWS there’s a network cost when any data goes from one AZ to another 
 - But For RDS Read Replicas within the same region, we don’t pay that fee
 
+
   ![](../images/RDS-read-replicas-network-cost.svg)
 
 ## RDS Backups
@@ -107,6 +108,7 @@
 - Automatic failover (commutation) in case of loss of AZ, loss of network, instance or storage failure.
   No manual intervention is needed in backend apps.
 - The standby instance is not used for auto-scaling.
+
 
   ![](../images/RDS-standby.svg)
 
