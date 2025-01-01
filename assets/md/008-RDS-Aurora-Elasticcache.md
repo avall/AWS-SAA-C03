@@ -42,6 +42,14 @@
 ![RDS Auto Scaling](../images/RDS-autoscaling.svg)
 
 ## RDS Read Replicas
+- Up to 15 Read Replicas
+- Within AZ, Cross AZ or Cross Region
+- Replication is ASYNC, so reads are eventually consistent
+- Replicas can be promoted to their own DB 
+- Applications must update the connection string to leverage read replicas
+
+![](../images/RDS-read-replicas-1.svg)
+
 ### For read scalability
 ### Use cases
 ### Network cost
