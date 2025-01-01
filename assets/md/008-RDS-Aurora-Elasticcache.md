@@ -42,17 +42,39 @@
 ![RDS Auto Scaling](../images/RDS-autoscaling.svg)
 
 ## RDS Read Replicas
+### For read scalability
 - Up to 15 Read Replicas
 - Within AZ, Cross AZ or Cross Region
 - Replication is ASYNC, so reads are eventually consistent
-- Replicas can be promoted to their own DB 
+- Replicas can be promoted to their own DB
 - Applications must update the connection string to leverage read replicas
 
 ![](../images/RDS-read-replicas-1.svg)
 
-### For read scalability
 ### Use cases
+- Use Case 1
+  - We have a production database that is taking on normal load
+  - We want to run a reporting application to run some analytics
+  - We create a Read Replica to run the new workload there
+  - The production application is unaffected
+  - Read replicas are used for SELECT (=read) only kind of statements (not INSERT, UPDATE, DELETE)
+ 
+
+   ![](../images/RDS-read-replicas-use-case-1.svg)
+
+- Typical scenario of CQRS
+  - We have microservice exposing GET requests connecting to DB-Read-Replica
+  - We have microservice exposing POST / PUT / DELETE requests connecting to DB-Master instance
+
+
+   ![](../images/RDS-read-replicas-use-case-2.svg)
+
 ### Network cost
+- In AWS there’s a network cost when data goes from one AZ to another 
+- For RDS Read Replicas within the same region, you don’t pay that fee
+
+
+
 ## RDS Backups
 - Automated backups:
   - Daily full backup of the database (during the backup window)
