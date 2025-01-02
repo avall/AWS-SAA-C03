@@ -178,7 +178,17 @@
   - Store the backup file on Amazon S3
   - Restore the backup file onto a new Aurora cluster running MySQL
 
-## Database Cloning
+## Aurora Database Cloning
+- Create a new Aurora DB Cluster from an existing one
+- Faster than snapshot & restore
+- Uses copy-on-write protocol
+  - Initially, the new DB cluster uses the same data volume as the original DB cluster (fast and efficient – no copying is needed)
+  - When updates are made to the new DB cluster data, then additional storage is allocated and data is copied to be separated
+- Very fast & cost-effective
+- Useful to create a “staging” database from a “production” database without impacting the production database
+
+![Aurora Database Cloning](../images/Aurora-database-cloning.svg)
+
 ## Aurora Security
 - At-rest encryption:
     - Database master & replicas encryption using AWS KMS – must be defined as launch time
