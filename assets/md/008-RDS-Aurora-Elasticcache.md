@@ -173,7 +173,7 @@
 
 ## Aurora Restore options
 - Restoring an Aurora backup or a snapshot creates a new database.
-- Restoring MySQL Aurora cluster from S3
+- Restoring MySQL Aurora cluster from S3. Steps:
   - Create a backup of your on-premises database using Percona XtraBackup
   - Store the backup file on Amazon S3
   - Restore the backup file onto a new Aurora cluster running MySQL
