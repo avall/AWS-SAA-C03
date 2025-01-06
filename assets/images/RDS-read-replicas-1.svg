@@ -30,7 +30,7 @@
      inkscape:window-width="2304"
      inkscape:window-height="1165"
      inkscape:window-x="1828"
-     inkscape:window-y="115"
+     inkscape:window-y="87"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg297"
      showguides="false" /><defs
@@ -356,14 +356,14 @@
        y="635.10394" /></text><text
      xml:space="preserve"
      style="font-size:21.3333px;line-height:15.4665px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#44aa00;stroke:#000000;stroke-width:1.03181;stroke-opacity:0"
-     x="145.19064"
+     x="205.19064"
      y="28.94289"
      id="text1"><tspan
        sodipodi:role="line"
        id="tspan1"
-       x="145.19064"
+       x="205.19064"
        y="28.94289"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.3333px;line-height:15.4665px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#1a1a1a">RDS storage auto-scaling</tspan></text><text
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:21.3333px;line-height:15.4665px;font-family:Arial;-inkscape-font-specification:'Arial Bold';fill:#1a1a1a">RDS read replicas for read scalability</tspan></text><text
      xml:space="preserve"
      id="text2"
      style="font-weight:bold;font-size:16px;line-height:21.8119px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:start;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect2-0);display:inline;fill:#008080;stroke:#00b800;stroke-width:13.8633;stroke-miterlimit:1;stroke-opacity:0.93"
@@ -382,7 +382,7 @@
      transform="translate(-110.13108,-138.21824)"><tspan
        x="357.64965"
        y="261.67579"
-       id="tspan2">application</tspan></text><path
+       id="tspan5">application</tspan></text><path
      style="fill:none;fill-rule:evenodd;stroke:#2b77ca;stroke-width:5.06424;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5-6-6)"
      d="m 284.79723,172.12446 -0.0233,135.75917"
      id="path9-8-5-8-3-9-7-4-3-8-6-7"

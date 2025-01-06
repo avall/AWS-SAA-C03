@@ -178,7 +178,20 @@ MySQL (sub 10 ms replica lag)
 ![](../images/aurora-scaling.svg)
 
 ## DB Cluster
+
+![](../images/aurora-db-cluster.svg)
+
 ## Features
+- Automatic fail-over
+- Backup and Recovery
+- Isolation and security
+- Industry compliance
+- Push-button scaling
+- Automated Patching with Zero Downtime
+- Advanced Monitoring
+- Routine Maintenance
+- Backtrack: restore data at any point of time without using backups
+
 ## Replicas - Auto Scaling
 ## Custom Endpoints
 ## Serverless
@@ -208,7 +221,7 @@ MySQL (sub 10 ms replica lag)
 - Very fast & cost-effective
 - Useful to create a “staging” database from a “production” database without impacting the production database
 
-![Aurora Database Cloning](../images/Aurora-database-cloning.svg)
+![Aurora Database Cloning](../images/aurora-database-cloning.svg)
 
 ## Aurora Security
 - At-rest encryption:
