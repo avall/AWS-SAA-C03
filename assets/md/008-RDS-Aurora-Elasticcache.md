@@ -164,6 +164,17 @@ MySQL (sub 10 ms replica lag)
 - Failover (commutation) in Aurora is instantaneous. It’s HA (High Availability) native.
 - Aurora costs more than RDS (20% more) – but is more efficient
 
+## Features
+- Automatic failover (commutation) to an Aurora Replica in case the primary DB instance becomes unavailable.
+- Backup and Recovery
+- Isolation and security
+- Industry compliance
+- Push-button scaling
+- Automated Patching with Zero Downtime
+- Advanced Monitoring
+- Routine Maintenance
+- Backtrack: restore data at any point of time without using backups
+
 ## High Availability and Read Scaling
 - 6 copies of our data across 3 AZ:
   - 4 copies out of 6 needed for writes. Reads only require three out of six nodes to be available
@@ -175,24 +186,16 @@ MySQL (sub 10 ms replica lag)
 - Master + up to 15 Aurora Read Replicas serve reads
 - Support for Cross Region Replication
 
-![](../images/aurora-scaling.svg)
+![](../images/aurora-availability-and-read-scaling.svg)
 
 ## DB Cluster
 
 ![](../images/aurora-db-cluster.svg)
 
-## Features
-- Automatic fail-over
-- Backup and Recovery
-- Isolation and security
-- Industry compliance
-- Push-button scaling
-- Automated Patching with Zero Downtime
-- Advanced Monitoring
-- Routine Maintenance
-- Backtrack: restore data at any point of time without using backups
-
 ## Replicas - Auto Scaling
+
+![Aurora Auto Scaling](../images/aurora-replicas-auto-scaling.svg)
+
 ## Custom Endpoints
 ## Serverless
 ## Global Aurora
