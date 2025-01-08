@@ -30,7 +30,7 @@
      inkscape:window-width="2304"
      inkscape:window-height="1165"
      inkscape:window-x="1866"
-     inkscape:window-y="49"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg297"
      showguides="false" /><defs
@@ -710,7 +710,7 @@
      transform="rotate(-90,451.50918,536.89391)"><tspan
        x="376.845"
        y="261.67579"
-       id="tspan3">WRITE</tspan></text><path
+       id="tspan14">WRITE</tspan></text><path
      style="display:inline;fill:none;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:36.9742;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
      d="m 756.48516,704.24017 1.01424,-70.07748"
      id="path6-4-5-1-7-7-8-02-1-1-2-2-2"
@@ -737,7 +737,7 @@
      transform="rotate(-90,613.70551,461.74998)"><tspan
        x="380.46805"
        y="261.67579"
-       id="tspan5">READ</tspan></text><path
+       id="tspan15">READ</tspan></text><path
      style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:4.97;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-8-4-68-9)"
      d="m 406.61022,621.95651 -0.12538,-6.98872"
      id="path6-4-5-1-7-7-80"
@@ -764,7 +764,7 @@
      transform="rotate(-90,671.73927,403.26936)"><tspan
        x="380.46805"
        y="261.67579"
-       id="tspan6">READ</tspan></text><path
+       id="tspan16">READ</tspan></text><path
      style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:4.97;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-8-4-68-9-7)"
      d="m 523.12459,621.50963 -0.12538,-6.98872"
      id="path6-4-5-1-7-7-80-2"
@@ -776,7 +776,7 @@
      transform="rotate(-90,730.49499,344.96051)"><tspan
        x="380.46805"
        y="261.67579"
-       id="tspan7">READ</tspan></text><path
+       id="tspan17">READ</tspan></text><path
      style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:4.97;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-8-4-68-9-3)"
      d="m 640.18916,621.95651 -0.12538,-6.98872"
      id="path6-4-5-1-7-7-80-8"
@@ -788,7 +788,7 @@
      transform="rotate(-90,788.52875,286.4799)"><tspan
        x="380.46805"
        y="261.67579"
-       id="tspan8">READ</tspan></text><path
+       id="tspan18">READ</tspan></text><path
      style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:4.97;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-8-4-68-9-7-5)"
      d="m 756.70353,621.50963 -0.12538,-6.98872"
      id="path6-4-5-1-7-7-80-2-6"
@@ -805,7 +805,7 @@
      transform="rotate(-90,846.83613,228.36621)"><tspan
        x="380.46805"
        y="261.67579"
-       id="tspan9">READ</tspan></text><path
+       id="tspan19">READ</tspan></text><path
      style="display:inline;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#2d7bbe;stroke-width:4.97;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-8-4-68-9-7-5-2)"
      d="m 873.12459,621.70334 -0.12538,-6.98872"
      id="path6-4-5-1-7-7-80-2-6-5"
@@ -878,8 +878,8 @@
      id="path9-9"
      inkscape:connector-type="polyline"
      inkscape:connector-curvature="0" /><path
-     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.726165;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-7-1-7-9)"
-     d="m 466.10252,142.9576 201.40969,79.42872"
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.717;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#RoundedArrow-7-1-7-9)"
+     d="m 466.88113,141.74359 99.09109,81.70283"
      id="path9-9-3"
      inkscape:connector-type="polyline"
      inkscape:connector-curvature="0" /><path
