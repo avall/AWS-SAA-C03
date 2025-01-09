@@ -131,7 +131,7 @@
     - [RDS From Single-AZ to Multi-AZ](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-from-single-az-to-multi-az)
     - [RDS Custom](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-custom)
     - [RDS Security](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-security)
-    - [RDS Proxy](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-proxy)
+    - [RDS Proxy](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-proxy-rds--aurora-connection-pool)
   - [Amazon Aurora](./assets/md/008-RDS-Aurora-Elasticcache.md#amazon-aurora)
     - [Aurora Introduction](./assets/md/008-RDS-Aurora-Elasticcache.md#introduction)
     - [Features](./assets/md/008-RDS-Aurora-Elasticcache.md#features)

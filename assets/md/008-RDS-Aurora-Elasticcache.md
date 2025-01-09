@@ -150,8 +150,23 @@
 - No SSH available except on RDS Custom
 - Audit Logs can be enabled and sent to CloudWatch Logs for longer retention
 
-## RDS Proxy
+## RDS Proxy (rds & aurora connection pool)
+- Fully managed database proxy for RDS
+- Allows apps to pool and share DB connections established with the database
+- Improving database efficiency by reducing the stress on database resources (e.g., CPU, RAM) and minimize open connections (and timeouts)
+- Serverless, autoscaling, highly available (multi-AZ)
+- Reduced **_RDS & Aurora failover_** time by up 66%
+- Supports **_RDS (MySQL, PostgreSQL, MariaDB, MS SQL Server) and Aurora (MySQL, PostgreSQL)_**
+- No code changes required for most apps
+- Enforce IAM Authentication for DB, and securely store credentials in AWS Secrets Manager
+- RDS Proxy is never publicly accessible (must be accessed from VPC)
+- This is similar to **_Hikari connection Pool_** in **_Spring Boot Framework_**.
+  - Efficient Resource Management: Manages database connections efficiently, reusing them instead of creating new ones for every query.
+  - High Performance: It's lightweight and optimized for speed, offering better performance compared to other connection pool libraries.
+  - Low Latency: Designed for low-latency applications by minimizing overhead.
+  - Reliable and Stable: It includes robust health checks, leak detection, and failure recovery mechanisms.
 
+![](../images/RDS-proxy.svg)
 
 # Amazon Aurora
 ## Introduction
