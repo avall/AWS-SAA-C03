@@ -219,7 +219,26 @@ MySQL (sub 10 ms replica lag)
 ![Aurora Custom Endpoints](../images/aurora-custom-endpoints.svg)
 
 ## Serverless
+- Automated database instantiation and auto- scaling based on actual usage
+- Good for infrequent, intermittent or unpredictable workloads
+- No capacity planning needed
+- Pay per second, can be more cost-effective
+
+![](../images/aurora-serverless.svg)
+
 ## Global Aurora
+- Aurora Cross Region Read Replicas: 
+  - Useful for disaster recovery
+  - Simple to put in place
+- Aurora Global Database (recommended):
+  - 1 Primary Region (read / write)
+  - Up to 5 secondary (read-only) regions, replication lag is less than 1 second
+  - Up to 16 Read Replicas per secondary region
+  - Helps for decreasing latency
+  - Promoting another region (for disaster recovery) has an RTO (recovery time objective) of < 1 minute
+  - Typical cross-region replication takes less than 1 second
+
+
 ## Machine Learning
 ## Backups
 - Automated backups
