@@ -92,12 +92,16 @@
   - Retention of backup for as long as you want
 - Trick: in a stopped RDS database, you will still pay for storage. If you plan on stopping it for a long time, you should snapshot & restore instead
 
+![](../images/RDS-backups.svg)
+
 ## RDS Restore options
 - Restoring a RDS backup or a snapshot creates a new database.
 - Restoring MySQL RDS database from S3 
   - Create a backup of your on-premises database
   - Store it on Amazon S3 (object storage)
   - Restore the backup file onto a new RDS instance running MySQL
+
+![](../images/RDS-restore.svg)
 
 ## RDS Multi AZ (Disaster Recovery)
 - When we **_enable_** the _**Multi-AZ**_ option in Amazon RDS, AWS automatically provisions 
@@ -251,7 +255,7 @@ MySQL (sub 10 ms replica lag)
 
 ![](../images/aurora-ml.svg)
 
-## Backups
+## Aurora backups
 - Automated backups
   - 1 to 35 days (cannot be disabled)
   - point-in-time recovery in that timeframe
@@ -259,12 +263,16 @@ MySQL (sub 10 ms replica lag)
   - Manually triggered by the user
   - Retention of backup for as long as you want
 
+![](../images/aurora-backups.svg)
+
 ## Aurora Restore options
 - Restoring an Aurora backup or a snapshot creates a new database.
 - Restoring MySQL Aurora cluster from S3. Steps:
   - Create a backup of your on-premises database using Percona XtraBackup
   - Store the backup file on Amazon S3
   - Restore the backup file onto a new Aurora cluster running MySQL
+
+![](../images/aurora-restore.svg)
 
 ## Aurora Database Cloning
 - Create a new Aurora DB Cluster from an existing one

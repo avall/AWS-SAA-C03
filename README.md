@@ -142,7 +142,7 @@
     - [Serverless](./assets/md/008-RDS-Aurora-Elasticcache.md#serverless)
     - [Global Aurora](./assets/md/008-RDS-Aurora-Elasticcache.md#global-aurora)
     - [Machine learning](./assets/md/008-RDS-Aurora-Elasticcache.md#machine-learning)
-    - [Backups](./assets/md/008-RDS-Aurora-Elasticcache.md#backups)
+    - [Backups](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-backups)
     - [Aurora restore options](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-restore-options)
     - [Database cloning](./assets/md/008-RDS-Aurora-Elasticcache.md#database-cloning)
     - [Security](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-security)
