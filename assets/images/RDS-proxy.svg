@@ -27,14 +27,14 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="1.1531632"
-     inkscape:cx="450.06641"
-     inkscape:cy="415.8128"
+     inkscape:cx="474.78102"
+     inkscape:cy="415.81278"
      inkscape:window-width="1888"
      inkscape:window-height="1066"
      inkscape:window-x="2084"
-     inkscape:window-y="26"
+     inkscape:window-y="25"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg66" />
+     inkscape:current-layer="g64" />
   <defs
      id="defs1" />
   <rect
@@ -648,6 +648,18 @@
             </g>
           </g>
         </g>
+        <text
+           xml:space="preserve"
+           style="font-size:18.6577px;line-height:13.5267px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;letter-spacing:0px;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#060000;stroke:#ffffff;stroke-width:0"
+           x="132.05989"
+           y="61.641418"
+           id="text1"
+           transform="scale(0.99951854,1.0004817)"><tspan
+             sodipodi:role="line"
+             id="tspan1"
+             style="stroke-width:0"
+             x="132.05989"
+             y="61.641418">VPC</tspan></text>
       </g>
     </g>
   </g>

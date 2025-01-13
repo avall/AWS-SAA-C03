@@ -238,8 +238,19 @@ MySQL (sub 10 ms replica lag)
   - Promoting another region (for disaster recovery) has an RTO (recovery time objective) of < 1 minute
   - Typical cross-region replication takes less than 1 second
 
+![](../images/aurora-global.svg)
 
 ## Machine Learning
+- Enables you to add ML-based predictions to your applications via SQL
+- Simple, optimized, and secure integration between Aurora and AWS ML services
+- Supported services
+  - Amazon SageMaker (use with any ML model) 
+  - Amazon Comprehend (for sentiment analysis)
+- You don’t need to have ML experience
+- Use cases: fraud detection, ads targeting, sentiment analysis, product recommendations
+
+![](../images/aurora-ml.svg)
+
 ## Backups
 - Automated backups
   - 1 to 35 days (cannot be disabled)
