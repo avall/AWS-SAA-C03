@@ -156,14 +156,19 @@
 
 ## RDS Proxy (rds & aurora connection pool)
 - Fully managed database proxy for RDS
-- Allows apps to pool and share DB connections established with the database
-- Improving database efficiency by reducing the stress on database resources (e.g., CPU, RAM) and minimize open connections (and timeouts)
+- Allows apps to pool and share DB connections established with the database. When using Lambda functions with RDS, it (the lambda) opens and maintains a database connection.
+  This can result in a “**_TooManyConnections_**” exception
+- With RDS Proxy, you no longer need code that handles cleaning up idle connections and managing connection pools.
+  Improving database efficiency by reducing the stress on database resources (e.g., CPU, RAM) and minimize open connections (and timeouts)
 - Serverless, autoscaling, highly available (multi-AZ)
 - Reduced **_RDS & Aurora failover_** time by up 66%
 - Supports **_RDS (MySQL, PostgreSQL, MariaDB, MS SQL Server) and Aurora (MySQL, PostgreSQL)_**
 - No code changes required for most apps
 - Enforce IAM Authentication for DB, and securely store credentials in AWS Secrets Manager
 - RDS Proxy is never publicly accessible (must be accessed from VPC)
+- The Lambda function must have connectivity to the Proxy:
+  - public proxy => public Lambda 
+  - private proxy => Lambda in VPC
 - This is similar to **_Hikari connection Pool_** in **_Spring Boot Framework_**.
   - Efficient Resource Management: Manages database connections efficiently, reusing them instead of creating new ones for every query.
   - High Performance: It's lightweight and optimized for speed, offering better performance compared to other connection pool libraries.
