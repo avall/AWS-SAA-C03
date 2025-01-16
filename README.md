@@ -138,6 +138,7 @@
     - [High Availability and read scaling](./assets/md/008-RDS-Aurora-Elasticcache.md#high-availability-and-read-scaling)
     - [DB-Cluster](./assets/md/008-RDS-Aurora-Elasticcache.md#db-cluster)
     - [Replicas Autoscaling](./assets/md/008-RDS-Aurora-Elasticcache.md#replicas---auto-scaling)
+    - [Aurora endpoints](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-endpoints)
     - [Custom endpoints](./assets/md/008-RDS-Aurora-Elasticcache.md#custom-endpoints)
     - [Serverless](./assets/md/008-RDS-Aurora-Elasticcache.md#serverless)
     - [Global Aurora](./assets/md/008-RDS-Aurora-Elasticcache.md#global-aurora)

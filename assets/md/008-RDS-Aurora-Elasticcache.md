@@ -220,6 +220,21 @@ MySQL (sub 10 ms replica lag)
 
 ![Aurora Auto Scaling](../images/aurora-replicas-auto-scaling.svg)
 
+## Aurora Endpoints
+- Endpoint = Host Address + Port
+- Cluster Endpoint (Writer Endpoint)
+  - Connects to the current primaryDB instance in the Aurorac luster
+  - Used for all write operations in the DB cluster (inserts,updates,deletes and queries)
+- Reader Endpoint
+  - Provides load-balancing for read-only connections to all Aurora Replicas in the Aurora cluster 
+  - Used only for read operations (queries)
+- Custom Endpoint
+  - Represents a set on DB instances that you choose in the Aurora cluster
+  - Used when you want to connect to different subsets of DB instances with different capacities and configurations (e.g., different DB parameter group)
+- Instance Endpoint
+  - Connects to aspecific DB instance in the Aurora cluster
+  - Used when you want to diagnosis and fine tune a specific DB instance
+
 ## Custom Endpoints
 - Define a subset of Aurora Instances as a Custom Endpoint
 - Example: Run analytical queries on specific replicas
