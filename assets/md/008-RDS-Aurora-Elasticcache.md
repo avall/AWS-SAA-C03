@@ -178,6 +178,8 @@
 ![](../images/RDS-proxy.svg)
 
 ## RDS Cross Region Failover
+- Cross region failover is not supported (by default) for RDS
+- Same strategy can be used for Aurora as well. To replicate between two different AWS Regions we can use Global Aurora Database.
 
 ![RDS cross region failover](../images/RDS-cross-region-failover.svg)
 
