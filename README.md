@@ -132,6 +132,7 @@
     - [RDS Custom](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-custom)
     - [RDS Security](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-security)
     - [RDS Proxy](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-proxy-rds--aurora-connection-pool)
+    - [RDS cross region failover](./assets/md/008-RDS-Aurora-Elasticcache.md#rds-cross-region-failover)
   - [Amazon Aurora](./assets/md/008-RDS-Aurora-Elasticcache.md#amazon-aurora)
     - [Aurora Introduction](./assets/md/008-RDS-Aurora-Elasticcache.md#introduction)
     - [Features](./assets/md/008-RDS-Aurora-Elasticcache.md#features)

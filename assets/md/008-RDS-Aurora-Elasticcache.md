@@ -177,6 +177,10 @@
 
 ![](../images/RDS-proxy.svg)
 
+## RDS Cross Region Failover
+
+![RDS cross region failover](../images/RDS-cross-region-failover.svg)
+
 # Amazon Aurora
 ## Introduction
 - Aurora is a proprietary technology from AWS (not open sourced)
