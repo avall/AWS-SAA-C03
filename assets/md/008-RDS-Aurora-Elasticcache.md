@@ -179,7 +179,7 @@
 
 ## RDS Cross Region Failover
 - Cross region failover is not supported (by default) for RDS
-- Same strategy can be used for Aurora as well. To replicate between two different AWS Regions we can use Global Aurora Database.
+- Same strategy can be used for Aurora as well. To replicate between two different AWS Regions we can use Aurora Global Database.
 
 ![RDS cross region failover](../images/RDS-cross-region-failover.svg)
 
@@ -267,8 +267,17 @@ MySQL (sub 10 ms replica lag)
   - Helps for decreasing latency
   - Promoting another region (for disaster recovery) has an RTO (recovery time objective) of < 1 minute
   - Typical cross-region replication takes less than 1 second
+  - Ability to manage the RPO (recovery point objective) in Aurora for PostgreSQL
 
 ![](../images/aurora-global.svg)
+
+## Aurora Global – Write Forwarding
+- Enables Secondary DB Clusters to forward SQL statements that perform write operations to the Primary DB Cluster
+- Data is always changed first on the Primary DB Cluster, then replicated to the Secondary DB Clusters
+- Primary DB Cluster always has an up-to-date copy of all data
+- Reduces the number of endpoints to manage
+
+![](../images/aurora-global-write-forwarding.svg)
 
 ## Machine Learning
 - Enables you to add ML-based predictions to your applications via SQL

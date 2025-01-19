@@ -143,6 +143,7 @@
     - [Custom endpoints](./assets/md/008-RDS-Aurora-Elasticcache.md#custom-endpoints)
     - [Serverless](./assets/md/008-RDS-Aurora-Elasticcache.md#serverless)
     - [Global Aurora](./assets/md/008-RDS-Aurora-Elasticcache.md#global-aurora)
+    - [Write Forwarding](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-global--write-forwarding)
     - [Machine learning](./assets/md/008-RDS-Aurora-Elasticcache.md#machine-learning)
     - [Backups](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-backups)
     - [Aurora restore options](./assets/md/008-RDS-Aurora-Elasticcache.md#aurora-restore-options)
