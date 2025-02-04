@@ -122,8 +122,19 @@ domain names into IP addresses:
     a system can cache this record before needing to refresh it from the DNS server. 
 
 ### TXT record
+  [RFC 1464](https://tools.ietf.org/html/rfc1464)
   - **_TXT_** (Text Record): holds text information, often used for domain
-  verification or to provide information to external sources.
+  verification or to provide information to external sources. Te format of the content for a TXT record is
+  `attribute=value`.
+  - TXT records help to prevent email spams.
+    - **SPF** records: SPF TXT records list all the servers that are authorized to send email messages from a domain.
+    - **DKIM** records: DKIM works by digitally signing each email using a public-private key pair. This helps verify that the email is actually from the domain it claims to be from. The public key is hosted in a TXT record associated with the domain.
+    - **DMARC** records: A DMARC TXT record references the domain's SPF and DKIM policies. It should be stored under the title _dmarc.example.com. with 'example.com' replaced with the actual domain name. The 'value' of the record is the domain's DMARC policy.
+  - TXT records help verify domain ownership.
+    - While domain ownership verification was not initially a feature of TXT records, this approach has been adopted by some webmaster tools and cloud providers.
+      By uploading a new TXT record with specific information included, or editing the current TXT record, an administrator can prove they control that domain. 
+      The tool or cloud provider can check the TXT record and see that it has been changed as requested. This is somewhat like when a user confirms their email 
+      address by opening and clicking a link sent to that email, proving they own the address.
 
 ### SOA record
   - **_SOA_** (Start of Authority): contains information about the domain & the
